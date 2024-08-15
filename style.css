@@ -352,6 +352,43 @@ article {
 article .icon {
   cursor: default;
 }
+.skills-container {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.skills-wrapper {
+  display: inline-flex;
+  animation: scroll-left 20s linear infinite;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  margin-right: 30px; /* Space between skill items */
+}
+
+.skill-icon {
+  width: 40px; /* Adjust size of icons as needed */
+  height: 40px;
+  margin-right: 10px; /* Space between icon and text */
+}
+
+.skill-info {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
 
 /* EDUCATION SECTION */
 .education {
