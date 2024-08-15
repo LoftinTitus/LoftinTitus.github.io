@@ -318,7 +318,7 @@ section {
 
 #experience {
   position: relative;
-  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .experience-sub-title {
@@ -336,7 +336,7 @@ section {
 
 .skills-wrapper {
   display: inline-flex;
-  animation: scroll-left 20s linear infinite;
+  animation: scroll-left 10s linear infinite;
 }
 
 .skill-item {
