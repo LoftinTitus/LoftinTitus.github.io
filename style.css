@@ -329,20 +329,21 @@ section {
 }
 
 .skills-container {
-  overflow: hidden;
-  white-space: nowrap;
+  overflow: hidden; 
   position: relative;
+  height: 100px; 
 }
 
 .skills-wrapper {
-  display: inline-flex;
+  display: flex;
   animation: scroll-left 30s linear infinite;
+  white-space: nowrap;
 }
 
 .skill-item {
   display: flex;
   align-items: center;
-  margin-right: 30px;
+  margin-right: 30px; 
 }
 
 .skill-icon {
@@ -357,14 +358,12 @@ section {
 }
 
 @keyframes scroll-left {
-  from {
-    transform: translateX(100%);
+  0% {
+    transform: translateX(100%); 
   }
-  to {
+  100% {
     transform: translateX(-100%);
   }
-}
-
 
 
 /* EDUCATION SECTION */
