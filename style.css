@@ -332,11 +332,13 @@ section {
   overflow: hidden;
   white-space: nowrap;
   position: relative;
+  margin-top: 30px;
 }
 
 .skills-wrapper {
   display: inline-flex;
-  animation: scroll-left 30s linear infinite;
+  position: relative;
+  will-change: transform;
 }
 
 .skill-item {
