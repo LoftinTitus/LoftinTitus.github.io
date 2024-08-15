@@ -533,6 +533,11 @@ article .icon {
 
 }
 
+.education-details-container {
+  display: flex;
+  gap: 30px;
+}
+
 /* PROJECTS SECTION */
 
 #projects {
