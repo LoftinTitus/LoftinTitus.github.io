@@ -1,5 +1,4 @@
 /* GENERAL */
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 * {
@@ -20,14 +19,12 @@ p {
 }
 
 /* TRANSITION */
-
 a,
 .btn {
   transition: all 300ms ease;
 }
 
 /* DESKTOP NAV */
-
 nav,
 .nav-links {
   display: flex;
@@ -48,7 +45,6 @@ nav {
 a {
   color: black;
   text-decoration: none;
-  text-decoration-color: white;
 }
 
 a:hover {
@@ -67,7 +63,6 @@ a:hover {
 }
 
 /* HAMBURGER MENU */
-
 #hamburger-nav {
   display: none;
 }
@@ -90,7 +85,7 @@ a:hover {
   width: 100%;
   height: 2px;
   background-color: black;
-  transition: all 0.3 ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .menu-links {
@@ -101,7 +96,7 @@ a:hover {
   width: fit-content;
   max-height: 0;
   overflow: hidden;
-  transition: all 0.3 ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .menu-links a {
@@ -111,7 +106,7 @@ a:hover {
   font-size: 1.5rem;
   color: black;
   text-decoration: none;
-  transition: all 0.3 ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .menu-links li {
@@ -134,20 +129,7 @@ a:hover {
   transform: rotate(-45deg) translate(10px, -5px);
 }
 
-.hamburger-icon span:first-child {
-  transform: none;
-}
-
-.hamburger-icon span:first-child {
-  opacity: 1;
-}
-
-.hamburger-icon span:first-child {
-  transform: none;
-}
-
 /* SECTIONS */
-
 section {
   padding-top: 4vh;
   height: 96vh;
@@ -161,7 +143,6 @@ section {
 }
 
 /* PROFILE SECTION */
-
 #profile {
   display: flex;
   justify-content: center;
@@ -207,14 +188,12 @@ section {
 }
 
 /* ICONS */
-
 .icon {
   cursor: pointer;
   height: 2rem;
 }
 
 /* BUTTONS */
-
 .btn-container {
   display: flex;
   justify-content: center;
@@ -257,12 +236,7 @@ section {
   border: rgb(255, 255, 255) 0.1rem solid;
 }
 
-.btn-container {
-  gap: 1rem;
-}
-
 /* ABOUT SECTION */
-
 #about {
   position: relative;
 }
@@ -274,13 +248,9 @@ section {
 }
 
 .about-details-container {
-  justify-content: center;
-  flex-direction: column;
-}
-
-.about-containers,
-.about-details-container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .about-pic {
@@ -295,27 +265,15 @@ section {
 
 .details-container {
   padding: 1.5rem;
-  flex: 1;
   background: white;
   border-radius: 2rem;
   border: rgb(53, 53, 53) 0.1rem solid;
   border-color: rgb(163, 163, 163);
   text-align: center;
-}
-
-.section-container {
-  gap: 4rem;
-  height: 80%;
-}
-
-.section__pic-container {
-  height: 400px;
-  width: 400px;
-  margin: auto 0;
+  width: 100%; /* Ensure it takes up full width available */
 }
 
 /* EXPERIENCE SECTION */
-
 #experience {
   position: relative;
   margin-bottom: 20px;
@@ -364,186 +322,178 @@ section {
   100% {
     transform: translateX(-100%);
   }
-
+}
 
 /* EDUCATION SECTION */
 .education {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 .education-body {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    color: hsla(117, 56%, 49%, 0.702);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: hsla(117, 56%, 49%, 0.702);
 }
 
 .education-description {
-    width: 100%;
-    flex: 0.65;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    margin-left: 7%;
+  width: 100%;
+  flex: 0.65;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-left: 7%;
 }
 
-.education-description > h1{
-    font-size: 3.5rem;
-    font-family: var(--primaryFont);
-    margin-bottom: 2rem;
+.education-description > h1 {
+  font-size: 3.5rem;
+  font-family: var(--primaryFont);
+  margin-bottom: 2rem;
 }
 
 .education-card {
-    display: flex;
-    flex-direction: row;
-    align-items:flex-start;
-    justify-content: flex-start;
-    width: 90%;
-    height: 140px;
-    padding: 1.5rem;
-    border-radius: 20px;
-    margin-bottom: 1.5rem;
-    transition: background-color 200ms ease-in-out;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 90%;
+  height: 140px;
+  padding: 1.5rem;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+  transition: background-color 200ms ease-in-out;
 }
 
 .educard-img {
-    border-radius: 50%;
-    width: 55px;
-    height: 55px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .educard-img > img {
-    width: 40px;
+  width: 40px;
 }
 
-.education-details{
-    margin-left: 0.6rem;
+.education-details {
+  margin-left: 0.6rem;
 }
 
 .education-details > h6 {
-    font-family: var(--primaryFont);
-    font-size: 0.85rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+  font-family: var(--primaryFont);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
 }
 
 .education-details > h4 {
-    font-family: var(--primaryFont);
-    font-size: 1.225rem;
-    font-weight: 600;
+  font-family: var(--primaryFont);
+  font-size: 1.225rem;
+  font-weight: 600;
 }
 
 .education-details > h5 {
-    font-family: var(--primaryFont);
-    font-size: 1.15rem;
-    font-weight: 600;
+  font-family: var(--primaryFont);
+  font-size: 1.15rem;
+  font-weight: 600;
 }
 
 .education-image {
-    box-sizing: border-box;
-    padding: 1rem;
-    flex: 0.35;
-    margin-top: 1rem;
-    pointer-events: none;
+  box-sizing: border-box;
+  padding: 1rem;
+  flex: 0.35;
+  margin-top: 1rem;
+  pointer-events: none;
 }
 
 .education-image > img {
-    width: 100%;
+  width: 100%;
 }
 
-
-
+/* Responsive Design */
 @media (min-width: 992px) and (max-width: 1380px) {
-
+  /* Add styles if needed for this range */
 }
-
 
 @media screen and (max-width: 992px) {
-    .education {
-        min-height: 100%;
-    }
-    .education-image {
-        display: none;
-    }
-    .education-description {
-        flex: 1;
-        margin: auto;
-    }    
-    .education-description > h1{
-        font-size: 3.2rem;
-    }
-    .education-card {
-        width: 100%;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
+  .education {
+    min-height: 100%;
+  }
+  .education-image {
+    display: none;
+  }
+  .education-description {
+    flex: 1;
+    margin: auto;
+  }    
+  .education-description > h1 {
+    font-size: 3.2rem;
+  }
+  .education-card {
+    width: 100%;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
 }
 
 @media screen and (max-width: 800px) {
-    .education-description > h1{
-        font-size: 3rem;
-        margin-bottom: 2rem;
-        align-self: center;
-    }
-    .education-description {
-        padding: 1rem;
-    }
-    .education-card {
-        padding: 1rem;
-        margin-bottom: 1.5rem;
-        height: 130px;
-    }
-    .educard-img {
-        border-radius: 50%;
-        width: 45px;
-        height: 45px;
-    }
-    
-    .educard-img > img {
-        width: 30px;
-    }
-    .education-details > h6 {
-        font-size: 0.85rem;
-        margin-bottom: 0.45rem;
-    }
-    
-    .education-details > h4 {
-        font-size: 1.125rem;
-        line-height: 126%;
-    }
-    
-    .education-details > h5 {
-        font-size: 1.05rem;
-        line-height: 126%;
-    }
+  .education-description > h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    align-self: center;
+  }
+  .education-description {
+    padding: 1rem;
+  }
+  .education-card {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    height: 130px;
+  }
+  .educard-img {
+    width: 45px;
+    height: 45px;
+  }
+  .educard-img > img {
+    width: 30px;
+  }
+  .education-details > h6 {
+    font-size: 0.85rem;
+    margin-bottom: 0.45rem;
+  }
+  .education-details > h4 {
+    font-size: 1.125rem;
+    line-height: 126%;
+  }
+  .education-details > h5 {
+    font-size: 1.05rem;
+    line-height: 126%;
+  }
 }
 
 @media screen and (max-width: 600px) {
-    .education-description > h1{
-        font-size: 2.5rem;
-    }
+  .education-description > h1 {
+    font-size: 2.5rem;
+  }
 }
 
 @media screen and (max-width: 400px) {
-
-}
-  
-@media only screen and (min-device-width: 320px) and (max-device-width: 
-  480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) {
-
+  /* Add styles if needed for very small screens */
 }
 
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-device-pixel-ratio: 2) and (device-aspect-ratio: 2/3) {
+  /* Add styles if needed for specific device characteristics */
+}
 
 @media only screen and (device-width: 768px) {
-
+  /* Add styles if needed for specific device widths */
 }
 
 .education-details-container {
@@ -573,9 +523,7 @@ section {
   line-height: 1.5;
 }
 
-
 /* PROJECTS SECTION */
-
 #projects {
   position: relative;
 }
@@ -602,7 +550,6 @@ section {
 }
 
 /* CONTACT */
-
 #contact {
   display: flex;
   justify-content: center;
@@ -648,7 +595,6 @@ section {
 }
 
 /* FOOTER SECTION */
-
 footer {
   height: 26vh;
   margin: 0 1rem;
