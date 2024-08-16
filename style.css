@@ -274,6 +274,18 @@ section {
   width: 30%;
 }
 
+@media (max-width: 768px) {
+  .about-details-container {
+    flex-direction: column; /* Stack boxes vertically */
+    align-items: center;
+  }
+
+  .details-container {
+    width: 100%; /* Full width on smaller screens */
+    margin-bottom: 1.5rem;
+  }
+}
+
 /* EXPERIENCE SECTION */
 #experience {
   position: relative;
