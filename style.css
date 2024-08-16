@@ -619,13 +619,19 @@ section {
   background-color: rgb(250, 250, 250);
   margin: 2rem auto;
   padding: 0.5rem;
-  gap: 2rem; /* Add space between contact info containers */
+  gap: 2rem; 
 }
 
 .contact-info-container {
   display: flex;
   align-items: center;
-  gap: 1rem; /* Space between icon and text */
+  justify-content: center;
+  background-color: #f9f9f9; 
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  padding: 1rem;
+  width: 200px;
+  text-align: center;
 }
 
 .contact-info-container p {
