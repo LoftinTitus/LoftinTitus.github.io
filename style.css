@@ -13,7 +13,7 @@
     hsl(0, 0%, 19%) 97%
   );
   --bg-gradient-jet: linear-gradient(
-    to bottom right, 
+    to bottom right,
     hsla(240, 1%, 18%, 0.251) 0%, 
     hsla(240, 2%, 11%, 0) 100%
   ), hsl(240, 2%, 13%);
@@ -728,6 +728,8 @@ main {
 }
 
 .clients-item {
+  flex: 0 0 100px; 
+  height: 75px;
   min-width: 50%;
   scroll-snap-align: start;
 }
