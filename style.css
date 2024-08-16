@@ -248,9 +248,10 @@ section {
 }
 
 .about-details-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display:flex;
+  justify-content: space-between; /* Align boxes side by side */
+  gap: 2rem; /* Space between the boxes */
+  width: 100%; /* Ensure it takes up full width */
 }
 
 .about-pic {
