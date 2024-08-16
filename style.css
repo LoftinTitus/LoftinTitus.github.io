@@ -728,8 +728,6 @@ main {
 }
 
 .clients-item {
-  flex: 0 0 100px; 
-  height: 75px;
   min-width: 50%;
   scroll-snap-align: start;
 }
