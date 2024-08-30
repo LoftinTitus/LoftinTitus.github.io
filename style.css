@@ -95,22 +95,6 @@
 
 }
 
-.filter-btn a:link,
-.filter-btn a:visited {
-  color: var(--orange-yellow-crayola);
-}
-
-.filter-btn a:hover {
-  color: var(--orange-yellow-crayola);
-}
-
-.filter-btn a:active {
-  color: var(--orange-yellow-crayola);
-}
-
-
-
-
 /*-----------------------------------*\
   #RESET
 \*-----------------------------------*/
@@ -288,8 +272,18 @@ article.active {
   z-index: -1;
 }
 
+.filter-btn a:link,
+.filter-btn a:visited {
+  color: var(--orange-yellow-crayola);
+}
 
+.filter-btn a:hover {
+  color: var(--orange-yellow-crayola);
+}
 
+.filter-btn a:active {
+  color: var(--orange-yellow-crayola);
+}
 
 
 /*-----------------------------------*\
