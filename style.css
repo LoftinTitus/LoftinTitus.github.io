@@ -293,6 +293,10 @@ article.active {
   color: var(--orange-yellow-crayola);
 }
 
+.filter-item a:link {
+ color: var(--orange-yellow-crayola);
+}
+
 
 /*-----------------------------------*\
   #MAIN
