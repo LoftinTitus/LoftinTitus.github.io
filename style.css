@@ -285,6 +285,14 @@ article.active {
   color: var(--orange-yellow-crayola);
 }
 
+.filter-item a {
+  color: var(--orange-yellow-crayola);
+}
+
+.filter-item a:hover {
+  color: var(--orange-yellow-crayola);
+}
+
 
 /*-----------------------------------*\
   #MAIN
