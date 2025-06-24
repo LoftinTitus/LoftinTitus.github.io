@@ -448,18 +448,18 @@ main {
   backdrop-filter: blur(10px);
   border: 1px solid var(--jet);
   border-radius: 12px 12px 0 0;
-  box-shadow: var(--shadow-2);
+  box-shadow: var(--shadow-2);  
   z-index: 5;
 }
 
 /* Hide on larger screens */
-/*
+
 @media (min-width: 768px) {
   .navbar {
     display: none;
   }
 }
-*/
+
 
 .navbar-list {
   display: flex;
