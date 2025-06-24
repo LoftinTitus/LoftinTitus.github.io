@@ -1346,9 +1346,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 
 
-  /**
-   * #NAVBAR
-   */
+  /* NAVBAR */
 
   .navbar { border-radius: 20px 20px 0 0; }
 
@@ -1358,9 +1356,8 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 
 
-  /**
-   * #ABOUT
-   */
+  /* 
+  ABOUT */
 
   .about .article-title { margin-bottom: 20px; }
 
