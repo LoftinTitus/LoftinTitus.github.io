@@ -145,16 +145,16 @@
       <nav class="navbar">
         <ul class="navbar-list">
           <li class="navbar-item">
-            <a href="index.html" class="navbar-link">About</a>
+            <button class="navbar-link active" data-nav-link>About</button>
           </li>
           <li class="navbar-item">
-            <a href="resume.html" class="navbar-link">Resume</a>
+            <button class="navbar-link" data-nav-link>Resume</button>
           </li>
           <li class="navbar-item">
-            <a href="portfolio.html" class="navbar-link">Portfolio</a>
+            <button class="navbar-link" data-nav-link>Portfolio</button>
           </li>
           <li class="navbar-item">
-            <a href="contact.html" class="navbar-link">Contact</a>
+            <button class="navbar-link" data-nav-link>Contact</button>
           </li>
         </ul>
       </nav>
@@ -163,8 +163,7 @@
         - #ABOUT
       -->
 
-      <section id="about">
-
+      <article class="about active" data-page="about">
         <header>
           <h2 class="h2 article-title">About me</h2>
         </header>
@@ -236,20 +235,40 @@
 
         </section>
 
-      </section>
+      </article>
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="resume">
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+        <!-- Resume content will go here -->
+      </article>
 
       <!--
         - #PORTFOLIO
       -->
 
-      <section id="portfolio" style="display: none;">
+      <article class="portfolio" data-page="portfolio">
         <header>
           <h2 class="h2 article-title">Portfolio</h2>
         </header>
-        
-        <!-- Add your portfolio content here -->
-        
-      </section>
+        <!-- Portfolio content will go here -->
+      </article>
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+        <!-- Contact content will go here -->
+      </article>
 
     </div>
 
