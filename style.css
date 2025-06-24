@@ -452,14 +452,6 @@ main {
   z-index: 5;
 }
 
-/* Hide on larger screens */
-
-@media (min-width: 768px) {
-  .navbar {
-    display: none;
-  }
-}
-
 
 .navbar-list {
   display: flex;
