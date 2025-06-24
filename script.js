@@ -140,39 +140,23 @@ for (let i = 0; i < formInputs.length; i++) {
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
-
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
-      }
-    }
-
-  });
-}
-
-// add event listener to each navigation link
-navigationLinks.forEach((link) => {
+// FIXED: Single event listener for navigation
+navigationLinks.forEach((link, index) => {
   link.addEventListener("click", function () {
     const selectedPage = this.innerHTML.toLowerCase();
 
-    // toggle active class for pages and navigation links
-    pages.forEach((page) => {
+    // Remove active class from all pages and links
+    pages.forEach(page => page.classList.remove("active"));
+    navigationLinks.forEach(navLink => navLink.classList.remove("active"));
+
+    // Add active class to selected page and link
+    pages.forEach(page => {
       if (page.dataset.page === selectedPage) {
         page.classList.add("active");
-        link.classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        page.classList.remove("active");
-        link.classList.remove("active");
       }
     });
+    
+    this.classList.add("active");
+    window.scrollTo(0, 0);
   });
 });
