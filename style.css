@@ -736,6 +736,13 @@ main {
 
 .skills-item img:hover { filter: grayscale(0); }
 
+.skill-description {
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: #666;
+    font-style: italic;
+}
+
 
 
 
