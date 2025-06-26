@@ -169,7 +169,15 @@ article {
   z-index: -1;
 }
 
-.icon-box ion-icon { --ionicon-stroke-width: 35px; }
+.icon-box ion-icon { --ionicon-stroke-width: 35px;
+  color: var(--burnt_orange);
+  font-size: 16px:
+}
+
+.icon-box i {
+  color: var(--burnt_orange);
+  font-size: 16px;
+}
 
 article { display: none; }
 
@@ -1941,6 +1949,7 @@ textarea.form-input::-webkit-resizer { display: none; }
     position: relative;
     box-shadow: var(--shadow-1);
     z-index: 1;
+    color: var(--burnt_orange)
 }
 
 .contact-wrapper .contact-icon::before {
