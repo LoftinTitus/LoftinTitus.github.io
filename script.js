@@ -179,25 +179,32 @@ form.addEventListener('submit', function(e) {
   formBtn.textContent = 'Sending...';
   formBtn.setAttribute("disabled", "");
   
-  // Send email using EmailJS
-  emailjs.sendForm('service_fw5vzhf', 'template_pdgep2i', this)
-    .then(function() {
-      // Success
+  // Get form data manually
+  const formData = new FormData(this);
+  const templateParams = {
+    from_name: formData.get('fullname') || formData.get('name'),
+    from_email: formData.get('email'),
+    message: formData.get('message')
+  };
+  
+  console.log('Sending with params:', templateParams);
+  
+  // Send email using EmailJS with manual parameters
+  emailjs.send('service_fw5vzhf', 'template_pdgep2i', templateParams)
+    .then(function(response) {
+      console.log('EmailJS Success:', response);
       formBtn.textContent = 'Message Sent!';
       form.reset();
       
-      // Reset button after 3 seconds
       setTimeout(() => {
         formBtn.textContent = 'Send Message';
         formBtn.removeAttribute("disabled");
       }, 3000);
       
     }, function(error) {
-      // Error
-      console.log('Failed to send email:', error);
+      console.error('EmailJS Error:', error);
       formBtn.textContent = 'Failed to Send';
       
-      // Reset button after 3 seconds
       setTimeout(() => {
         formBtn.textContent = 'Send Message';
         if (form.checkValidity()) {
