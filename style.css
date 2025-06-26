@@ -1130,6 +1130,7 @@ main {
   display: flex;
   gap: 25px;
   align-items: flex-start;
+  flex-direction: column; /* Default to column for mobile */
 }
 
 .contact-sidebar {
@@ -1143,8 +1144,8 @@ main {
 }
 
 .contact-details {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
@@ -1221,9 +1222,9 @@ main {
 }
 
 .contact-sections {
-  flex: 1;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 /* Meeting Scheduler Section */
