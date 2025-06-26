@@ -816,6 +816,17 @@ main {
   line-height: 1.6;
 }
 
+.timeline-text ul {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.timeline-text li {
+  margin-bottom: 8px;
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
 
 /* skills */
 
