@@ -245,3 +245,34 @@ form.addEventListener('submit', function(e) {
       }, 3000);
     });
 });
+
+function requestMeeting() {
+    const meetingType = document.getElementById('meeting-type').value;
+    const meetingDate = document.getElementById('meeting-date').value;
+    const meetingTime = document.getElementById('meeting-time').value;
+    
+    if (!meetingType || !meetingDate || !meetingTime) {
+        alert('Please fill in all meeting details');
+        return;
+    }
+    
+    // Create Google Calendar event URL
+    const startDateTime = new Date(`${meetingDate}T${meetingTime}`);
+    const endDateTime = new Date(startDateTime.getTime() + (60 * 60000)); // 1 hour later
+    
+    const formatDate = (date) => {
+        return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    };
+    
+    const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(meetingType + ' Meeting with Titus')}&dates=${formatDate(startDateTime)}/${formatDate(endDateTime)}&details=${encodeURIComponent('Meeting requested via website. Type: ' + meetingType)}&add=loftintitus@utexas.edu`;
+    
+    // Open Google Calendar in new tab
+    window.open(calendarUrl, '_blank');
+    
+    showSuccessMessage('Opening Google Calendar - add the event and I\'ll get the invitation!');
+    
+    // Reset form
+    document.getElementById('meeting-type').value = '';
+    document.getElementById('meeting-date').value = '';
+    document.getElementById('meeting-time').value = '';
+}
