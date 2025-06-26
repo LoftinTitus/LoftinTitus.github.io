@@ -1156,9 +1156,13 @@ main {
   border: 1px solid var(--jet);
   border-radius: 14px;
   outline: none;
+  background: var(--eerie-black-2);
 }
 
-.form-input::placeholder { font-weight: var(--fw-500); }
+.form-input::placeholder { 
+  font-weight: var(--fw-500);
+  color: var(--light-gray-70);
+}
 
 .form-input:focus { border-color: var(--burnt_orange); }
 
@@ -1190,6 +1194,10 @@ textarea.form-input::-webkit-resizer { display: none; }
   box-shadow: var(--shadow-3);
   z-index: 1;
   transition: var(--transition-1);
+  border: none;
+  cursor: pointer;
+  font-family: var(--ff-poppins);
+  font-weight: var(--fw-500);
 }
 
 .form-btn::before {
@@ -1204,7 +1212,10 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 .form-btn ion-icon { font-size: 16px; }
 
-.form-btn:hover { background: var(--burnt_orange); }
+.form-btn:hover { 
+  background: var(--burnt_orange);
+  color: var(--white-2);
+}
 
 .form-btn:hover::before { background: var(--burnt_orange); }
 
@@ -1213,13 +1224,12 @@ textarea.form-input::-webkit-resizer { display: none; }
   cursor: not-allowed;
 }
 
-.form-btn:disabled:hover { background: var(--border-gradient-onyx); }
+.form-btn:disabled:hover { 
+  background: var(--border-gradient-onyx);
+  color: var(--burnt_orange);
+}
 
 .form-btn:disabled:hover::before { background: var(--bg-gradient-jet); }
-
-
-
-
 
 /*-----------------------------------*\
   #RESPONSIVE
