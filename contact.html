@@ -10,13 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
 </head>
 <body>
     <main>
         <div class="main-content">
-
-            <!-- Navbar goes here -->
+            <!-- Navbar -->
             <nav class="navbar">
                 <ul class="navbar-list">
                     <li class="navbar-item">
@@ -34,20 +32,26 @@
                 </ul>
             </nav>
 
-            <!-- Contact form-->
+            <!-- Contact form -->
             <section class="contact-form">
                 <header>
                     <h2 class="h2 article-title">Get in Touch</h2>
-                    
                 </header>
-                <form data-form>
-                  <input type="text" name="from_name" placeholder="Full name" required data-form-input>
-                  <input type="email" name="from_email" placeholder="Email address" required data-form-input>
-                  <textarea name="message" placeholder="Your message" required data-form-input></textarea>
-                  <button type="submit" class="btn" data-form-button>Send Message</button>
+                
+                <form data-form class="form" action="#" method="POST">
+                    <div class="input-wrapper">
+                        <input type="text" name="from_name" class="form-input" placeholder="Full name" required data-form-input>
+                        <input type="email" name="from_email" class="form-input" placeholder="Email address" required data-form-input>
+                    </div>
+                    
+                    <textarea name="message" class="form-input" placeholder="Your message" required data-form-input></textarea>
+                    
+                    <button class="form-btn" type="submit" data-form-btn>
+                        <ion-icon name="paper-plane"></ion-icon>
+                        <span>Send Message</span>
+                    </button>
                 </form>
             </section>
-
         </div>
     </main>
 
