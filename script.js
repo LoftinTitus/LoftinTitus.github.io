@@ -203,12 +203,13 @@ for (let i = 0; i < formInputs.length; i++) {
 // Add form submission handler
 form.addEventListener('submit', function(e) {
   e.preventDefault();
+  console.log('Form submission started');
   
   // Show loading state
   formBtn.textContent = 'Sending...';
   formBtn.setAttribute("disabled", "");
   
-  // Get form data - field names now match HTML
+  // Get form data
   const formData = new FormData(this);
   const templateParams = {
     from_name: formData.get('from_name'),
@@ -216,12 +217,13 @@ form.addEventListener('submit', function(e) {
     message: formData.get('message')
   };
   
-  console.log('Sending with params:', templateParams);
+  console.log('Template params:', templateParams);
   
   // Send email using EmailJS
   emailjs.send('service_fw5vzhf', 'template_pdgep2i', templateParams)
     .then(function(response) {
       console.log('EmailJS Success:', response);
+      console.log('About to show success message');
       
       // Show success confirmation
       showSuccessMessage();
