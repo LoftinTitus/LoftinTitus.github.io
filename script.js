@@ -179,17 +179,17 @@ form.addEventListener('submit', function(e) {
   formBtn.textContent = 'Sending...';
   formBtn.setAttribute("disabled", "");
   
-  // Get form data manually
+  // Get form data - field names now match HTML
   const formData = new FormData(this);
   const templateParams = {
-    from_name: formData.get('fullname') || formData.get('name'),
-    from_email: formData.get('email'),
+    from_name: formData.get('from_name'),
+    from_email: formData.get('from_email'),
     message: formData.get('message')
   };
   
   console.log('Sending with params:', templateParams);
   
-  // Send email using EmailJS with manual parameters
+  // Send email using EmailJS
   emailjs.send('service_fw5vzhf', 'template_pdgep2i', templateParams)
     .then(function(response) {
       console.log('EmailJS Success:', response);
