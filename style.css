@@ -1820,3 +1820,69 @@ textarea.form-input::-webkit-resizer { display: none; }
   .timeline-text { max-width: 700px; }
 
 }
+
+/* Success confirmation styles */
+.success-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--border-gradient-onyx);
+  color: var(--white-2);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity var(--transition-1);
+  pointer-events: none;
+  border: 1px solid var(--jet);
+  box-shadow: var(--shadow-5);
+}
+
+.success-message::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: var(--bg-gradient-jet);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.success-message.show {
+  opacity: 1;
+}
+
+.success-checkmark {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--burnt_orange);
+  margin: 0 auto 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: scaleIn var(--transition-1) ease;
+  box-shadow: var(--shadow-2);
+}
+
+.success-checkmark i {
+  font-size: 24px;
+  color: var(--white-1);
+}
+
+.success-message p {
+  color: var(--light-gray);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  margin: 0;
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

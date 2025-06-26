@@ -157,6 +157,35 @@ const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
 
+// Function to show success message
+function showSuccessMessage() {
+  // Create success message element
+  const successDiv = document.createElement('div');
+  successDiv.className = 'success-message';
+  successDiv.innerHTML = `
+    <div class="success-checkmark">
+      <i class="fas fa-check"></i>
+    </div>
+    <p>Message sent successfully!</p>
+  `;
+  
+  // Add to body
+  document.body.appendChild(successDiv);
+  
+  // Show with fade in
+  setTimeout(() => {
+    successDiv.classList.add('show');
+  }, 10);
+  
+  // Hide and remove after 3 seconds
+  setTimeout(() => {
+    successDiv.classList.remove('show');
+    setTimeout(() => {
+      document.body.removeChild(successDiv);
+    }, 300);
+  }, 3000);
+}
+
 // add event to all form input field
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
@@ -193,13 +222,14 @@ form.addEventListener('submit', function(e) {
   emailjs.send('service_fw5vzhf', 'template_pdgep2i', templateParams)
     .then(function(response) {
       console.log('EmailJS Success:', response);
-      formBtn.textContent = 'Message Sent!';
-      form.reset();
       
-      setTimeout(() => {
-        formBtn.textContent = 'Send Message';
-        formBtn.removeAttribute("disabled");
-      }, 3000);
+      // Show success confirmation
+      showSuccessMessage();
+      
+      // Reset form
+      form.reset();
+      formBtn.textContent = 'Send Message';
+      formBtn.removeAttribute("disabled");
       
     }, function(error) {
       console.error('EmailJS Error:', error);
