@@ -1,5 +1,5 @@
 'use strict';
-
+emailjs.init("73JM40BjXt8SRmZiy");
 
 
 // element toggle function
@@ -114,12 +114,6 @@ for (let i = 0; i < filterBtn.length; i++) {
 }
 
 
-
-// contact form variables
-const form = document.querySelector("[data-form]");
-const formInputs = document.querySelectorAll("[data-form-input]");
-const formBtn = document.querySelector("[data-form-btn]");
-
 // add event to all form input field
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
@@ -157,3 +151,58 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+// contact form variables
+const form = document.querySelector("[data-form]");
+const formInputs = document.querySelectorAll("[data-form-input]");
+const formBtn = document.querySelector("[data-form-btn]");
+
+// add event to all form input field
+for (let i = 0; i < formInputs.length; i++) {
+  formInputs[i].addEventListener("input", function () {
+
+    // check form validation
+    if (form.checkValidity()) {
+      formBtn.removeAttribute("disabled");
+    } else {
+      formBtn.setAttribute("disabled", "");
+    }
+
+  });
+}
+
+// Add form submission handler
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Show loading state
+  formBtn.textContent = 'Sending...';
+  formBtn.setAttribute("disabled", "");
+  
+  // Send email using EmailJS
+  emailjs.sendForm('service_fw5vzhf', 'template_pdgep2i', this)
+    .then(function() {
+      // Success
+      formBtn.textContent = 'Message Sent!';
+      form.reset();
+      
+      // Reset button after 3 seconds
+      setTimeout(() => {
+        formBtn.textContent = 'Send Message';
+        formBtn.removeAttribute("disabled");
+      }, 3000);
+      
+    }, function(error) {
+      // Error
+      console.log('Failed to send email:', error);
+      formBtn.textContent = 'Failed to Send';
+      
+      // Reset button after 3 seconds
+      setTimeout(() => {
+        formBtn.textContent = 'Send Message';
+        if (form.checkValidity()) {
+          formBtn.removeAttribute("disabled");
+        }
+      }, 3000);
+    });
+});
