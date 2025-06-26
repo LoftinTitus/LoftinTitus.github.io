@@ -1891,7 +1891,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 .contact-wrapper {
     display: flex;
     gap: 30px;
-    margin-top: 0; /* Remove top margin if using padding above */
+    margin-top: 120px;
     width: 100%;
 }
 
