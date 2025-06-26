@@ -1889,10 +1889,10 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 /* Contact page layout */
 .contact-wrapper {
-    display: grid;
-    grid-template-columns: 300px 1fr;
+    display: flex;
     gap: 30px;
-    margin-top: 30px;
+    margin-top: 0; /* Remove top margin if using padding above */
+    width: 100%;
 }
 
 .contact-info {
