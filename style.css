@@ -1757,8 +1757,6 @@ textarea.form-input::-webkit-resizer { display: none; }
     margin: 0;
   }
 
-
-
   /**
    * SIDEBAR
    */
@@ -1944,7 +1942,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 .contact-wrapper .contact-icon ion-icon {
     font-size: 18px;
-    color: #ffb703;
+    color: var(--burnt_orange);
 }
 
 .contact-wrapper .contact-text h4 {
