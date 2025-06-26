@@ -46,7 +46,7 @@
                             </div>
                             <div class="contact-text">
                                 <h4>Email</h4>
-                                <p>loftintitus@utexas.edu</p>
+                                <p><a href="mailto:loftintitus@utexas.edu">loftintitus@utexas.edu</a></p>
                             </div>
                         </div>
 
@@ -56,7 +56,7 @@
                             </div>
                             <div class="contact-text">
                                 <h4>Phone</h4>
-                                <p>(512) 765 0224</p>
+                                <p><a href="tel:+5127650224">(512) 765 0224</a></p>
                             </div>
                         </div>
                         
@@ -79,61 +79,63 @@
                                 <p><a href="resume.pdf" download>Download here</a></p>
                             </div>
                         </div>
-
                     </div>
                 </aside>
                 
-                <!-- Contact form -->
-                <section class="contact-form">
-                    <header>
-                        <h2 class="h2 article-title">Get in Touch</h2>
-                    </header>
-                    
-                    <form data-form class="form">
-                        <div class="input-wrapper">
-                            <input type="text" name="from_name" class="form-input" placeholder="Full name" required data-form-input>
-                            <input type="email" name="from_email" class="form-input" placeholder="Email address" required data-form-input>
-                        </div>
+                <!-- Main contact sections -->
+                <div class="contact-sections">
+                    <!-- Contact form -->
+                    <section class="contact-form">
+                        <header>
+                            <h2 class="h2 article-title">Get in Touch</h2>
+                        </header>
                         
-                        <textarea name="message" class="form-input" placeholder="Your message" required data-form-input></textarea>
-                        
-                        <button class="form-btn" type="submit" data-form-btn>
-                            <ion-icon name="paper-plane"></ion-icon>
-                            <span>Send Message</span>
-                        </button>
-                    </form>
-                </section>
-
-                 <!-- Meeting Scheduler Section -->
-                <section class="meeting-scheduler-section">
-                    <header>
-                        <h2 class="h2 article-title">Schedule a Meeting</h2>
-                    </header>
-                    
-                    <div class="scheduler-container">
-                        <div class="scheduler-form">
+                        <form data-form class="form">
                             <div class="input-wrapper">
-                                <select class="form-input" id="meeting-type">
-                                    <option value="">Select meeting type</option>
-                                    <option value="consultation">Consultation</option>
-                                    <option value="collaboration">Collaboration</option>
-                                    <option value="interview">Interview</option>
-                                    <option value="other">Other</option>
-                                </select>
+                                <input type="text" name="from_name" class="form-input" placeholder="Full name" required data-form-input>
+                                <input type="email" name="from_email" class="form-input" placeholder="Email address" required data-form-input>
                             </div>
                             
-                            <div class="input-wrapper">
-                                <input type="date" class="form-input" id="meeting-date" required>
-                                <input type="time" class="form-input" id="meeting-time" required>
-                            </div>
+                            <textarea name="message" class="form-input" placeholder="Your message" required data-form-input></textarea>
                             
-                            <button type="button" class="form-btn" onclick="requestMeeting()">
-                                <ion-icon name="calendar"></ion-icon>
-                                <span>Request Meeting</span>
+                            <button class="form-btn" type="submit" data-form-btn>
+                                <ion-icon name="paper-plane"></ion-icon>
+                                <span>Send Message</span>
                             </button>
+                        </form>
+                    </section>
+
+                    <!-- Meeting Scheduler Section -->
+                    <section class="meeting-scheduler-section">
+                        <header>
+                            <h2 class="h2 article-title">Schedule a Meeting</h2>
+                        </header>
+                        
+                        <div class="scheduler-container">
+                            <div class="scheduler-form">
+                                <div class="input-wrapper">
+                                    <select class="form-input" id="meeting-type">
+                                        <option value="">Select meeting type</option>
+                                        <option value="consultation">Consultation</option>
+                                        <option value="collaboration">Collaboration</option>
+                                        <option value="interview">Interview</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="input-wrapper">
+                                    <input type="date" class="form-input" id="meeting-date" required>
+                                    <input type="time" class="form-input" id="meeting-time" required>
+                                </div>
+                                
+                                <button type="button" class="form-btn" onclick="requestMeeting()">
+                                    <ion-icon name="calendar"></ion-icon>
+                                    <span>Request Meeting</span>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
             </div>
         </div>
     </main>
@@ -141,5 +143,7 @@
     <script src="script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-</body>
+
+
+</html></body></body>
 </html>
