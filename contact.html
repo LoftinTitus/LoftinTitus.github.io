@@ -32,26 +32,68 @@
                 </ul>
             </nav>
 
-            <!-- Contact form -->
-            <section class="contact-form">
-                <header>
-                    <h2 class="h2 article-title">Get in Touch</h2>
-                </header>
-                
-                <form data-form class="form">
-                    <div class="input-wrapper">
-                        <input type="text" name="from_name" class="form-input" placeholder="Full name" required data-form-input>
-                        <input type="email" name="from_email" class="form-input" placeholder="Email address" required data-form-input>
+            <!-- Contact Section Wrapper -->
+            <div class="contact-wrapper">
+                <!-- Contact details Section -->
+                <section class="contact-info">
+                    <header>
+                        <h2 class="h2 article-title">Contact Information</h2>
+                    </header>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <ion-icon name="mail-outline"></ion-icon>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>your.email@example.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <ion-icon name="location-outline"></ion-icon>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <p>Your City, State</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <ion-icon name="call-outline"></ion-icon>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
                     </div>
+                </section>
+                
+                <!-- Contact form -->
+                <section class="contact-form">
+                    <header>
+                        <h2 class="h2 article-title">Get in Touch</h2>
+                    </header>
                     
-                    <textarea name="message" class="form-input" placeholder="Your message" required data-form-input></textarea>
-                    
-                    <button class="form-btn" type="submit" data-form-btn>
-                        <ion-icon name="paper-plane"></ion-icon>
-                        <span>Send Message</span>
-                    </button>
-                </form>
-            </section>
+                    <form data-form class="form">
+                        <div class="input-wrapper">
+                            <input type="text" name="from_name" class="form-input" placeholder="Full name" required data-form-input>
+                            <input type="email" name="from_email" class="form-input" placeholder="Email address" required data-form-input>
+                        </div>
+                        
+                        <textarea name="message" class="form-input" placeholder="Your message" required data-form-input></textarea>
+                        
+                        <button class="form-btn" type="submit" data-form-btn>
+                            <ion-icon name="paper-plane"></ion-icon>
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </section>
+            </div>
         </div>
     </main>
 
