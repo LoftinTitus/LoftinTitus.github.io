@@ -80,32 +80,39 @@
                             </div>
                         </div>
 
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <ion-icon name="calendar-outline"></ion-icon>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Schedule Meeting</h4>
-                                <div class="scheduler-form">
-                                    <select class="form-input scheduler-select" id="meeting-type">
-                                        <option value="">Select meeting type</option>
-                                        <option value="consultation">Consultation</option>
-                                        <option value="collaboration">Collaboration</option>
-                                        <option value="interview">Interview</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                    <input type="date" class="form-input scheduler-input" id="meeting-date" placeholder="Preferred date">
-                                    <input type="time" class="form-input scheduler-input" id="meeting-time" placeholder="Preferred time">
-                                    <button type="button" class="scheduler-btn" onclick="requestMeeting()">
-                                        <ion-icon name="calendar"></ion-icon>
-                                        <span>Request Meeting</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </aside>
+
+                <!-- Meeting Scheduler Section -->
+                <section class="meeting-scheduler-section">
+                    <header>
+                        <h2 class="h2 article-title">Schedule a Meeting</h2>
+                    </header>
+                    
+                    <div class="scheduler-container">
+                        <div class="scheduler-form">
+                            <div class="input-wrapper">
+                                <select class="form-input" id="meeting-type">
+                                    <option value="">Select meeting type</option>
+                                    <option value="consultation">Consultation</option>
+                                    <option value="collaboration">Collaboration</option>
+                                    <option value="interview">Interview</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="input-wrapper">
+                                <input type="date" class="form-input" id="meeting-date" required>
+                                <input type="time" class="form-input" id="meeting-time" required>
+                            </div>
+                            
+                            <button type="button" class="form-btn" onclick="requestMeeting()">
+                                <ion-icon name="calendar"></ion-icon>
+                                <span>Request Meeting</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
                 
                 <!-- Contact form -->
                 <section class="contact-form">

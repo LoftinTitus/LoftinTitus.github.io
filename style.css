@@ -1239,86 +1239,36 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 .form-btn:disabled:hover::before { background: var(--bg-gradient-jet); }
 
-/* Meeting Scheduler Styles */
-.scheduler-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.scheduler-select,
-.scheduler-input {
-    background: var(--eerie-black-2);
-    color: var(--white-2);
-    border: 1px solid var(--jet);
-    border-radius: 8px;
-    padding: 8px 12px;
-    font-size: var(--fs-7);
-    font-family: var(--ff-poppins);
-    outline: none;
-    transition: var(--transition-1);
-}
-
-.scheduler-select:focus,
-.scheduler-input:focus {
-    border-color: var(--burnt_orange);
-}
-
-.scheduler-select::placeholder,
-.scheduler-input::placeholder {
-    color: var(--light-gray-70);
-}
-
-.scheduler-btn {
+/* Meeting Scheduler Section */
+.meeting-scheduler-section {
     background: var(--border-gradient-onyx);
-    color: var(--burnt_orange);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-size: var(--fs-7);
-    border: none;
-    cursor: pointer;
-    font-family: var(--ff-poppins);
-    font-weight: var(--fw-400);
-    transition: var(--transition-1);
+    border: 1px solid var(--jet);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
     position: relative;
-    z-index: 1;
 }
 
-.scheduler-btn::before {
+.meeting-scheduler-section::before {
     content: "";
     position: absolute;
     inset: 1px;
     background: var(--bg-gradient-jet);
     border-radius: inherit;
     z-index: -1;
-    transition: var(--transition-1);
 }
 
-.scheduler-btn:hover {
-    background: var(--burnt_orange);
-    color: var(--white-2);
+.meeting-scheduler-section .article-title {
+    margin-bottom: 20px;
 }
 
-.scheduler-btn:hover::before {
-    background: var(--burnt_orange);
+.scheduler-container {
+    position: relative;
+    z-index: 1;
 }
 
-.scheduler-btn ion-icon {
-    font-size: 14px;
-}
+/* Remove the previous scheduler styles since we're now using the existing form classes */
 
-/* Mobile responsive adjustments */
-@media (max-width: 768px) {
-    .scheduler-select,
-    .scheduler-input {
-        font-size: 16px; /* Prevents zoom on iOS */
-    }
-}
 
 /*-----------------------------------*\
   #RESPONSIVE
