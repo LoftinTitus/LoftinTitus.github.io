@@ -126,6 +126,10 @@
                                 <div class="input-wrapper">
                                     <input type="date" class="form-input" id="meeting-date" required>
                                     <input type="time" placeholder="Select time" class="form-input" id="meeting-time" required>
+                                    <label for="meeting-email">Email Address</label>
+                                    <input type="email" id="meeting-email" placeholder="your.email@example.com" required>
+                                    <input type="text" id="meeting-name" placeholder="Your Name" required>
+                                    <textarea id="meeting-message" placeholder="Additional message (optional)"></textarea>
                                 </div>
                                 
                                 <button type="button" class="form-btn" onclick="requestMeeting()">

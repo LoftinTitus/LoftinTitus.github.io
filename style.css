@@ -1340,6 +1340,14 @@ main {
   font-weight: var(--fw-300);
 }
 
+.meeting-scheduler-section input[type="email"]:invalid {
+  border-color: var(--burnt_orange);
+}
+
+.meeting-scheduler-section input[type="email"]:valid {
+  border-color: var(--burnt_orange);
+}
+
 /*-----------------------------------*\
   #RESPONSIVE
 \*-----------------------------------*/

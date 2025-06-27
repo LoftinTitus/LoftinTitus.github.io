@@ -250,11 +250,20 @@ function requestMeeting() {
     const meetingType = document.getElementById('meeting-type').value;
     const meetingDate = document.getElementById('meeting-date').value;
     const meetingTime = document.getElementById('meeting-time').value;
+    const meetingEmail = document.getElementById('meeting-email').value; // Add email field
+    const meetingName = document.getElementById('meeting-name').value; // Add name field
+    const meetingMessage = document.getElementById('meeting-message').value || ''; // Add message field
     
-    if (!meetingType || !meetingDate || !meetingTime) {
-        alert('Please fill in all meeting details');
+    if (!meetingType || !meetingDate || !meetingTime || !meetingEmail || !meetingName) {
+        alert('Please fill in all required meeting details');
         return;
     }
+    
+    // Show loading state
+    const meetingBtn = document.querySelector('.meeting-scheduler-section button');
+    const originalText = meetingBtn.textContent;
+    meetingBtn.textContent = 'Scheduling...';
+    meetingBtn.setAttribute("disabled", "");
     
     // Create Google Calendar event URL
     const startDateTime = new Date(`${meetingDate}T${meetingTime}`);
@@ -264,15 +273,101 @@ function requestMeeting() {
         return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
     };
     
-    const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(meetingType + ' Meeting with Titus')}&dates=${formatDate(startDateTime)}/${formatDate(endDateTime)}&details=${encodeURIComponent('Meeting requested via website. Type: ' + meetingType)}&add=loftintitus@utexas.edu`;
+    const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(meetingType + ' Meeting with ' + meetingName)}&dates=${formatDate(startDateTime)}/${formatDate(endDateTime)}&details=${encodeURIComponent('Meeting Type: ' + meetingType + '\nAttendee: ' + meetingName + ' (' + meetingEmail + ')\nMessage: ' + meetingMessage)}&add=${encodeURIComponent(meetingEmail)}`;
     
-    // Open Google Calendar in new tab
-    window.open(calendarUrl, '_blank');
+    // Prepare EmailJS template parameters
+    const templateParams = {
+        meeting_type: meetingType,
+        meeting_date: meetingDate,
+        meeting_time: meetingTime,
+        attendee_name: meetingName,
+        attendee_email: meetingEmail,
+        meeting_message: meetingMessage,
+        calendar_link: calendarUrl,
+        formatted_date: startDateTime.toLocaleDateString('en-US', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        }),
+        formatted_time: startDateTime.toLocaleTimeString('en-US', { 
+            hour: '2-digit', 
+            minute: '2-digit' 
+        })
+    };
     
-    showSuccessMessage('Opening Google Calendar - add the event and I\'ll get the invitation!');
+    // Send meeting request email via EmailJS
+    emailjs.send('service_fw5vzhf', 'template_meeting', templateParams) // You'll need to create this template
+        .then(function(response) {
+            console.log('Meeting email sent successfully:', response);
+            
+            // Open Google Calendar in new tab
+            window.open(calendarUrl, '_blank');
+            
+            // Show success message
+            showSuccessMessage('Meeting request sent! Google Calendar opened - please add the event.');
+            
+            // Reset form
+            document.getElementById('meeting-type').value = '';
+            document.getElementById('meeting-date').value = '';
+            document.getElementById('meeting-time').value = '';
+            document.getElementById('meeting-email').value = '';
+            document.getElementById('meeting-name').value = '';
+            if (document.getElementById('meeting-message')) {
+                document.getElementById('meeting-message').value = '';
+            }
+            
+            // Reset button
+            meetingBtn.textContent = originalText;
+            meetingBtn.removeAttribute("disabled");
+            
+        }, function(error) {
+            console.error('Failed to send meeting email:', error);
+            
+            // Still open calendar even if email fails
+            window.open(calendarUrl, '_blank');
+            
+            // Show partial success message
+            showSuccessMessage('Google Calendar opened. Email notification may have failed - please mention this when we meet.');
+            
+            // Reset button
+            meetingBtn.textContent = 'Failed to Send Email';
+            setTimeout(() => {
+                meetingBtn.textContent = originalText;
+                meetingBtn.removeAttribute("disabled");
+            }, 3000);
+        });
+}
+
+// Enhanced success message function to handle custom messages
+function showSuccessMessage(customMessage) {
+    const message = customMessage || 'Message sent successfully!';
     
-    // Reset form
-    document.getElementById('meeting-type').value = '';
-    document.getElementById('meeting-date').value = '';
-    document.getElementById('meeting-time').value = '';
+    // Create success message element
+    const successDiv = document.createElement('div');
+    successDiv.className = 'success-message';
+    successDiv.innerHTML = `
+        <div class="success-checkmark">
+            <i class="fas fa-check"></i>
+        </div>
+        <p>${message}</p>
+    `;
+    
+    // Add to body
+    document.body.appendChild(successDiv);
+    
+    // Show with fade in
+    setTimeout(() => {
+        successDiv.classList.add('show');
+    }, 10);
+    
+    // Hide and remove after 4 seconds (longer for meeting messages)
+    setTimeout(() => {
+        successDiv.classList.remove('show');
+        setTimeout(() => {
+            if (document.body.contains(successDiv)) {
+                document.body.removeChild(successDiv);
+            }
+        }, 300);
+    }, 4000);
 }
