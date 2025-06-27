@@ -1909,3 +1909,145 @@ main {
     transform: scale(1);
   }
 }
+
+/* Responsive adjustments for contact page */
+@media (min-width: 768px) {
+  .contact-wrapper {
+    flex-direction: row; /* Side by side on larger screens */
+  }
+  
+  .contact-sidebar {
+    min-width: 320px;
+  }
+  
+  .contact-sections {
+    flex: 1;
+  }
+}
+
+/**
+ * responsive larger than 1250px screen
+ */
+
+@media (min-width: 1250px) {
+
+  /**
+   * RESET
+   */
+
+  body::-webkit-scrollbar { width: 20px; }
+
+  body::-webkit-scrollbar-track { background: var(--smoky-black); }
+
+  body::-webkit-scrollbar-thumb {
+    border: 5px solid var(--smoky-black);
+    background: hsla(0, 0%, 100%, 0.1);
+    border-radius: 20px;
+    box-shadow: inset 1px 1px 0 hsla(0, 0%, 100%, 0.11),
+                inset -1px -1px 0 hsla(0, 0%, 100%, 0.11);
+  }
+
+  body::-webkit-scrollbar-thumb:hover { background: hsla(0, 0%, 100%, 0.15); }
+
+  body::-webkit-scrollbar-button { height: 60px; }
+
+
+
+  /**
+   * REUSED STYLE
+   */
+
+  .sidebar, article { width: auto; }
+
+  article { min-height: 100%; }
+
+
+
+  /**
+   * MAIN
+   */
+
+  main {
+    max-width: 1200px;
+    margin-inline: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 25px;
+  }
+
+  .main-content {
+    min-width: 75%;
+    width: 75%;
+    margin: 0;
+  }
+
+  /**
+   * SIDEBAR
+   */
+
+  .sidebar {
+    position: relative;
+    top: auto;
+    max-height: none;
+    height: auto;
+    margin-bottom: 0;
+    padding-top: 30px;
+    z-index: 1;
+    min-width: 320px;
+    flex-shrink: 0;
+  }
+
+  .sidebar-info { 
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-picture img { width: 150px; }
+
+  .info-content .name {
+    white-space: nowrap;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .info-content .title { 
+    margin: auto;
+    margin-bottom: 0;
+  }
+
+  .info_more-btn { display: none; }
+
+  .sidebar-info_more {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .contacts-list { 
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .contact-info :is(.contact-link) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .contact-info :is(.contact-link, time, address) {
+    --fs-7: 14px;
+    font-weight: var(--fw-300);
+  }
+
+  .separator:last-of-type {
+    margin: 15px 0;
+    opacity: 1;
+  }
+
+  .social-list { 
+    justify-content: center;
+    padding-bottom: 4px;
+    padding-left: 0;
+  }
+}
