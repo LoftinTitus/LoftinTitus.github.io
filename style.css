@@ -1229,6 +1229,7 @@ main {
   transition: var(--transition-1);
   margin-top: 15px;
   flex-direction: row;
+  display: inline-flex;
 }
 
 .contact-form button:hover,
