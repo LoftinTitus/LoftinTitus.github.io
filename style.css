@@ -1233,7 +1233,7 @@ main {
 
 .contact-form button:hover,
 .meeting-scheduler-section button:hover {
-  background: var(--orange-yellow-crayola);
+  background: var(--bg-gradient-jet);
   transform: translateY(-2px);
 }
 
@@ -1288,7 +1288,7 @@ main {
 
 .contact-form,
 .meeting-scheduler-section {
-  background: var(--burnt_orange);
+  background: var(--eerie-black-2);
   border: 1px solid var(--jet);
   border-radius: 20px;
   padding: 30px;
@@ -1313,7 +1313,7 @@ main {
   content: "";
   position: absolute;
   inset: 1px;
-  background: var(--burnt_orange);
+  background: var(--bg-gradient-jet);
   border-radius: inherit;
   z-index: -1;
 }
@@ -1342,11 +1342,11 @@ main {
 }
 
 .meeting-scheduler-section input[type="email"]:invalid {
-  border-color: var(--burnt_orange);
+  border-color: var(--eerie-black-1);
 }
 
 .meeting-scheduler-section input[type="email"]:valid {
-  border-color: var(--burnt_orange);
+  border-color: var(--eerie-black-1);
 }
 
 /*-----------------------------------*\
