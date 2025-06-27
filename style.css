@@ -418,6 +418,11 @@ main {
 .contact-info :is(.contact-link, time, address) {
   color: var(--white-2);
   font-size: var(--fs-7);
+  transition: color var(--transition-1); 
+}
+
+.contact-link:hover {
+  color: var(--burnt_orange); 
 }
 
 .contact-info address { font-style: normal; }
@@ -1208,6 +1213,64 @@ main {
 
 .contact-text a:hover {
   color: var(--burnt_orange);
+}
+
+/* Contact Form and Meeting Scheduler Buttons */
+.contact-form button,
+.meeting-scheduler-section button {
+  background: var(--burnt_orange);
+  color: var(--white-1);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: var(--fs-6);
+  font-weight: var(--fw-500);
+  cursor: pointer;
+  transition: var(--transition-1);
+  margin-top: 15px;
+}
+
+.contact-form button:hover,
+.meeting-scheduler-section button:hover {
+  background: var(--orange-yellow-crayola);
+  transform: translateY(-2px);
+}
+
+.contact-form button:active,
+.meeting-scheduler-section button:active {
+  transform: translateY(0);
+}
+
+.contact-form input,
+.contact-form textarea,
+.meeting-scheduler-section input,
+.meeting-scheduler-section textarea,
+.meeting-scheduler-section select {
+  background: var(--eerie-black-1);
+  color: var(--light-gray);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  border: 1px solid var(--jet);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 15px;
+  transition: var(--transition-1);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.meeting-scheduler-section input:focus,
+.meeting-scheduler-section textarea:focus,
+.meeting-scheduler-section select:focus {
+  border-color: var(--burnt_orange);
+  outline: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder,
+.meeting-scheduler-section input::placeholder,
+.meeting-scheduler-section textarea::placeholder {
+  color: var(--light-gray-70);
 }
 
 .contact-form,
