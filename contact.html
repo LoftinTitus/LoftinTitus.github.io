@@ -112,24 +112,13 @@
                         </header>
                         
                         <div class="scheduler-container">
-                            <div class="scheduler-form">
-                                <div class="input-wrapper">
-                                    <select class="form-input" id="meeting-type">
-                                        <option value="">Select meeting type</option>
-                                        <option value="consultation">Consultation</option>
-                                        <option value="collaboration">Collaboration</option>
-                                        <option value="interview">Interview</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                                
+                            <div class="scheduler-form">                                
                                 <div class="input-wrapper">
                                     <input type="date" class="form-input" id="meeting-date" required>
                                     <input type="time" placeholder="Select time" class="form-input" id="meeting-time" required>
-                                    <label for="meeting-email">Email Address</label>
-                                    <input type="email" id="meeting-email" placeholder="your.email@example.com" required>
+                                    <input type="email" id="meeting-email" placeholder="Email Address" required>
                                     <input type="text" id="meeting-name" placeholder="Your Name" required>
-                                    <textarea id="meeting-message" placeholder="Additional message (optional)"></textarea>
+                                    <textarea id="meeting-message" placeholder="Additional message"></textarea>
                                 </div>
                                 
                                 <button type="button" class="form-btn" onclick="requestMeeting()">
