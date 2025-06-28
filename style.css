@@ -1297,6 +1297,9 @@ main {
   box-shadow: var(--shadow-1);
   flex: 1;
   margin-bottom: 25px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .contact-sections {
