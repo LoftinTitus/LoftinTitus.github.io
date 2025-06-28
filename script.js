@@ -374,48 +374,38 @@ function showSuccessMessage(customMessage) {
 
 // Skills horizontal scroll on page scroll
 function initSkillsScroll() {
-  const skillsContainer = document.querySelector('.skills-list');
-  if (!skillsContainer) return;
-
-  function updateSkillsScroll() {
-    const rect = skillsContainer.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    
-    // Check if skills section is in viewport
-    if (rect.top < windowHeight && rect.bottom > 0) {
-      // Calculate how much of the section is visible
-      const sectionTop = Math.max(0, windowHeight - rect.bottom);
-      const sectionHeight = rect.height + windowHeight;
-      const scrollProgress = sectionTop / sectionHeight;
-      
-      // Calculate maximum scroll distance
-      const maxScroll = skillsContainer.scrollWidth - skillsContainer.clientWidth;
-      
-      // Apply horizontal scroll based on vertical scroll progress
-      const horizontalScroll = scrollProgress * maxScroll;
-      skillsContainer.scrollLeft = Math.min(horizontalScroll, maxScroll);
-    }
-  }
-
-  // Throttle the scroll event for better performance
-  let ticking = false;
-  function onScroll() {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        updateSkillsScroll();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }
-
-  window.addEventListener('scroll', onScroll);
+  const skillsSection = document.querySelector('.skills');
+  const skillsList = document.querySelector('.skills-list');
   
-  // Initial call
-  updateSkillsScroll();
+  if (!skillsSection || !skillsList) return;
+
+  function handleScroll() {
+    const sectionRect = skillsSection.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const sectionHeight = skillsSection.offsetHeight;
+
+    // Total distance the section spans across the viewport scroll
+    const scrollStart = window.scrollY + sectionRect.top;
+    const scrollEnd = scrollStart + sectionHeight;
+    const currentScroll = window.scrollY + windowHeight / 2; // Or window.scrollY for top-edge mapping
+
+    // Calculate scroll progress
+    const scrollProgress = (currentScroll - scrollStart) / sectionHeight;
+
+    // Clamp between 0 and 1
+    const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
+
+    // Calculate max horizontal scroll
+    const maxScroll = skillsList.scrollWidth - skillsList.clientWidth;
+
+    // Apply horizontal scroll
+    skillsList.scrollLeft = clampedProgress * maxScroll;
+  }
+
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
 }
 
-// Initialize skills scroll when page loads
 document.addEventListener('DOMContentLoaded', function() {
-  initSkillsScroll();
+  setTimeout(initSkillsScroll, 100);
 });
