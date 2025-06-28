@@ -723,36 +723,28 @@ main {
   margin-bottom: 15px; 
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 .skills-list {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   padding: 25px 0;
-  animation: slideSkills 30s linear infinite;
   width: max-content;
+  animation: slideSkills 25s linear infinite;
 }
 
 .skills-list:hover {
   animation-play-state: paused;
 }
 
-/* Create seamless loop by duplicating content */
-.skills-list::after {
-  content: '';
-  display: flex;
-  gap: 15px;
-  margin-left: 15px;
-}
-
 .skills-item {
   flex-shrink: 0;
-  min-width: 280px;
+  min-width: 250px;
   background: var(--border-gradient-onyx);
   padding: 20px;
   border-radius: 14px;
   box-shadow: var(--shadow-2);
-  z-index: 1;
   position: relative;
 }
 
@@ -770,23 +762,18 @@ main {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-100% - 15px));
+    transform: translateX(-50%);
   }
 }
 
-/* Pause animation when not in view to save performance */
-.skills:not(.in-view) .skills-list {
-  animation-play-state: paused;
-}
-
-/* Fade edges for smooth appearance */
+/* Fade edges */
 .skills::before,
 .skills::after {
   content: "";
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 50px;
+  width: 30px;
   pointer-events: none;
   z-index: 2;
 }

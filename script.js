@@ -372,59 +372,34 @@ function showSuccessMessage(customMessage) {
     }, 4000);
 }
 
-// Skills continuous sliding animation - UPDATED
+// Skills continuous sliding animation - SIMPLIFIED
 function initSkillsAnimation() {
-  const skillsSection = document.querySelector('.skills');
   const skillsList = document.querySelector('.skills-list');
   
-  if (!skillsSection || !skillsList) {
-    console.log('Skills elements not found');
+  if (!skillsList) {
+    console.log('Skills list not found');
     return;
   }
 
-  // Duplicate skills for seamless loop
-  const skillsItems = Array.from(skillsList.children);
-  skillsItems.forEach(item => {
-    const clone = item.cloneNode(true);
-    skillsList.appendChild(clone);
-  });
-
-  // Intersection Observer to control animation
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-      } else {
-        entry.target.classList.remove('in-view');
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-
-  observer.observe(skillsSection);
-}
-
-// Initialize when DOM is ready
-function initializeSkillsWhenReady() {
-  const checkAndInit = () => {
-    if (document.querySelector('.skills') && document.querySelector('.skills-list')) {
-      initSkillsAnimation();
-    } else {
-      setTimeout(checkAndInit, 100);
-    }
-  };
+  // Get all original skills
+  const originalSkills = skillsList.innerHTML;
   
-  checkAndInit();
+  // Duplicate the skills for seamless loop
+  skillsList.innerHTML = originalSkills + originalSkills;
+  
+  console.log('Skills animation initialized');
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initializeSkillsWhenReady);
-} else {
-  initializeSkillsWhenReady();
-}
+// Initialize immediately when called
+document.addEventListener('DOMContentLoaded', function() {
+  // Wait a bit for the page to fully load
+  setTimeout(initSkillsAnimation, 500);
+});
 
-window.addEventListener('load', initializeSkillsWhenReady);
+// Also try to initialize on window load as backup
+window.addEventListener('load', function() {
+  setTimeout(initSkillsAnimation, 100);
+});
 
 console.log('=== BASIC DEBUG TEST ===');
 console.log('Current page:', window.location.href);
