@@ -1297,6 +1297,7 @@ main {
   box-shadow: var(--shadow-1);
   flex: 1;
   margin-bottom: 25px;
+  margin-top: 25px;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
@@ -1347,11 +1348,11 @@ main {
 }
 
 .meeting-scheduler-section input[type="email"]:invalid {
-  border-color: var(--bg-gradient-jet);
+  border-color: var(--jet);
 }
 
 .meeting-scheduler-section input[type="email"]:valid {
-  border-color: var(--bg-gradient-jet);
+  border-color: var(--jet);
 }
 
 /*-----------------------------------*\
@@ -2016,18 +2017,38 @@ main {
   }
 }
 
+@media (min-width: 768px) and (max-width: 999px) {
+  .contact-sidebar {
+    max-width: 700px;
+  }
+  
+  .contact-form,
+  .meeting-scheduler-section {
+    max-width: 700px;
+  }
+}
+
+
 /* Responsive adjustments for contact page */
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
   .contact-wrapper {
     flex-direction: row; /* Side by side on larger screens */
+    alighn-items: flex-start;
+    gap: 30px;
+    justify-content: center;
   }
   
   .contact-sidebar {
-    min-width: 320px;
+    width: 300px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 20px; /* Sticky position */
   }
   
   .contact-sections {
     flex: 1;
+    max-width: 800px; /* Limit width of contact form and scheduler */
+    alighn-items: stretch;
   }
 }
 
