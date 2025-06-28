@@ -896,6 +896,10 @@ main {
 
 .skill-description {
   color: var(--light-gray);
+  line-height: 1.6;
+  word-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
 }
 
 .skill-progress-bg {
