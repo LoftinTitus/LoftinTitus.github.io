@@ -1133,9 +1133,14 @@ main {
 
 .contact-wrapper {
   display: flex;
-  gap: 100px;
-  align-items: flex-start;
-  flex-direction: column; /* Default to column for mobile */
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px 40px;
+  align-items: center;
+  position: relative; /* Add this for navbar positioning */
 }
 
 .contact-sidebar {
