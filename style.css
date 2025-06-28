@@ -742,10 +742,11 @@ main {
   flex-shrink: 0;
   min-width: 100px;
   background: var(--border-gradient-onyx);
-  padding: 20px;
+  padding: 10px 15px; /* Reduced from default padding */
   border-radius: 14px;
   box-shadow: var(--shadow-2);
   position: relative;
+  margin-bottom: 10px; /* Reduced spacing between items */
 }
 
 .skills-item::before {
@@ -757,35 +758,34 @@ main {
   z-index: -1;
 }
 
-@keyframes slideSkills {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+.skills-item .title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px; /* Reduced from default */
 }
 
-/* Fade edges */
-.skills::before,
-.skills::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 30px;
-  pointer-events: none;
-  z-index: 2;
+.skill-progress-bg {
+  background: var(--jet);
+  width: 100%;
+  height: 6px; /* Make progress bar thinner */
+  border-radius: 10px;
+  margin-bottom: 8px; /* Reduced spacing */
 }
 
-.skills::before {
-  left: 0;
-  background: linear-gradient(90deg, var(--eerie-black-2) 0%, transparent 100%);
+.skill-progress-fill {
+  background: var(--burnt_orange);
+  height: 100%;
+  border-radius: inherit;
 }
 
-.skills::after {
-  right: 0;
-  background: linear-gradient(270deg, var(--eerie-black-2) 0%, transparent 100%);
+.skill-description {
+  color: var(--light-gray);
+  line-height: 1.4; /* Tighter line spacing */
+  word-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+  font-size: var(--fs-7); /* Smaller font size */
 }
 
 
