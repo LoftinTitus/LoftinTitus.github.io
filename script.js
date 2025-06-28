@@ -372,40 +372,88 @@ function showSuccessMessage(customMessage) {
     }, 4000);
 }
 
-// Skills horizontal scroll on page scroll
+// Skills horizontal scroll on page scroll - UPDATED VERSION
 function initSkillsScroll() {
   const skillsSection = document.querySelector('.skills');
   const skillsList = document.querySelector('.skills-list');
   
-  if (!skillsSection || !skillsList) return;
+  if (!skillsSection || !skillsList) {
+    console.log('Skills elements not found');
+    return;
+  }
 
   function handleScroll() {
     const sectionRect = skillsSection.getBoundingClientRect();
     const windowHeight = window.innerHeight;
-    const sectionHeight = skillsSection.offsetHeight;
-
-    // Total distance the section spans across the viewport scroll
-    const scrollStart = window.scrollY + sectionRect.top;
-    const scrollEnd = scrollStart + sectionHeight;
-    const currentScroll = window.scrollY + windowHeight / 2; // Or window.scrollY for top-edge mapping
-
-    // Calculate scroll progress
-    const scrollProgress = (currentScroll - scrollStart) / sectionHeight;
-
+    
+    // Check if skills section is in viewport
+    if (sectionRect.bottom < 0 || sectionRect.top > windowHeight) {
+      return; // Section not in view
+    }
+    
+    // Calculate how much of the section is visible
+    const sectionTop = sectionRect.top;
+    const sectionHeight = sectionRect.height;
+    
+    // Progress from 0 (section just entering viewport) to 1 (section leaving viewport)
+    let scrollProgress = 0;
+    
+    if (sectionTop <= 0) {
+      // Section is past the top of viewport
+      scrollProgress = Math.abs(sectionTop) / sectionHeight;
+    } else {
+      // Section is entering viewport from bottom
+      scrollProgress = (windowHeight - sectionTop) / windowHeight;
+    }
+    
     // Clamp between 0 and 1
-    const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
-
+    scrollProgress = Math.max(0, Math.min(1, scrollProgress));
+    
     // Calculate max horizontal scroll
     const maxScroll = skillsList.scrollWidth - skillsList.clientWidth;
-
+    
     // Apply horizontal scroll
-    skillsList.scrollLeft = clampedProgress * maxScroll;
+    skillsList.scrollLeft = scrollProgress * maxScroll;
+    
+    // Add scrolling class for fade indicators
+    if (scrollProgress > 0 && scrollProgress < 1) {
+      skillsSection.classList.add('scrolling');
+    } else {
+      skillsSection.classList.remove('scrolling');
+    }
   }
 
-  window.addEventListener('scroll', handleScroll);
-  handleScroll();
+  // Throttle scroll events for better performance
+  let ticking = false;
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(handleScroll);
+      ticking = true;
+      setTimeout(() => { ticking = false; }, 16); // ~60fps
+    }
+  }
+
+  window.addEventListener('scroll', requestTick);
+  handleScroll(); // Initial call
 }
 
+// Initialize skills scroll when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(initSkillsScroll, 100);
+  // Wait for page to be fully loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSkillsScroll);
+  } else {
+    initSkillsScroll();
+  }
 });
+
+// Also initialize when navigating to resume page
+const resumeNavLink = document.querySelector('a[href="resume.html"]');
+if (resumeNavLink) {
+  resumeNavLink.addEventListener('click', function() {
+    setTimeout(initSkillsScroll, 100);
+  });
+}
+
+console.log('Skills section:', document.querySelector('.skills'));
+console.log('Skills list:', document.querySelector('.skills-list'));

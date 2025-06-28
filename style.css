@@ -719,7 +719,11 @@ main {
 
 /* skills */
 
-.skills { margin-bottom: 15px; }
+.skills { 
+  margin-bottom: 15px; 
+  position: relative;
+  overflow: hidden; /* Prevent scroll indicators from showing outside */
+}
 
 .skills-list {
   display: flex;
@@ -737,28 +741,33 @@ main {
   /* Hide scrollbar for cleaner look */
   scrollbar-width: none;
   -ms-overflow-style: none;
+  /* Disable pointer events during auto-scroll */
+  pointer-events: none;
 }
 
 .skills-list::-webkit-scrollbar {
   display: none;
 }
 
-/* Add scroll indicators */
+/* Re-enable pointer events for skill items */
+.skills-item {
+  pointer-events: auto;
+  scroll-snap-align: start;
+  flex-shrink: 0; /* Prevent items from shrinking */
+}
+
+/* Fade indicators - UPDATED */
 .skills::before,
 .skills::after {
   content: "";
   position: absolute;
-  top: 0;
-  width: 50px;
-  height: 100%;
+  top: 25px; /* Match padding of skills-list */
+  bottom: 25px; /* Match padding of skills-list */
+  width: 30px;
   pointer-events: none;
   z-index: 2;
   opacity: 0;
   transition: opacity 0.3s ease;
-}
-
-.skills {
-  position: relative;
 }
 
 .skills::before {
