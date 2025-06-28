@@ -2017,7 +2017,7 @@ main {
   }
 }
 
-@media (min-width: 768px) and (max-width: 999px) {
+@media (max-width: 999px) {
   .contact-sidebar {
     max-width: 700px;
   }
@@ -2033,7 +2033,7 @@ main {
 @media (min-width: 1000px) {
   .contact-wrapper {
     flex-direction: row; /* Side by side on larger screens */
-    alighn-items: flex-start;
+    align-items: flex-start;
     gap: 30px;
     justify-content: center;
   }
@@ -2048,7 +2048,7 @@ main {
   .contact-sections {
     flex: 1;
     width: 800px; /* Limit width of contact form and scheduler */
-    alighn-items: stretch;
+    align-items: stretch;
   }
 }
 
