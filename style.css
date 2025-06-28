@@ -883,6 +883,10 @@ main {
   font-weight: var(--fw-300);
 }
 
+.skill-description {
+  color: var(--light-gray);
+}
+
 .skill-progress-bg {
   background: var(--jet);
   width: 100%;
