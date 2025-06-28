@@ -2016,7 +2016,7 @@ main {
   }
 }
 
-@media (max-width: 999px) {
+@media (max-width: 1199px) {
   .contact-sidebar {
     max-width: 700px;
   }
@@ -2029,7 +2029,7 @@ main {
 
 
 /* Responsive adjustments for contact page */
-@media (min-width: 1000px) {
+@media (min-width: 1200px) {
   .contact-wrapper {
     flex-direction: row; /* Side by side on larger screens */
     align-items: flex-start;
