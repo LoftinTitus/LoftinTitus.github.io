@@ -2039,7 +2039,7 @@ main {
   }
   
   .contact-sidebar {
-    width: 300px;
+    width: 400px;
     flex-shrink: 0;
     position: sticky;
     top: 20px; /* Sticky position */
@@ -2047,7 +2047,7 @@ main {
   
   .contact-sections {
     flex: 1;
-    max-width: 800px; /* Limit width of contact form and scheduler */
+    width: 800px; /* Limit width of contact form and scheduler */
     alighn-items: stretch;
   }
 }
