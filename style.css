@@ -1344,11 +1344,11 @@ main {
 }
 
 .meeting-scheduler-section input[type="email"]:invalid {
-  border-color: var(--eerie-black-1);
+  border-color: var(--bg-gradient-jet);
 }
 
 .meeting-scheduler-section input[type="email"]:valid {
-  border-color: var(--eerie-black-1);
+  border-color: var(--bg-gradient-jet);
 }
 
 /*-----------------------------------*\

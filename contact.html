@@ -99,7 +99,6 @@
                             <textarea name="message" class="form-input" placeholder="Your message" required data-form-input></textarea>
                             
                             <button class="form-btn" type="submit" data-form-btn>
-                                <ion-icon name="paper-plane"></ion-icon>
                                 <span>Send Message</span>
                             </button>
                         </form>
@@ -116,13 +115,12 @@
                                 <div class="input-wrapper">
                                     <input type="date" class="form-input" id="meeting-date" required>
                                     <input type="time" placeholder="Select time" class="form-input" id="meeting-time" required>
-                                    <input type="email" id="meeting-email" placeholder="Email Address" required>
+                                    <input type="email" class="form-input" id="meeting-email" placeholder="Email Address" required>
                                     <input type="text" id="meeting-name" placeholder="Your Name" required>
                                     <textarea id="meeting-message" placeholder="Additional message"></textarea>
                                 </div>
                                 
                                 <button type="button" class="form-btn" onclick="requestMeeting()">
-                                    <ion-icon name="calendar"></ion-icon>
                                     <span>Request Meeting</span>
                                 </button>
                             </div>
