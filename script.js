@@ -458,3 +458,21 @@ if (document.readyState === 'loading') {
 }
 
 window.addEventListener('load', initializeSkillsWhenReady);
+
+console.log('=== BASIC DEBUG TEST ===');
+console.log('Current page:', window.location.href);
+console.log('Document ready state:', document.readyState);
+
+setTimeout(() => {
+  console.log('=== AFTER 2 SECONDS ===');
+  console.log('Skill section exists:', !!document.querySelector('.skill'));
+  console.log('Skills list exists:', !!document.querySelector('.skills-list'));
+  
+  const skillsList = document.querySelector('.skills-list');
+  if (skillsList) {
+    console.log('Skills list children:', skillsList.children.length);
+    console.log('Skills list scroll width:', skillsList.scrollWidth);
+    console.log('Skills list client width:', skillsList.clientWidth);
+    console.log('Can scroll horizontally:', skillsList.scrollWidth > skillsList.clientWidth);
+  }
+}, 2000);
