@@ -734,27 +734,47 @@ main {
   overscroll-behavior-inline: contain;
   scroll-snap-type: inline mandatory;
   scroll-padding-inline: 25px;
+  /* Hide scrollbar for cleaner look */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-.skills-item {
-  min-width: 50%;
-  scroll-snap-align: start;
+.skills-list::-webkit-scrollbar {
+  display: none;
 }
 
-.skills-item img {
-  width: 100%;
-  filter: grayscale(1);
-  transition: var(--transition-1);
+/* Add scroll indicators */
+.skills::before,
+.skills::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 50px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.skills-item img:hover { filter: grayscale(0); }
+.skills {
+  position: relative;
+}
 
-.skill-description {
-  margin-top: 8px;
-  color: var(--light-gray);
-  font-size: var(--fs-6);
-  font-weight: var(--fw-300);
-  line-height: 1.6;
+.skills::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--eerie-black-2) 0%, transparent 100%);
+}
+
+.skills::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--eerie-black-2) 0%, transparent 100%);
+}
+
+/* Show fade indicators when scrolling */
+.skills.scrolling::before,
+.skills.scrolling::after {
+  opacity: 1;
 }
 
 
