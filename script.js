@@ -372,78 +372,45 @@ function showSuccessMessage(customMessage) {
     }, 4000);
 }
 
-// Skills horizontal scroll on page scroll - FIXED VERSION
-function initSkillsScroll() {
-  console.log('initSkillsScroll called');
-  
-  // CORRECT: Use 'skill' (singular) to match your existing HTML
-  const skillsSection = document.querySelector('.skill');
+// Skills continuous sliding animation - UPDATED
+function initSkillsAnimation() {
+  const skillsSection = document.querySelector('.skills');
   const skillsList = document.querySelector('.skills-list');
-  
-  console.log('Skills section:', skillsSection);
-  console.log('Skills list:', skillsList);
   
   if (!skillsSection || !skillsList) {
     console.log('Skills elements not found');
     return;
   }
 
-  function handleScroll() {
-    const sectionRect = skillsSection.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
-    
-    if (sectionRect.bottom < 0 || sectionRect.top > windowHeight) {
-      return;
-    }
-    
-    const sectionTop = sectionRect.top;
-    const sectionHeight = sectionRect.height;
-    
-    let scrollProgress = 0;
-    
-    if (sectionTop <= 0) {
-      scrollProgress = Math.abs(sectionTop) / sectionHeight;
-    } else {
-      scrollProgress = (windowHeight - sectionTop) / windowHeight;
-    }
-    
-    scrollProgress = Math.max(0, Math.min(1, scrollProgress));
-    
-    const maxScroll = skillsList.scrollWidth - skillsList.clientWidth;
-    
-    console.log('Scroll progress:', scrollProgress, 'Max scroll:', maxScroll);
-    
-    skillsList.scrollLeft = scrollProgress * maxScroll;
-    
-    if (scrollProgress > 0 && scrollProgress < 1) {
-      skillsSection.classList.add('scrolling');
-    } else {
-      skillsSection.classList.remove('scrolling');
-    }
-  }
+  // Duplicate skills for seamless loop
+  const skillsItems = Array.from(skillsList.children);
+  skillsItems.forEach(item => {
+    const clone = item.cloneNode(true);
+    skillsList.appendChild(clone);
+  });
 
-  let ticking = false;
-  function requestTick() {
-    if (!ticking) {
-      requestAnimationFrame(handleScroll);
-      ticking = true;
-      setTimeout(() => { ticking = false; }, 16);
-    }
-  }
+  // Intersection Observer to control animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      } else {
+        entry.target.classList.remove('in-view');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
 
-  window.addEventListener('scroll', requestTick);
-  console.log('Scroll listener added');
-  handleScroll();
+  observer.observe(skillsSection);
 }
 
+// Initialize when DOM is ready
 function initializeSkillsWhenReady() {
-  console.log('Initializing skills scroll...');
-  
   const checkAndInit = () => {
-    if (document.querySelector('.skill') && document.querySelector('.skills-list')) {
-      initSkillsScroll();
+    if (document.querySelector('.skills') && document.querySelector('.skills-list')) {
+      initSkillsAnimation();
     } else {
-      console.log('Elements not ready, retrying...');
       setTimeout(checkAndInit, 100);
     }
   };

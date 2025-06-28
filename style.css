@@ -722,52 +722,73 @@ main {
 .skills { 
   margin-bottom: 15px; 
   position: relative;
-  overflow: hidden; /* Prevent scroll indicators from showing outside */
+  overflow: hidden;
 }
 
 .skills-list {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
   gap: 15px;
-  margin: 0 -15px;
-  padding: 25px;
-  padding-bottom: 25px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  overscroll-behavior-inline: contain;
-  scroll-snap-type: inline mandatory;
-  scroll-padding-inline: 25px;
-  /* Hide scrollbar for cleaner look */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  /* Disable pointer events during auto-scroll */
-  pointer-events: none;
+  padding: 25px 0;
+  animation: slideSkills 30s linear infinite;
+  width: max-content;
 }
 
-.skills-list::-webkit-scrollbar {
-  display: none;
+.skills-list:hover {
+  animation-play-state: paused;
 }
 
-/* Re-enable pointer events for skill items */
+/* Create seamless loop by duplicating content */
+.skills-list::after {
+  content: '';
+  display: flex;
+  gap: 15px;
+  margin-left: 15px;
+}
+
 .skills-item {
-  pointer-events: auto;
-  scroll-snap-align: start;
-  flex-shrink: 0; /* Prevent items from shrinking */
+  flex-shrink: 0;
+  min-width: 280px;
+  background: var(--border-gradient-onyx);
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: var(--shadow-2);
+  z-index: 1;
+  position: relative;
 }
 
-/* Fade indicators - UPDATED */
+.skills-item::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: var(--bg-gradient-jet);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+@keyframes slideSkills {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - 15px));
+  }
+}
+
+/* Pause animation when not in view to save performance */
+.skills:not(.in-view) .skills-list {
+  animation-play-state: paused;
+}
+
+/* Fade edges for smooth appearance */
 .skills::before,
 .skills::after {
   content: "";
   position: absolute;
-  top: 25px; /* Match padding of skills-list */
-  bottom: 25px; /* Match padding of skills-list */
-  width: 30px;
+  top: 0;
+  bottom: 0;
+  width: 50px;
   pointer-events: none;
   z-index: 2;
-  opacity: 0;
-  transition: opacity 0.3s ease;
 }
 
 .skills::before {
@@ -778,12 +799,6 @@ main {
 .skills::after {
   right: 0;
   background: linear-gradient(270deg, var(--eerie-black-2) 0%, transparent 100%);
-}
-
-/* Show fade indicators when scrolling */
-.skills.scrolling::before,
-.skills.scrolling::after {
-  opacity: 1;
 }
 
 
