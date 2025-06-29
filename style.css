@@ -731,7 +731,7 @@ main {
   gap: 20px;
   padding: 25px 0;
   width: max-content;
-  animation: slideSkills 35s linear infinite;
+  animation: slideSkills 32s linear infinite;
 }
 
 .skills-list:hover {
@@ -740,7 +740,7 @@ main {
 
 .skills-item {
   flex-shrink: 0;
-  width: 250px; /* Force constant width */
+  width: 200px; /* Force constant width */
   max-width: 250px; /* Prevent expansion */
   background: var(--border-gradient-onyx);
   padding: 10px 15px;
@@ -895,13 +895,9 @@ main {
 
 /* skills */
 
-.skills-title { margin-bottom: 20px;
-  text-align: center;
- }
+.skills-title { margin-bottom: 20px; }
 
-.skills-list { padding: 20px; 
-  text-align: center;
-}
+.skills-list { padding: 20px; }
 
 
 .skills-item:not(:last-child) { margin-bottom: 15px; }
