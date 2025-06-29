@@ -2093,16 +2093,6 @@ main {
   }
 }
 
-/* Even smaller screens */
-@media (max-width: 480px) {
-  .contact-form,
-  .meeting-scheduler-section {
-    width: 95%;
-    max-width: none;
-    padding: 15px;
-  }
-
-
 /* Responsive adjustments for contact page */
 @media (min-width: 1200px) {
   .contact-wrapper {
