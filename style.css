@@ -731,7 +731,7 @@ main {
   gap: 20px;
   padding: 25px 0;
   width: max-content;
-  animation: slideSkills 25s linear infinite;
+  animation: slideSkills 35s linear infinite;
 }
 
 .skills-list:hover {
