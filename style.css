@@ -757,6 +757,15 @@ main {
   border-radius: inherit;
   z-index: -1;
 }
+@keyframes slideSkills {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+
+  }
+}
 
 .skills-item .title-wrapper {
   display: flex;
