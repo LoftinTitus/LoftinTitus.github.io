@@ -742,6 +742,7 @@ main {
   flex-shrink: 0;
   width: 200px; /* Force constant width */
   max-width: 250px; /* Prevent expansion */
+  min-width: 250px; /* Prevent shrinking */
   background: var(--border-gradient-onyx);
   padding: 10px 15px;
   border-radius: 14px;
