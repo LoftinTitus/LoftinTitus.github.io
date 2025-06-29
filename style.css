@@ -1607,7 +1607,7 @@ main {
     scroll-padding-inline: 45px;
   }
 
-  .skills-item { min-width: calc(33.33% - 35px); }
+  .skills-item { min-width: 10px; }
 
   .skills-item img {
   width: 100%;
