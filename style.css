@@ -740,13 +740,15 @@ main {
 
 .skills-item {
   flex-shrink: 0;
-  width: 300px;
+  width: 300px !important; /* Force constant width */
+  min-width: 300px !important; /* Override any min-width settings */
+  max-width: 300px; /* Prevent expansion */
   background: var(--border-gradient-onyx);
-  padding: 10px 15px; /* Reduced from default padding */
+  padding: 10px 15px;
   border-radius: 14px;
   box-shadow: var(--shadow-2);
   position: relative;
-  margin-bottom: 10px; /* Reduced spacing between items */
+  margin-bottom: 10px;
 }
 
 .skills-item::before {
