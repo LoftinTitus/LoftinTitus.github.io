@@ -740,9 +740,8 @@ main {
 
 .skills-item {
   flex-shrink: 0;
-  width: 300px !important; /* Force constant width */
-  min-width: 300px !important; /* Override any min-width settings */
-  max-width: 300px; /* Prevent expansion */
+  width: 250px; /* Force constant width */
+  max-width: 250px; /* Prevent expansion */
   background: var(--border-gradient-onyx);
   padding: 10px 15px;
   border-radius: 14px;
@@ -896,9 +895,13 @@ main {
 
 /* skills */
 
-.skills-title { margin-bottom: 20px; }
+.skills-title { margin-bottom: 20px;
+  text-align: center;
+ }
 
-.skills-list { padding: 20px; }
+.skills-list { padding: 20px; 
+  text-align: center;
+}
 
 
 .skills-item:not(:last-child) { margin-bottom: 15px; }
