@@ -1577,6 +1577,11 @@ main {
   border-color: var(--jet);         /* Subtle border for valid email */
 }
 
+.meeting-scheduler-section input[type="email"]:hover {
+  background: var(--eerie-black-1); /* Lighter background on hover */
+  border-color: var(--bg-gradient-jet) !important; /* Gradient border on hover */
+}
+
 /**
  * =============================================================================
  * 12. RESPONSIVE DESIGN
