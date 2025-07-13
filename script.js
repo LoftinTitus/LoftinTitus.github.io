@@ -69,10 +69,13 @@ const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 /**
  * Sidebar toggle functionality for mobile
  * Expands or collapses the sidebar when the button is clicked
+ * Only initialize if elements exist (sidebar only exists on index.html)
  */
-sidebarBtn.addEventListener("click", function () { 
-  elementToggleFunc(sidebar); 
-});
+if (sidebarBtn && sidebar) {
+  sidebarBtn.addEventListener("click", function () { 
+    elementToggleFunc(sidebar); 
+  });
+}
 
 
 
@@ -106,33 +109,42 @@ const modalText = document.querySelector("[data-modal-text]");
  * Shows or hides the testimonial modal with overlay
  */
 const testimonialsModalFunc = function () {
-  modalContainer.classList.toggle("active");
-  overlay.classList.toggle("active");
+  if (modalContainer && overlay) {
+    modalContainer.classList.toggle("active");
+    overlay.classList.toggle("active");
+  }
 }
 
 /**
  * Add click event listeners to all testimonial items
  * When clicked, populate modal with testimonial data and show it
+ * Only initialize if testimonials exist on the page
  */
-for (let i = 0; i < testimonialsItem.length; i++) {
-  testimonialsItem[i].addEventListener("click", function () {
-    // Extract data from the clicked testimonial item
-    modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
-    modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-    modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
-    modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
+if (testimonialsItem.length > 0 && modalContainer && modalImg && modalTitle && modalText) {
+  for (let i = 0; i < testimonialsItem.length; i++) {
+    testimonialsItem[i].addEventListener("click", function () {
+      // Extract data from the clicked testimonial item
+      modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
+      modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
+      modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
+      modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
 
-    // Show the modal
-    testimonialsModalFunc();
-  });
+      // Show the modal
+      testimonialsModalFunc();
+    });
+  }
 }
 
 /**
  * Modal close functionality
  * Users can close the modal by clicking the close button or overlay
  */
-modalCloseBtn.addEventListener("click", testimonialsModalFunc);
-overlay.addEventListener("click", testimonialsModalFunc);
+if (modalCloseBtn) {
+  modalCloseBtn.addEventListener("click", testimonialsModalFunc);
+}
+if (overlay) {
+  overlay.addEventListener("click", testimonialsModalFunc);
+}
 
 
 
@@ -158,22 +170,29 @@ const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
 /**
  * Toggle dropdown visibility when select is clicked
+ * Only initialize if elements exist
  */
-select.addEventListener("click", function () { 
-  elementToggleFunc(this); 
-});
+if (select) {
+  select.addEventListener("click", function () { 
+    elementToggleFunc(this); 
+  });
+}
 
 /**
  * Handle dropdown item selection
  * Updates the displayed value and triggers filtering
  */
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    elementToggleFunc(select); // Close dropdown
-    filterFunc(selectedValue); // Apply filter
-  });
+if (selectItems.length > 0 && selectValue) {
+  for (let i = 0; i < selectItems.length; i++) {
+    selectItems[i].addEventListener("click", function () {
+      let selectedValue = this.innerText.toLowerCase();
+      selectValue.innerText = this.innerText;
+      if (select) {
+        elementToggleFunc(select); // Close dropdown
+      }
+      filterFunc(selectedValue); // Apply filter
+    });
+  }
 }
 
 /**
@@ -206,19 +225,23 @@ const filterFunc = function (selectedValue) {
  * Desktop filter button functionality
  * Handles the button-based filtering system for larger screens
  */
-let lastClickedBtn = filterBtn[0]; // Track the currently active button
+if (filterBtn.length > 0) {
+  let lastClickedBtn = filterBtn[0]; // Track the currently active button
 
-for (let i = 0; i < filterBtn.length; i++) {
-  filterBtn[i].addEventListener("click", function () {
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText; // Update mobile dropdown display
-    filterFunc(selectedValue); // Apply filter
+  for (let i = 0; i < filterBtn.length; i++) {
+    filterBtn[i].addEventListener("click", function () {
+      let selectedValue = this.innerText.toLowerCase();
+      if (selectValue) {
+        selectValue.innerText = this.innerText; // Update mobile dropdown display
+      }
+      filterFunc(selectedValue); // Apply filter
 
-    // Update active state for visual feedback
-    lastClickedBtn.classList.remove("active");
-    this.classList.add("active");
-    lastClickedBtn = this;
-  });
+      // Update active state for visual feedback
+      lastClickedBtn.classList.remove("active");
+      this.classList.add("active");
+      lastClickedBtn = this;
+    });
+  }
 }
 
 
@@ -242,23 +265,26 @@ const pages = document.querySelectorAll("[data-page]");
 /**
  * Page navigation functionality
  * Switches between different sections of the portfolio
+ * Only initialize if navigation elements exist (single-page navigation)
  */
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
-    // Loop through all pages and navigation links
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        // Show the selected page and highlight its nav link
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0); // Scroll to top when switching pages
-      } else {
-        // Hide other pages and remove active state from other nav links
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
+if (navigationLinks.length > 0 && pages.length > 0) {
+  for (let i = 0; i < navigationLinks.length; i++) {
+    navigationLinks[i].addEventListener("click", function () {
+      // Loop through all pages and navigation links
+      for (let i = 0; i < pages.length; i++) {
+        if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
+          // Show the selected page and highlight its nav link
+          pages[i].classList.add("active");
+          navigationLinks[i].classList.add("active");
+          window.scrollTo(0, 0); // Scroll to top when switching pages
+        } else {
+          // Hide other pages and remove active state from other nav links
+          pages[i].classList.remove("active");
+          navigationLinks[i].classList.remove("active");
+        }
       }
-    }
-  });
+    });
+  }
 }
 
 /**
@@ -319,69 +345,75 @@ function showSuccessMessage(customMessage) {
 /**
  * Real-time form validation
  * Enables/disables submit button based on form validity
+ * Only initialize if form elements exist
  */
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
-    // Check if all required fields are filled and valid
-    if (form.checkValidity()) {
-      formBtn.removeAttribute("disabled");
-    } else {
-      formBtn.setAttribute("disabled", "");
-    }
-  });
+if (formInputs.length > 0 && formBtn && form) {
+  for (let i = 0; i < formInputs.length; i++) {
+    formInputs[i].addEventListener("input", function () {
+      // Check if all required fields are filled and valid
+      if (form.checkValidity()) {
+        formBtn.removeAttribute("disabled");
+      } else {
+        formBtn.setAttribute("disabled", "");
+      }
+    });
+  }
 }
 
 /**
  * Form submission handler with EmailJS
  * Sends form data via email and provides user feedback
+ * Only initialize if form exists
  */
-form.addEventListener('submit', function(e) {
-  e.preventDefault(); // Prevent default form submission
-  console.log('Form submission started');
-  
-  // Show loading state
-  formBtn.textContent = 'Sending...';
-  formBtn.setAttribute("disabled", "");
-  
-  // Prepare form data for EmailJS
-  const formData = new FormData(this);
-  const templateParams = {
-    from_name: formData.get('from_name'),
-    from_email: formData.get('from_email'),
-    message: formData.get('message')
-  };
-  
-  console.log('Template params:', templateParams);
-  
-  // Send email using EmailJS service
-  emailjs.send('service_fw5vzhf', 'template_pdgep2i', templateParams)
-    .then(function(response) {
-      console.log('EmailJS Success:', response);
-      console.log('About to show success message');
-      
-      // Show success confirmation
-      showSuccessMessage();
-      
-      // Reset form to initial state
-      form.reset();
-      formBtn.textContent = 'Send Message';
-      formBtn.removeAttribute("disabled");
-      
-    }, function(error) {
-      console.error('EmailJS Error:', error);
-      
-      // Show error state
-      formBtn.textContent = 'Failed to Send';
-      
-      // Reset button after delay
-      setTimeout(() => {
+if (form && formBtn) {
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent default form submission
+    console.log('Form submission started');
+    
+    // Show loading state
+    formBtn.textContent = 'Sending...';
+    formBtn.setAttribute("disabled", "");
+    
+    // Prepare form data for EmailJS
+    const formData = new FormData(this);
+    const templateParams = {
+      from_name: formData.get('from_name'),
+      from_email: formData.get('from_email'),
+      message: formData.get('message')
+    };
+    
+    console.log('Template params:', templateParams);
+    
+    // Send email using EmailJS service
+    emailjs.send('service_fw5vzhf', 'template_pdgep2i', templateParams)
+      .then(function(response) {
+        console.log('EmailJS Success:', response);
+        console.log('About to show success message');
+        
+        // Show success confirmation
+        showSuccessMessage();
+        
+        // Reset form to initial state
+        form.reset();
         formBtn.textContent = 'Send Message';
-        if (form.checkValidity()) {
-          formBtn.removeAttribute("disabled");
-        }
-      }, 3000);
-    });
-});
+        formBtn.removeAttribute("disabled");
+        
+      }, function(error) {
+        console.error('EmailJS Error:', error);
+        
+        // Show error state
+        formBtn.textContent = 'Failed to Send';
+        
+        // Reset button after delay
+        setTimeout(() => {
+          formBtn.textContent = 'Send Message';
+          if (form.checkValidity()) {
+            formBtn.removeAttribute("disabled");
+          }
+        }, 3000);
+      });
+  });
+}
 
 /**
  * =============================================================================
