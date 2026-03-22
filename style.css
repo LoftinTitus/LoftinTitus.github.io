@@ -341,6 +341,7 @@ ion-icon {
 .hero,
 .page-intro,
 .timeline-panel,
+.healthcare-panel,
 .skills-panel,
 .callout,
 .contact-panel,
@@ -372,6 +373,31 @@ ion-icon {
   color: var(--muted);
   line-height: 1.8;
   font-size: 1rem;
+}
+
+.healthcare-placeholder {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.healthcare-placeholder span {
+  display: block;
+  height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(197, 58, 59, 0.15), rgba(197, 58, 59, 0.45));
+}
+
+.healthcare-placeholder span:nth-child(1) {
+  width: 88%;
+}
+
+.healthcare-placeholder span:nth-child(2) {
+  width: 72%;
+}
+
+.healthcare-placeholder span:nth-child(3) {
+  width: 94%;
 }
 
 .hero-layout {
@@ -970,6 +996,7 @@ textarea.form-input {
   .hero,
   .page-intro,
   .timeline-panel,
+.healthcare-panel,
   .skills-panel,
   .callout,
   .contact-panel {
