@@ -1,278 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume - Titus Loftin</title>
-    <link rel="stylesheet" href="style.css">
-    <!--
-      - google font link
-    -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume | Titus Loftin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body>
-    <main>
-        <div class="main-content">
-            <!-- Navbar -->
-            <nav class="navbar">
-                <ul class="navbar-list">
-                    <li class="navbar-item">
-                        <a href="index.html" class="navbar-link">About</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="resume.html" class="navbar-link active">Resume</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="portfolio.html" class="navbar-link">Portfolio</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="contact.html" class="navbar-link">Contact</a>
-                    </li>
-                </ul>
-            </nav>
+<body class="page page-resume">
+  <main class="site-shell">
+    <header class="site-header panel" data-reveal>
+      <a class="brand" href="index.html" aria-label="Titus Loftin home">
+        <span class="brand-mark">TL</span>
+        <span class="brand-copy">
+          <strong>Titus Loftin</strong>
+          <span>Engineer</span>
+        </span>
+      </a>
 
-            <!-- Resume Section -->
-            <section id="resume">
-                <header>
-                    <h2 class="h2 article-title">Resume</h2>
-                </header>
+      <nav class="site-nav" aria-label="Primary">
+        <a class="nav-link" href="index.html">About</a>
+        <a class="nav-link is-active" href="resume.html">Resume</a>
+        <a class="nav-link" href="portfolio.html">Portfolio</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </nav>
+    </header>
 
-                <!-- Education section-->
-                <section class="timeline">
-                    <div class="title-wrapper">
-                        <div class="icon-box">
-                            <ion-icon name="school-outline"></ion-icon>
-                        </div>
-                        <h3 class="h3">Education</h3>
-                    </div>
+    <div class="site-layout">
+      <aside class="profile-card panel" data-reveal>
+        <figure class="profile-photo">
+          <img src="./assets/IMG_5622.jpeg" alt="Titus Loftin portrait">
+        </figure>
 
-                    <ol class="timeline-list">
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">University of Texas at Austin</h4>
-                            <span>Expected graduation: May 2027</span>
-                            <ul class="timeline-text">
-                                <li>Bachelor of Science, Chemical Engineering</li>
-                                <li>Minors & Certificates: Computer Science, Computational Engineering, Statistics and Data Science</li>
-                                <li>GPA: 3.7975/4.0000</li>
-                            </ul>
-                        </li>
-                    </ol>
-                </section>
-
-                <!-- Experience section-->
-                <section class="timeline">
-                    <div class="title-wrapper">
-                        <div class="icon-box">
-                            <ion-icon name="briefcase-outline"></ion-icon>
-                        </div>
-                        <h3 class="h3">Experience</h3>
-                    </div>
-
-                    <ol class="timeline-list">
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">Undergraduate Tutor</h4>
-                            <span>August 2025 - Present</span>
-                            <ul class="timeline-text">
-                                <li>Tutored for ChE 210, covering over 100 undergraduates</li>
-                                <li>Facilitated group and one-on-one sessions to strengthen conceptual understanding and proficiency</li>
-                            </ul>
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">Undergraduate Researcher</h4>
-                            <span>Sept. 2024 - Present</span>
-                            <ul class="timeline-text">
-                                <li>Developed a method of identifying heterogeneous soft materials by 
-                                    collecting 8 different types of strain data from 120 different materials, 
-                                    and using neural ODE fields for mechanical characterization</li>
-                                <li>Created an in-vitro setup to run mechanical tests on blood clots in the 
-                                    middle cerebral artery that measures pressure and flow conditions up to an accuracy of 0.1%</li>
-                            </ul>
-                        </li>
-
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">Facilities Technical Intern</h4>
-                            <span>June 2020 - August 2024</span>
-                            <ul class="timeline-text">
-                                <li>Designed and built portable baptism tubs for use in the church, 
-                                    reducing potential costs by ~$2K if bought from a third party</li>
-                                <li>Decreased energy use by 15% by installing lighting fixtures throughout the facilities</li>
-                                <li>Installed a more efficient pond irrigation system to optimize water use by 8%</li>
-                            </ul>
-                        </li>
-                    </ol>
-                </section>
-
-                <!-- Leadership and Extracurriculars Section -->
-                <section class="timeline">
-                    <div class="title-wrapper">
-                        <div class="icon-box">
-                            <ion-icon name="people-outline"></ion-icon>
-                        </div>
-                        <h3 class="h3">Leadership and Extracurriculars</h3>
-                    </div>
-
-                    <ol class="timeline-list">
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">Director and Founder - Undergraduate Advisory Board</h4>
-                            <span>Fall 2024</span>
-                            <p class="timeline-text">
-                                Founded a student organization to improve the CHE department. 
-                                Recruited ~25% of the Chemical Engineering student body during the 2024-2025 school year.
-                                Created a central website and lesson plans for different courses in Chemical Engineering.
-                            </p>
-                        </li>
-
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">Vice President, Corporate Relations - Tau Beta Pi</h4>
-                            <span>Spring 2025</span>
-                            <p class="timeline-text">
-                                Managed relationships with companies Blue Origin and Lockheed Martin, 
-                                brought in corporate sponsors such as CDM Smith.
-                            </p>
-                        </li>
-
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">General Member - Longhorn Developers</h4>
-                            <span>Fall 2024</span>
-                            <p class="timeline-text">
-                                Member for Longhorn Developers, a student organization at UT who works on different projects to 
-                                improve some of the technology at the University. One of the notable projects is UT Registration Plus, 
-                                a Chrome extension that has allowed 60,000 students to create their schedules.
-                            </p>
-                        </li>
-                    </ol>
-                </section>
-                <!-- Skills slider -->
-                <section class="skills-section">
-                    <h3 class="h3 skills-title">Skills</h3>
-
-                    <div class="skills">
-                        <ul class="skills-list content-card">
-                            
-                            <li class="skills-item">
-    <div class="title-wrapper">
-        <h5 class="h5">Web Development</h5>
-        <data value="100"></data>
-    </div>
-    <div class="skill-progress-bg">
-        <div class="skill-progress-fill" style="width: 100%;"></div>
-    </div>
-    <div class="skill-description">
-        HTML, CSS, JavaScript, TypeScript<br>
-        React, Node.js<br>
-        MySQL, Rust, Alpine.js
-    </div>
-</li>
-
-<li class="skills-item">
-    <div class="title-wrapper">
-        <h5 class="h5">Machine Learning</h5>
-        <data value="100"></data>
-    </div>
-    <div class="skill-progress-bg">
-        <div class="skill-progress-fill" style="width: 100%;"></div>
-    </div>
-    <div class="skill-description">
-        Python, TensorFlow<br>
-        PyTorch, Scikit-learn
-    </div>
-</li>
-
-<li class="skills-item">
-    <div class="title-wrapper">
-        <h5 class="h5">Scientific Computation</h5>
-        <data value="100"></data>
-    </div>
-    <div class="skill-progress-bg">
-        <div class="skill-progress-fill" style="width: 100%;"></div>
-    </div>
-    <div class="skill-description">
-        MATLAB<br>
-        Julia, C++
-    </div>
-</li>
-
-<li class="skills-item">
-    <div class="title-wrapper">
-        <h5 class="h5">Design Tools</h5>
-        <data value="100"></data>
-    </div>
-    <div class="skill-progress-bg">
-        <div class="skill-progress-fill" style="width: 100%;"></div>
-    </div>
-    <div class="skill-description">
-        Fusion360<br>
-        SolidWorks
-    </div>
-</li>
-
-<li class="skills-item">
-    <div class="title-wrapper">
-        <h5 class="h5">App Development</h5>
-        <data value="100"></data>
-    </div>
-    <div class="skill-progress-bg">
-        <div class="skill-progress-fill" style="width: 100%;"></div>
-    </div>
-    <div class="skill-description">
-        React Native,<br>
-        Swift
-    </div>
-</li>
-
-<li class="skills-item">
-    <div class="title-wrapper">
-        <h5 class="h5">Manufacturing</h5>
-        <data value="100"></data>
-    </div>
-    <div class="skill-progress-bg">
-        <div class="skill-progress-fill" style="width: 100%;"></div>
-    </div>
-    <div class="skill-description">
-        3D Printing, CNC Machining<br>
-        Welding, Soldering
-    </div>
-</li>
-
-<li class="skills-item">
-    <div class="title-wrapper">
-        <h5 class="h5">Analysis</h5>
-        <data value="100"></data>
-    </div>
-    <div class="skill-progress-bg">
-        <div class="skill-progress-fill" style="width: 100%;"></div>
-    </div>
-    <div class="skill-description">
-        Aspen, COMSOL<br>
-        OpenFOAM
-    </div>
-</li>
-
-<li class="skills-item">
-    <div class="title-wrapper">
-        <h5 class="h5">Electronics</h5>
-        <data value="100"></data>
-    </div>
-    <div class="skill-progress-bg">
-        <div class="skill-progress-fill" style="width: 100%;"></div>
-    </div>
-    <div class="skill-description">
-        Arduino, Raspberry Pi<br>
-        KiCad, Fusion360 PCB Design<br>
-        LabView
-    </div>
-</li>
-
-                        </ul>
-                    </div>
-                </section>
-
-            </section>
+        <div>
+          <p class="profile-role">Engineer</p>
+          <h1 class="profile-name">Titus Loftin</h1>
         </div>
-    </main>
-    <script src="script.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+        <div class="detail-list">
+          <div class="detail-item">
+            <div class="detail-label">Email</div>
+            <div class="detail-value">
+              <a href="mailto:loftintitus@utexas.edu">loftintitus@utexas.edu</a>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <div class="detail-label">Phone</div>
+            <div class="detail-value">
+              <a href="tel:+15127650224">(512) 765 0224</a>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <div class="detail-label">Location</div>
+            <div class="detail-value">
+              <address>Austin, Texas</address>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <div class="detail-label">Resume</div>
+            <div class="detail-value">
+              <a href="assets/Titus%20Loftin%20Resume.pdf" download>Download here</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-row" aria-label="Social links">
+          <a class="social-link" href="https://github.com/LoftinTitus" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a class="social-link" href="https://www.linkedin.com/in/titus-loftin-a71b442a8/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </aside>
+
+      <div class="page-stack">
+        <section class="page-intro panel" data-reveal>
+          <p class="section-label">Resume</p>
+          <h2 class="page-title">Resume</h2>
+        </section>
+
+        <div class="resume-grid">
+          <section class="timeline-panel panel" data-reveal>
+            <div class="section-heading">
+              <p class="section-label">Education</p>
+              <h3>Education</h3>
+            </div>
+
+            <div class="timeline-list">
+              <article class="timeline-item">
+                <h4 class="timeline-item-title">University of Texas at Austin</h4>
+                <span>Expected graduation: May 2027</span>
+                <ul class="timeline-text">
+                  <li>Bachelor of Science, Chemical Engineering</li>
+                  <li>Minors &amp; Certificates: Computer Science, Computational Engineering, Statistics and Data Science</li>
+                  <li>GPA: 3.7975/4.0000</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <section class="timeline-panel panel" data-reveal>
+            <div class="section-heading">
+              <p class="section-label">Experience</p>
+              <h3>Experience</h3>
+            </div>
+
+            <div class="timeline-list">
+              <article class="timeline-item">
+                <h4 class="timeline-item-title">Undergraduate Tutor</h4>
+                <span>August 2025 - Present</span>
+                <ul class="timeline-text">
+                  <li>Tutored for ChE 210, covering over 100 undergraduates</li>
+                  <li>Facilitated group and one-on-one sessions to strengthen conceptual understanding and proficiency</li>
+                </ul>
+              </article>
+
+              <article class="timeline-item">
+                <h4 class="timeline-item-title">Undergraduate Researcher</h4>
+                <span>Sept. 2024 - Present</span>
+                <ul class="timeline-text">
+                  <li>Developed a method of identifying heterogeneous soft materials by collecting 8 different types of strain data from 120 different materials, and using neural ODE fields for mechanical characterization</li>
+                  <li>Created an in-vitro setup to run mechanical tests on blood clots in the middle cerebral artery that measures pressure and flow conditions up to an accuracy of 0.1%</li>
+                </ul>
+              </article>
+
+              <article class="timeline-item">
+                <h4 class="timeline-item-title">Facilities Technical Intern</h4>
+                <span>June 2020 - August 2024</span>
+                <ul class="timeline-text">
+                  <li>Designed and built portable baptism tubs for use in the church, reducing potential costs by ~$2K if bought from a third party</li>
+                  <li>Decreased energy use by 15% by installing lighting fixtures throughout the facilities</li>
+                  <li>Installed a more efficient pond irrigation system to optimize water use by 8%</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <section class="timeline-panel timeline-panel-wide panel" data-reveal>
+            <div class="section-heading">
+              <p class="section-label">Leadership and Extracurriculars</p>
+              <h3>Leadership and Extracurriculars</h3>
+            </div>
+
+            <div class="timeline-list">
+              <article class="timeline-item">
+                <h4 class="timeline-item-title">Director and Founder - Undergraduate Advisory Board</h4>
+                <span>Fall 2024</span>
+                <p class="timeline-text">
+                  Founded a student organization to improve the CHE department. Recruited ~25% of the Chemical Engineering student body during the 2024-2025 school year. Created a central website and lesson plans for different courses in Chemical Engineering.
+                </p>
+              </article>
+
+              <article class="timeline-item">
+                <h4 class="timeline-item-title">Vice President, Corporate Relations - Tau Beta Pi</h4>
+                <span>Spring 2025</span>
+                <p class="timeline-text">
+                  Managed relationships with companies Blue Origin and Lockheed Martin, brought in corporate sponsors such as CDM Smith.
+                </p>
+              </article>
+
+              <article class="timeline-item">
+                <h4 class="timeline-item-title">General Member - Longhorn Developers</h4>
+                <span>Fall 2024</span>
+                <p class="timeline-text">
+                  Member for Longhorn Developers, a student organization at UT who works on different projects to improve some of the technology at the University. One of the notable projects is UT Registration Plus, a Chrome extension that has allowed 60,000 students to create their schedules.
+                </p>
+              </article>
+            </div>
+          </section>
+        </div>
+
+        <section class="skills-panel panel" data-reveal>
+          <div class="section-heading">
+            <p class="section-label">Skills</p>
+            <h3>Skills</h3>
+          </div>
+
+          <div class="skill-grid">
+            <article class="skill-card">
+              <h4>Web Development</h4>
+              <div class="skill-meter"><span></span></div>
+              <p>
+                HTML, CSS, JavaScript, TypeScript<br>
+                React, Node.js<br>
+                MySQL, Rust, Alpine.js
+              </p>
+            </article>
+
+            <article class="skill-card">
+              <h4>Machine Learning</h4>
+              <div class="skill-meter"><span></span></div>
+              <p>
+                Python, TensorFlow<br>
+                PyTorch, Scikit-learn
+              </p>
+            </article>
+
+            <article class="skill-card">
+              <h4>Scientific Computation</h4>
+              <div class="skill-meter"><span></span></div>
+              <p>
+                MATLAB<br>
+                Julia, C++
+              </p>
+            </article>
+
+            <article class="skill-card">
+              <h4>Design Tools</h4>
+              <div class="skill-meter"><span></span></div>
+              <p>
+                Fusion360<br>
+                SolidWorks
+              </p>
+            </article>
+
+            <article class="skill-card">
+              <h4>App Development</h4>
+              <div class="skill-meter"><span></span></div>
+              <p>
+                React Native,<br>
+                Swift
+              </p>
+            </article>
+
+            <article class="skill-card">
+              <h4>Manufacturing</h4>
+              <div class="skill-meter"><span></span></div>
+              <p>
+                3D Printing, CNC Machining<br>
+                Welding, Soldering
+              </p>
+            </article>
+
+            <article class="skill-card">
+              <h4>Analysis</h4>
+              <div class="skill-meter"><span></span></div>
+              <p>
+                Aspen, COMSOL<br>
+                OpenFOAM
+              </p>
+            </article>
+
+            <article class="skill-card">
+              <h4>Electronics</h4>
+              <div class="skill-meter"><span></span></div>
+              <p>
+                Arduino, Raspberry Pi<br>
+                KiCad, Fusion360 PCB Design<br>
+                LabView
+              </p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

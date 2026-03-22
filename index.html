@@ -1,261 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Titus Loftin</title>
-
-  <!--
-    - favicon
-  -->
-  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
-
-  <!--
-    - custom css link
-  -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!--
-    - google font link
-  -->
+  <title>About | Titus Loftin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <!--
-    - font awesome link
-  -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
+<body class="page page-about">
+  <main class="site-shell">
+    <header class="site-header panel" data-reveal>
+      <a class="brand" href="index.html" aria-label="Titus Loftin home">
+        <span class="brand-mark">TL</span>
+        <span class="brand-copy">
+          <strong>Titus Loftin</strong>
+          <span>Engineer</span>
+        </span>
+      </a>
 
-<body>
+      <nav class="site-nav" aria-label="Primary">
+        <a class="nav-link is-active" href="index.html">About</a>
+        <a class="nav-link" href="resume.html">Resume</a>
+        <a class="nav-link" href="portfolio.html">Portfolio</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </nav>
+    </header>
 
-  <main>
-
-    <!--
-      - #SIDEBAR
-    -->
-
-    <aside class="sidebar" data-sidebar>
-
-      <div class="sidebar-info">
-
-        <!--
-          - Profile Picture
-        -->
-        <figure class="profile-picture">
-          <img src="./assets/IMG_5622.jpeg" alt="Titus Loftin" width="80">
+    <div class="site-layout">
+      <aside class="profile-card panel" data-reveal>
+        <figure class="profile-photo">
+          <img src="./assets/IMG_5622.jpeg" alt="Titus Loftin portrait">
         </figure>
 
-        <!--
-          - Profile Information
-        -->
-        <div class="info-content">
-          <h1 class="name" title="Titus Loftin">Titus Loftin</h1>
-          <p class="title">Engineer</p>
+        <div>
+          <p class="profile-role">Engineer</p>
+          <h1 class="profile-name">Titus Loftin</h1>
         </div>
 
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
-
-      </div>
-
-      <div class="sidebar-info_more">
-
-        <div class="separator"></div>
-
-        <ul class="contacts-list">
-
-          <!-- Contact Items -->
-          <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
+        <div class="detail-list">
+          <div class="detail-item">
+            <div class="detail-label">Email</div>
+            <div class="detail-value">
+              <a href="mailto:loftintitus@utexas.edu">loftintitus@utexas.edu</a>
             </div>
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-              <a href="mailto:loftintitus@utexas.edu" class="contact-link">loftintitus@utexas.edu</a>
-            </div>
-          </li>
+          </div>
 
-          <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
+          <div class="detail-item">
+            <div class="detail-label">Phone</div>
+            <div class="detail-value">
+              <a href="tel:+15127650224">(512) 765 0224</a>
             </div>
-            <div class="contact-info">
-              <p class="contact-title">Phone</p>
-              <a href="tel:+5127650224" class="contact-link">(512) 765 0224</a>
-            </div>
-          </li>
+          </div>
 
-          <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
+          <div class="detail-item">
+            <div class="detail-label">Location</div>
+            <div class="detail-value">
               <address>Austin, Texas</address>
             </div>
-          </li>
+          </div>
 
-          <li class="contact-item">
-            <div class="icon-box">
-              <ion-icon name="document-outline"></ion-icon>
+          <div class="detail-item">
+            <div class="detail-label">Resume</div>
+            <div class="detail-value">
+              <a href="assets/Titus%20Loftin%20Resume.pdf" download>Download here</a>
             </div>
-            <div class="contact-info">
-              <p class="contact-title">Resume</p>
-              <p><a href="/assets/Titus Loftin Resume.pdf" download class="contact-link">Download here</a></p>
+          </div>
+        </div>
+
+        <div class="social-row" aria-label="Social links">
+          <a class="social-link" href="https://github.com/LoftinTitus" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a class="social-link" href="https://www.linkedin.com/in/titus-loftin-a71b442a8/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </aside>
+
+      <div class="page-stack">
+        <section class="hero panel" data-reveal>
+          <div class="hero-layout">
+            <div class="hero-copy">
+              <p class="section-label">About me</p>
+              <h2 class="display-title">About me</h2>
+              <p>
+                Hello! I am Titus Loftin, a student in the Department of Chemical Engineering at The University of Texas at Austin! I've always had a passion for creating things that improve the lives of the people around me. I plan to use engineering as a pathway to achieve this passion.
+              </p>
             </div>
-          </li>
 
-        </ul>
+            <div class="care-visual" aria-hidden="true">
+              <div class="care-orb care-orb-a"></div>
+              <div class="care-orb care-orb-b"></div>
+              <div class="care-card">
+                <div class="care-plus"></div>
+                <div class="care-wave"></div>
+                <div class="care-bars">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="care-chip">
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <div class="separator"></div>
+        <section class="panel" data-reveal>
+          <div class="section-heading">
+            <p class="section-label">Interests</p>
+            <h3>My interests</h3>
+          </div>
 
-        <ul class="social-list">
-          <!-- Links to professional websites -->
-          <li class="social-item">
-            <a href="https://github.com/LoftinTitus" class="social-link" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-github"></i>
-            </a>
-          </li>
+          <div class="interest-grid">
+            <article class="interest-card">
+              <div class="interest-icon">
+                <ion-icon name="analytics-outline"></ion-icon>
+              </div>
+              <h4>Data Science</h4>
+              <p>
+                Working with and manipulating Data to find answers. I've worked with tools like Pandas, Scipy, and Pytorch, and even built my own model from scratch.
+              </p>
+            </article>
 
-          <li class="social-item">
-            <a href="https://www.linkedin.com/in/titus-loftin-a71b442a8/" class="social-link" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-linkedin"></i>
-            </a>
-          </li>
+            <article class="interest-card">
+              <div class="interest-icon">
+                <ion-icon name="flask-outline"></ion-icon>
+              </div>
+              <h4>Computational Engineering</h4>
+              <p>
+                I’m passionate about applying computational methods to solve scientific problems. I enjoy working with tools like Julia and MATLAB to create solutions to real world problems.
+              </p>
+            </article>
 
-        </ul>
+            <article class="interest-card">
+              <div class="interest-icon">
+                <ion-icon name="code-slash-outline"></ion-icon>
+              </div>
+              <h4>Web Development</h4>
+              <p>
+                I work with modern web technologies like HTML, CSS, JavaScript, and frameworks such as React to create user-friendly digital experiences that help with daily tasks.
+              </p>
+            </article>
 
+            <article class="interest-card">
+              <div class="interest-icon">
+                <ion-icon name="construct-outline"></ion-icon>
+              </div>
+              <h4>Mechanical Design</h4>
+              <p>
+                I enjoy designing and building mechanical systems, using tools like SolidWorks to create useful technology in my daily life.
+              </p>
+            </article>
+          </div>
+        </section>
       </div>
-
-    </aside>
-
-
-    <div class="main-content">
-
-      <!--
-        - #NAVBAR
-      -->
-
-      <nav class="navbar">
-        <ul class="navbar-list">
-          <li class="navbar-item">
-            <a href="index.html" class="navbar-link active">About</a>
-          </li>
-          <li class="navbar-item">
-            <a href="resume.html" class="navbar-link">Resume</a>
-          </li>
-          <li class="navbar-item">
-            <a href="portfolio.html" class="navbar-link">Portfolio</a>
-          </li>
-          <li class="navbar-item">
-            <a href="contact.html" class="navbar-link">Contact</a>
-          </li>
-        </ul>
-      </nav>
-
-      <!--
-        - #ABOUT
-      -->
-
-      <article class="about active" data-page="about">
-        <header>
-          <h2 class="h2 article-title">About me</h2>
-        </header>
-
-        <section class="about-text">
-          <p>
-            Hello! I am Titus Loftin, a student in the Department 
-            of Chemical Engineering at The University of Texas at Austin! I've always
-            had a passion for creating things that improve the lives of the people around me.
-            I plan to use engineering as a pathway to achieve this passion.
-          </p>
-        </section>
-
-        <!--
-          - interests
-        -->
-
-        <section class="interests">
-
-          <h3 class="h3 interest-title">My interests</h3>
-
-          <ul class="interest-list">
-
-            <li class="interest-item">
-              <div class="interest-icon-box">
-              </div>
-              <div class="interest-content-box">
-                <h4 class="h4 interest-item-title">Data Science</h4>
-                <p class="interest-item-text">
-                  Working with and manipulating Data to find answers. I've worked
-                  with tools like Pandas, Scipy, and Pytorch, and even built my own model from scratch.
-                </p>
-              </div>
-            </li>
-
-            <li class="interest-item">
-              <div class="interest-icon-box">
-              </div>
-              <div class="interest-content-box">
-                <h4 class="h4 interest-item-title">Computational Engineering</h4>
-                <p class="interest-item-text">
-                  I’m passionate about applying computational methods to solve scientific problems.
-                  I enjoy working with tools like Julia and MATLAB to create solutions to real world problems.
-                </p>
-              </div>
-            </li>
-
-            <li class="interest-item">
-              <div class="interest-icon-box">
-              </div>
-              <div class="interest-content-box">
-                <h4 class="h4 interest-item-title">Web Development</h4>
-                <p class="interest-item-text">
-                  I work with modern web technologies like HTML, CSS, JavaScript, and frameworks such as
-                   React to create user-friendly digital experiences that help with daily tasks.
-                </p>
-              </div>
-            </li>
-
-            <li class="interest-item">
-              <div class="interest-icon-box">
-              </div>
-              <div class="interest-content-box">
-                <h4 class="h4 interest-item-title">Mechanical Design</h4>
-                <p class="interest-item-text">
-                  I enjoy designing and building mechanical systems, using tools
-                  like SolidWorks to create useful technology in my daily life.
-                </p>
-              </div>
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
     </div>
-
   </main>
 
-  <!--
-    - custom js link
-  -->
   <script src="script.js"></script>
-
-  <!--
-    - ionicon link
-  -->
-
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
 </body>
 </html>

@@ -1,319 +1,17 @@
-/**
- * =============================================================================
- * PERSONAL PORTFOLIO WEBSITE - MAIN JAVASCRIPT
- * =============================================================================
- * 
- * This file contains all the interactive functionality for the portfolio website
- * including navigation, modals, form handling, email integration, and animations.
- * 
- * Table of Contents:
- * 1. Initialization & Utilities
- * 2. Sidebar Navigation
- * 3. Testimonials Modal System
- * 4. Portfolio Filtering
- * 5. Page Navigation
- * 6. Contact Form & EmailJS Integration
- * 7. Meeting Scheduler
- * 8. Skills Animation
- * 9. Debug & Utilities
- * 
- * Dependencies:
- * - EmailJS for form submissions
- * - Font Awesome for icons
- * 
- * Author: Titus Loftin
- * Last Updated: July 2025
- */
-
 'use strict';
 
-/**
- * =============================================================================
- * 1. INITIALIZATION & UTILITIES
- * =============================================================================
- */
+const EMAILJS_PUBLIC_KEY = '73JM40BjXt8SRmZiy';
+const EMAILJS_SERVICE_ID = 'service_fw5vzhf';
+const EMAILJS_CONTACT_TEMPLATE = 'template_pdgep2i';
+const EMAILJS_MEETING_TEMPLATE = 'template_meeting';
 
-/**
- * Initialize EmailJS with public key for form submissions
- * This enables sending emails directly from the frontend
- */
-emailjs.init("73JM40BjXt8SRmZiy");
+const emailJsAvailable = typeof window !== 'undefined' && typeof window.emailjs !== 'undefined';
 
-/**
- * Universal element toggle function
- * Adds or removes the "active" class from any element
- * @param {Element} elem - The DOM element to toggle
- */
-const elementToggleFunc = function (elem) { 
-  elem.classList.toggle("active"); 
+if (emailJsAvailable) {
+  window.emailjs.init(EMAILJS_PUBLIC_KEY);
 }
 
-
-
-/**
- * =============================================================================
- * 2. SIDEBAR NAVIGATION
- * =============================================================================
- * 
- * Handles the collapsible sidebar functionality for mobile devices.
- * The sidebar contains profile information and contact details.
- */
-
-/**
- * Sidebar DOM elements
- * The sidebar can be expanded/collapsed on mobile for better UX
- */
-const sidebar = document.querySelector("[data-sidebar]");
-const sidebarBtn = document.querySelector("[data-sidebar-btn]");
-
-/**
- * Sidebar toggle functionality for mobile
- * Expands or collapses the sidebar when the button is clicked
- * Only initialize if elements exist (sidebar only exists on index.html)
- */
-if (sidebarBtn && sidebar) {
-  sidebarBtn.addEventListener("click", function () { 
-    elementToggleFunc(sidebar); 
-  });
-}
-
-
-
-/**
- * =============================================================================
- * 3. TESTIMONIALS MODAL SYSTEM
- * =============================================================================
- * 
- * Creates an interactive modal system for displaying testimonials in full detail.
- * Users can click on testimonial cards to see expanded content in a modal overlay.
- */
-
-/**
- * Testimonials and modal DOM elements
- * These elements work together to create the modal experience
- */
-const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
-const modalContainer = document.querySelector("[data-modal-container]");
-const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
-const overlay = document.querySelector("[data-overlay]");
-
-/**
- * Modal content elements that get populated with testimonial data
- */
-const modalImg = document.querySelector("[data-modal-img]");
-const modalTitle = document.querySelector("[data-modal-title]");
-const modalText = document.querySelector("[data-modal-text]");
-
-/**
- * Modal toggle function
- * Shows or hides the testimonial modal with overlay
- */
-const testimonialsModalFunc = function () {
-  if (modalContainer && overlay) {
-    modalContainer.classList.toggle("active");
-    overlay.classList.toggle("active");
-  }
-}
-
-/**
- * Add click event listeners to all testimonial items
- * When clicked, populate modal with testimonial data and show it
- * Only initialize if testimonials exist on the page
- */
-if (testimonialsItem.length > 0 && modalContainer && modalImg && modalTitle && modalText) {
-  for (let i = 0; i < testimonialsItem.length; i++) {
-    testimonialsItem[i].addEventListener("click", function () {
-      // Extract data from the clicked testimonial item
-      modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
-      modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-      modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
-      modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
-
-      // Show the modal
-      testimonialsModalFunc();
-    });
-  }
-}
-
-/**
- * Modal close functionality
- * Users can close the modal by clicking the close button or overlay
- */
-if (modalCloseBtn) {
-  modalCloseBtn.addEventListener("click", testimonialsModalFunc);
-}
-if (overlay) {
-  overlay.addEventListener("click", testimonialsModalFunc);
-}
-
-
-
-/**
- * =============================================================================
- * 4. PORTFOLIO FILTERING SYSTEM
- * =============================================================================
- * 
- * Implements a dual filtering system for portfolio projects:
- * - Mobile: Custom dropdown select
- * - Desktop: Button-based filter bar
- * Both systems filter projects by category (e.g., "all", "web design", "applications")
- */
-
-/**
- * Custom select dropdown elements (mobile)
- * Provides a styled dropdown for category selection on mobile devices
- */
-const select = document.querySelector("[data-select]");
-const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-select-value]");
-const filterBtn = document.querySelectorAll("[data-filter-btn]");
-
-/**
- * Toggle dropdown visibility when select is clicked
- * Only initialize if elements exist
- */
-if (select) {
-  select.addEventListener("click", function () { 
-    elementToggleFunc(this); 
-  });
-}
-
-/**
- * Handle dropdown item selection
- * Updates the displayed value and triggers filtering
- */
-if (selectItems.length > 0 && selectValue) {
-  for (let i = 0; i < selectItems.length; i++) {
-    selectItems[i].addEventListener("click", function () {
-      let selectedValue = this.innerText.toLowerCase();
-      selectValue.innerText = this.innerText;
-      if (select) {
-        elementToggleFunc(select); // Close dropdown
-      }
-      filterFunc(selectedValue); // Apply filter
-    });
-  }
-}
-
-/**
- * Portfolio filter elements
- * All portfolio items that can be filtered
- */
-const filterItems = document.querySelectorAll("[data-filter-item]");
-
-/**
- * Core filtering function
- * Shows/hides portfolio items based on selected category
- * @param {string} selectedValue - The category to filter by ("all", "web-design", etc.)
- */
-const filterFunc = function (selectedValue) {
-  for (let i = 0; i < filterItems.length; i++) {
-    if (selectedValue === "all") {
-      // Show all items when "all" is selected
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      // Show items that match the selected category
-      filterItems[i].classList.add("active");
-    } else {
-      // Hide items that don't match
-      filterItems[i].classList.remove("active");
-    }
-  }
-}
-
-/**
- * Desktop filter button functionality
- * Handles the button-based filtering system for larger screens
- */
-if (filterBtn.length > 0) {
-  let lastClickedBtn = filterBtn[0]; // Track the currently active button
-
-  for (let i = 0; i < filterBtn.length; i++) {
-    filterBtn[i].addEventListener("click", function () {
-      let selectedValue = this.innerText.toLowerCase();
-      if (selectValue) {
-        selectValue.innerText = this.innerText; // Update mobile dropdown display
-      }
-      filterFunc(selectedValue); // Apply filter
-
-      // Update active state for visual feedback
-      lastClickedBtn.classList.remove("active");
-      this.classList.add("active");
-      lastClickedBtn = this;
-    });
-  }
-}
-
-
-/**
- * =============================================================================
- * 5. PAGE NAVIGATION SYSTEM
- * =============================================================================
- * 
- * Handles single-page application navigation between different sections
- * (About, Resume, Portfolio, Blog, Contact). Updates both the visible content
- * and navigation states.
- */
-
-/**
- * Navigation elements
- * Links in the navbar and corresponding page sections
- */
-const navigationLinks = document.querySelectorAll("[data-nav-link]");
-const pages = document.querySelectorAll("[data-page]");
-
-/**
- * Page navigation functionality
- * Switches between different sections of the portfolio
- * Only initialize if navigation elements exist (single-page navigation)
- */
-if (navigationLinks.length > 0 && pages.length > 0) {
-  for (let i = 0; i < navigationLinks.length; i++) {
-    navigationLinks[i].addEventListener("click", function () {
-      // Loop through all pages and navigation links
-      for (let i = 0; i < pages.length; i++) {
-        if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-          // Show the selected page and highlight its nav link
-          pages[i].classList.add("active");
-          navigationLinks[i].classList.add("active");
-          window.scrollTo(0, 0); // Scroll to top when switching pages
-        } else {
-          // Hide other pages and remove active state from other nav links
-          pages[i].classList.remove("active");
-          navigationLinks[i].classList.remove("active");
-        }
-      }
-    });
-  }
-}
-
-/**
- * =============================================================================
- * 6. CONTACT FORM & EMAILJS INTEGRATION
- * =============================================================================
- * 
- * Handles the main contact form with EmailJS integration for sending emails
- * directly from the frontend. Includes form validation, submission handling,
- * and user feedback.
- */
-
-/**
- * Contact form elements
- * Form inputs, submit button, and the form itself
- */
-const form = document.querySelector("[data-form]");
-const formInputs = document.querySelectorAll("[data-form-input]");
-const formBtn = document.querySelector("[data-form-btn]");
-
-/**
- * Success message display function
- * Creates and shows a temporary success notification
- * @param {string} customMessage - Optional custom message to display
- */
-function showSuccessMessage(customMessage) {
-  const message = customMessage || 'Message sent successfully!';
-  
-  // Create success message element with checkmark
+function showSuccessMessage(message) {
   const successDiv = document.createElement('div');
   successDiv.className = 'success-message';
   successDiv.innerHTML = `
@@ -322,261 +20,206 @@ function showSuccessMessage(customMessage) {
     </div>
     <p>${message}</p>
   `;
-  
-  // Add to DOM and animate
+
   document.body.appendChild(successDiv);
-  
-  // Show with fade in effect
-  setTimeout(() => {
+
+  requestAnimationFrame(() => {
     successDiv.classList.add('show');
-  }, 10);
-  
-  // Auto-hide after delay
-  setTimeout(() => {
-    successDiv.classList.remove('show');
-    setTimeout(() => {
-      if (document.body.contains(successDiv)) {
-        document.body.removeChild(successDiv);
-      }
-    }, 300);
-  }, customMessage ? 4000 : 3000); // Longer display for custom messages
-}
-
-/**
- * Real-time form validation
- * Enables/disables submit button based on form validity
- * Only initialize if form elements exist
- */
-if (formInputs.length > 0 && formBtn && form) {
-  for (let i = 0; i < formInputs.length; i++) {
-    formInputs[i].addEventListener("input", function () {
-      // Check if all required fields are filled and valid
-      if (form.checkValidity()) {
-        formBtn.removeAttribute("disabled");
-      } else {
-        formBtn.setAttribute("disabled", "");
-      }
-    });
-  }
-}
-
-/**
- * Form submission handler with EmailJS
- * Sends form data via email and provides user feedback
- * Only initialize if form exists
- */
-if (form && formBtn) {
-  form.addEventListener('submit', function(e) {
-    e.preventDefault(); // Prevent default form submission
-    console.log('Form submission started');
-    
-    // Show loading state
-    formBtn.textContent = 'Sending...';
-    formBtn.setAttribute("disabled", "");
-    
-    // Prepare form data for EmailJS
-    const formData = new FormData(this);
-    const templateParams = {
-      from_name: formData.get('from_name'),
-      from_email: formData.get('from_email'),
-      message: formData.get('message')
-    };
-    
-    console.log('Template params:', templateParams);
-    
-    // Send email using EmailJS service
-    emailjs.send('service_fw5vzhf', 'template_pdgep2i', templateParams)
-      .then(function(response) {
-        console.log('EmailJS Success:', response);
-        console.log('About to show success message');
-        
-        // Show success confirmation
-        showSuccessMessage();
-        
-        // Reset form to initial state
-        form.reset();
-        formBtn.textContent = 'Send Message';
-        formBtn.removeAttribute("disabled");
-        
-      }, function(error) {
-        console.error('EmailJS Error:', error);
-        
-        // Show error state
-        formBtn.textContent = 'Failed to Send';
-        
-        // Reset button after delay
-        setTimeout(() => {
-          formBtn.textContent = 'Send Message';
-          if (form.checkValidity()) {
-            formBtn.removeAttribute("disabled");
-          }
-        }, 3000);
-      });
   });
+
+  window.setTimeout(() => {
+    successDiv.classList.remove('show');
+    window.setTimeout(() => {
+      if (successDiv.parentNode) {
+        successDiv.parentNode.removeChild(successDiv);
+      }
+    }, 220);
+  }, 3600);
 }
 
-/**
- * =============================================================================
- * 7. MEETING SCHEDULER SYSTEM
- * =============================================================================
- * 
- * Advanced meeting scheduling system that:
- * - Validates meeting details
- * - Sends email notifications via EmailJS
- * - Creates Google Calendar events
- * - Provides comprehensive user feedback
- */
+function observeRevealElements() {
+  const revealElements = document.querySelectorAll('[data-reveal]');
 
-/**
- * Meeting request function
- * Handles the complete meeting scheduling workflow
- */
-function requestMeeting() {
-    // Collect all meeting details from form inputs
-    const meetingType = document.getElementById('meeting-type').value;
-    const meetingDate = document.getElementById('meeting-date').value;
-    const meetingTime = document.getElementById('meeting-time').value;
-    const meetingEmail = document.getElementById('meeting-email').value;
-    const meetingName = document.getElementById('meeting-name').value;
-    const meetingMessage = document.getElementById('meeting-message').value || '';
-    
-    // Validate required fields
-    if (!meetingType || !meetingDate || !meetingTime || !meetingEmail || !meetingName) {
-        alert('Please fill in all required meeting details');
-        return;
-    }
-    
-    // Update button state to show loading
-    const meetingBtn = document.querySelector('.meeting-scheduler-section button');
-    const originalText = meetingBtn.textContent;
-    meetingBtn.textContent = 'Scheduling...';
-    meetingBtn.setAttribute("disabled", "");
-    
-    // Create meeting date/time objects
-    const startDateTime = new Date(`${meetingDate}T${meetingTime}`);
-    const endDateTime = new Date(startDateTime.getTime() + (60 * 60000)); // 1 hour duration
-    
-    /**
-     * Format date for Google Calendar URL
-     * Converts date to the required format: YYYYMMDDTHHMMSSZ
-     * @param {Date} date - Date object to format
-     * @returns {string} Formatted date string
-     */
-    const formatDate = (date) => {
-        return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-    };
-    
-    // Generate Google Calendar event URL with all meeting details
-    const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(meetingType + ' Meeting with ' + meetingName)}&dates=${formatDate(startDateTime)}/${formatDate(endDateTime)}&details=${encodeURIComponent('Meeting Type: ' + meetingType + '\nAttendee: ' + meetingName + ' (' + meetingEmail + ')\nMessage: ' + meetingMessage)}&add=${encodeURIComponent(meetingEmail)}`;
-    
-    // Prepare email template parameters for EmailJS
-    const templateParams = {
-        meeting_type: meetingType,
-        meeting_date: meetingDate,
-        meeting_time: meetingTime,
-        attendee_name: meetingName,
-        attendee_email: meetingEmail,
-        meeting_message: meetingMessage,
-        calendar_link: calendarUrl,
-        // Format date and time for better readability in email
-        formatted_date: startDateTime.toLocaleDateString('en-US', { 
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
-        }),
-        formatted_time: startDateTime.toLocaleTimeString('en-US', { 
-            hour: '2-digit', 
-            minute: '2-digit' 
-        })
-    };
-    
-    // Send meeting request email via EmailJS
-    emailjs.send('service_fw5vzhf', 'template_meeting', templateParams)
-        .then(function(response) {
-            console.log('Meeting email sent successfully:', response);
-            
-            // Open Google Calendar in new tab for event creation
-            window.open(calendarUrl, '_blank');
-            
-            // Show success message
-            showSuccessMessage('Meeting request sent! Google Calendar opened - please add the event.');
-            
-            // Reset all form fields
-            document.getElementById('meeting-type').value = '';
-            document.getElementById('meeting-date').value = '';
-            document.getElementById('meeting-time').value = '';
-            document.getElementById('meeting-email').value = '';
-            document.getElementById('meeting-name').value = '';
-            if (document.getElementById('meeting-message')) {
-                document.getElementById('meeting-message').value = '';
-            }
-            
-            // Reset button to original state
-            meetingBtn.textContent = originalText;
-            meetingBtn.removeAttribute("disabled");
-            
-        }, function(error) {
-            console.error('Failed to send meeting email:', error);
-            
-            // Even if email fails, still provide calendar functionality
-            window.open(calendarUrl, '_blank');
-            
-            // Show partial success message
-            showSuccessMessage('Google Calendar opened. Email notification may have failed - please mention this when we meet.');
-            
-            // Show error state temporarily
-            meetingBtn.textContent = 'Failed to Send Email';
-            setTimeout(() => {
-                meetingBtn.textContent = originalText;
-                meetingBtn.removeAttribute("disabled");
-            }, 3000);
-        });
-}
+  revealElements.forEach((element, index) => {
+    element.style.setProperty('--reveal-delay', `${index * 70}ms`);
+  });
 
-// Skills continuous sliding animation - SIMPLIFIED
-function initSkillsAnimation() {
-  const skillsList = document.querySelector('.skills-list');
-  
-  if (!skillsList) {
-    console.log('Skills list not found');
+  if (!('IntersectionObserver' in window)) {
+    revealElements.forEach((element) => element.classList.add('is-visible'));
     return;
   }
 
-  // Get all original skills
-  const originalSkills = skillsList.innerHTML;
-  
-  // Duplicate the skills for seamless loop
-  skillsList.innerHTML = originalSkills + originalSkills;
-  
-  console.log('Skills animation initialized');
+  const observer = new IntersectionObserver((entries, revealObserver) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      }
+
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  revealElements.forEach((element) => observer.observe(element));
 }
 
-// Initialize immediately when called
-document.addEventListener('DOMContentLoaded', function() {
-  // Wait a bit for the page to fully load
-  setTimeout(initSkillsAnimation, 500);
-});
+function buildMailtoLink(name, email, message) {
+  const subject = encodeURIComponent(`Portfolio message from ${name}`);
+  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+  return `mailto:loftintitus@utexas.edu?subject=${subject}&body=${body}`;
+}
 
-// Also try to initialize on window load as backup
-window.addEventListener('load', function() {
-  setTimeout(initSkillsAnimation, 100);
-});
+function initializeContactForm() {
+  const form = document.querySelector('[data-form]');
+  const button = document.querySelector('[data-form-btn]');
 
-console.log('=== BASIC DEBUG TEST ===');
-console.log('Current page:', window.location.href);
-console.log('Document ready state:', document.readyState);
-
-setTimeout(() => {
-  console.log('=== AFTER 2 SECONDS ===');
-  console.log('Skill section exists:', !!document.querySelector('.skill'));
-  console.log('Skills list exists:', !!document.querySelector('.skills-list'));
-  
-  const skillsList = document.querySelector('.skills-list');
-  if (skillsList) {
-    console.log('Skills list children:', skillsList.children.length);
-    console.log('Skills list scroll width:', skillsList.scrollWidth);
-    console.log('Skills list client width:', skillsList.clientWidth);
-    console.log('Can scroll horizontally:', skillsList.scrollWidth > skillsList.clientWidth);
+  if (!form || !button) {
+    return;
   }
-}, 2000);
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    const fromName = formData.get('from_name');
+    const fromEmail = formData.get('from_email');
+    const message = formData.get('message');
+
+    button.setAttribute('disabled', '');
+    button.textContent = 'Sending...';
+
+    if (!emailJsAvailable) {
+      window.location.href = buildMailtoLink(fromName, fromEmail, message);
+      button.textContent = 'Send Message';
+      button.removeAttribute('disabled');
+      return;
+    }
+
+    try {
+      await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CONTACT_TEMPLATE, {
+        from_name: fromName,
+        from_email: fromEmail,
+        message
+      });
+
+      form.reset();
+      showSuccessMessage('Message sent successfully!');
+    } catch (error) {
+      window.location.href = buildMailtoLink(fromName, fromEmail, message);
+      showSuccessMessage('Email client opened as a fallback.');
+    } finally {
+      button.textContent = 'Send Message';
+      button.removeAttribute('disabled');
+    }
+  });
+}
+
+function formatCalendarDate(date) {
+  return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+}
+
+function buildCalendarUrl(startDateTime, endDateTime, meetingName, meetingEmail, meetingMessage) {
+  const title = encodeURIComponent(`Meeting with ${meetingName}`);
+  const dates = `${formatCalendarDate(startDateTime)}/${formatCalendarDate(endDateTime)}`;
+  const details = encodeURIComponent(`Attendee: ${meetingName} (${meetingEmail})\nMessage: ${meetingMessage}`);
+  const add = encodeURIComponent(meetingEmail);
+
+  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&add=${add}`;
+}
+
+async function requestMeeting() {
+  const meetingDate = document.getElementById('meeting-date');
+  const meetingTime = document.getElementById('meeting-time');
+  const meetingEmail = document.getElementById('meeting-email');
+  const meetingName = document.getElementById('meeting-name');
+  const meetingMessage = document.getElementById('meeting-message');
+  const meetingButton = document.getElementById('meeting-submit');
+
+  if (!meetingDate || !meetingTime || !meetingEmail || !meetingName || !meetingButton) {
+    return;
+  }
+
+  if (!meetingDate.value || !meetingTime.value || !meetingEmail.value || !meetingName.value) {
+    showSuccessMessage('Please fill in all required meeting details.');
+    return;
+  }
+
+  const startDateTime = new Date(`${meetingDate.value}T${meetingTime.value}`);
+
+  if (Number.isNaN(startDateTime.getTime())) {
+    showSuccessMessage('Please choose a valid meeting date and time.');
+    return;
+  }
+
+  const endDateTime = new Date(startDateTime.getTime() + 60 * 60 * 1000);
+  const calendarUrl = buildCalendarUrl(
+    startDateTime,
+    endDateTime,
+    meetingName.value,
+    meetingEmail.value,
+    meetingMessage ? meetingMessage.value : ''
+  );
+
+  const originalText = meetingButton.textContent;
+  meetingButton.textContent = 'Scheduling...';
+  meetingButton.setAttribute('disabled', '');
+
+  const templateParams = {
+    meeting_type: 'Meeting',
+    meeting_date: meetingDate.value,
+    meeting_time: meetingTime.value,
+    attendee_name: meetingName.value,
+    attendee_email: meetingEmail.value,
+    meeting_message: meetingMessage ? meetingMessage.value : '',
+    calendar_link: calendarUrl,
+    formatted_date: startDateTime.toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }),
+    formatted_time: startDateTime.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit'
+    })
+  };
+
+  try {
+    if (emailJsAvailable) {
+      await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_MEETING_TEMPLATE, templateParams);
+      showSuccessMessage('Meeting request sent! Google Calendar opened for the event.');
+    } else {
+      showSuccessMessage('Google Calendar opened for your meeting request.');
+    }
+  } catch (error) {
+    showSuccessMessage('Google Calendar opened. Email notification may not have sent.');
+  } finally {
+    window.open(calendarUrl, '_blank', 'noopener,noreferrer');
+
+    const meetingForm = document.getElementById('meeting-form');
+    if (meetingForm) {
+      meetingForm.reset();
+    }
+
+    meetingButton.textContent = originalText;
+    meetingButton.removeAttribute('disabled');
+  }
+}
+
+function initializeMeetingForm() {
+  const meetingButton = document.getElementById('meeting-submit');
+
+  if (!meetingButton) {
+    return;
+  }
+
+  meetingButton.addEventListener('click', requestMeeting);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  observeRevealElements();
+  initializeContactForm();
+  initializeMeetingForm();
+});

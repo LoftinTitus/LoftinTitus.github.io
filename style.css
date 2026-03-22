@@ -1,2431 +1,1017 @@
-
 :root {
-
-  /**
-   * COLOR PALETTE
-   * Dark theme with orange accent colors\\
-   */
-
-  /* GRADIENT BACKGROUNDS 
-  
-  /* Primary gradient for cards and major components */
-  --bg-gradient-onyx: linear-gradient(
-    to bottom right, 
-    hsl(240, 1%, 25%) 3%, 
-    hsl(0, 0%, 19%) 97%
-  );
-  
-  /* Secondary gradient for subtle background elements */
-  --bg-gradient-jet: linear-gradient(
-    to bottom right,
-    hsla(240, 1%, 18%, 0.251) 0%, 
-    hsla(240, 2%, 11%, 0) 100%
-  ), hsl(240, 2%, 13%);
-  
-  /* Border gradient for card edges and dividers */
-  --border-gradient-onyx: linear-gradient(
-    to bottom right, 
-    hsl(0, 0%, 25%) 0%, 
-    hsla(0, 0%, 25%, 0) 50%
-  );
-
-  /* SOLID COLORS - Primary color palette */
-  
-  --jet: hsl(0, 0%, 22%);              /* Medium dark gray for borders */
-  --onyx: hsl(240, 1%, 17%);           /* Dark gray for secondary backgrounds */
-  --eerie-black-1: hsl(240, 2%, 13%);  /* Very dark gray for cards */
-  --eerie-black-2: hsl(240, 2%, 12%);  /* Darkest gray for main cards */
-  --smoky-black: hsl(0, 0%, 7%);       /* Almost black for main background */
-  --white-1: hsl(0, 0%, 100%);         /* Pure white for high contrast text */
-  --white-2: hsl(0, 0%, 98%);          /* Off-white for regular text */
-  --burnt_orange: hsl(30, 70%, 45%);   /* Primary accent color */
-  --light-gray: hsl(0, 0%, 84%);       /* Light gray for secondary text */
-  --light-gray-70: hsla(0, 0%, 84%, 0.7); /* Semi-transparent light gray */
-
-  /**
-   * TYPOGRAPHY SYSTEM
-   * Consistent font sizing and weights for hierarchical text design
-   */
-
-  /* FONT FAMILIES */
-  --ff-poppins: 'Poppins', sans-serif; /* Primary font - modern and readable */
-
-  /* FONT SIZES - Mobile-first approach, larger sizes in media queries */
-  --fs-1: 24px;  /* Large headings (h1) */
-  --fs-2: 18px;  /* Medium headings (h2) */
-  --fs-3: 17px;  /* Small headings (h3) */
-  --fs-4: 16px;  /* Large body text (h4) */
-  --fs-5: 15px;  /* Regular body text */
-  --fs-6: 14px;  /* Small body text */
-  --fs-7: 13px;  /* Fine print text */
-  --fs-8: 11px;  /* Tiny text (labels, captions) */
-
-  /* FONT WEIGHTS - Limited palette for consistency */
-  --fw-300: 300; /* Light weight for subtle text */
-  --fw-400: 400; /* Regular weight for body text */
-  --fw-500: 500; /* Medium weight for emphasis */
-  --fw-600: 600; /* Semi-bold for headings */
-
-  /**
-   * SHADOW SYSTEM
-   * Layered shadows for depth and modern card-based design
-   */
-  
-  --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);  /* Subtle card shadow */
-  --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.25);    /* Medium elevation */
-  --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.25);    /* Higher elevation */
-  --shadow-4: 0 25px 50px hsla(0, 0%, 0%, 0.15);    /* Modal shadows */
-  --shadow-5: 0 24px 80px hsla(0, 0%, 0%, 0.25);    /* Maximum elevation */
-
-  /**
-   * ANIMATION TIMING
-   * Consistent transition speeds for smooth interactions
-   */
-
-  --transition-1: 0.25s ease;       /* Fast transitions for hover effects */
-  --transition-2: 0.5s ease-in-out; /* Slower transitions for major changes */
-
+  --bg: #fff6f3;
+  --bg-soft: #fffdfb;
+  --panel: rgba(255, 255, 255, 0.82);
+  --panel-strong: rgba(255, 255, 255, 0.94);
+  --line: #edd1cd;
+  --line-strong: #e2b7b2;
+  --text: #31211f;
+  --muted: #6e5a57;
+  --accent: #c53a3b;
+  --accent-deep: #8f2225;
+  --accent-soft: #ffe7e3;
+  --shadow: 0 24px 70px rgba(119, 40, 39, 0.12);
+  --shadow-soft: 0 10px 30px rgba(119, 40, 39, 0.08);
+  --radius-xl: 30px;
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Manrope", "Segoe UI", sans-serif;
+  --transition: 220ms ease;
 }
 
-/**
- * =============================================================================
- * 2. RESET STYLES
- * =============================================================================
- * 
- * Modern CSS reset to ensure consistent rendering across all browsers
- * and remove default browser styling that might interfere with design
- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-/* Universal box-sizing and margin/padding reset */
-*, *::before, *::after {
+html {
+  scroll-behavior: smooth;
+}
+
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box; /* Include padding and border in element's total width/height */
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(197, 58, 59, 0.12), transparent 34%),
+    radial-gradient(circle at right 20%, rgba(240, 128, 111, 0.12), transparent 24%),
+    linear-gradient(180deg, #fff9f7 0%, #fff6f3 50%, #fffaf8 100%);
 }
 
-/* Remove default anchor styling for custom link designs */
-a { text-decoration: none; }
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: auto;
+  pointer-events: none;
+  z-index: -1;
+}
 
-/* Remove default list styling for custom list designs */
-li { list-style: none; }
+body::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(197, 58, 59, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197, 58, 59, 0.035) 1px, transparent 1px);
+  background-size: 120px 120px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent 80%);
+}
 
-/* Set all inline elements to block for easier styling */
-img, ion-icon, a, button, time, span { display: block; }
+body::after {
+  right: -120px;
+  bottom: -120px;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(197, 58, 59, 0.18) 0%, rgba(197, 58, 59, 0) 70%);
+}
 
-/* Reset button styling for custom button designs */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
 button {
-  font: inherit;           /* Inherit font from parent */
-  background: none;        /* Remove default background */
-  border: none;            /* Remove default border */
-  text-align: left;       /* Default text alignment */
-  cursor: pointer;        /* Show pointer cursor on hover */
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
 }
 
-/* Reset form input styling for custom designs */
-input, textarea {
-  display: block;         /* Full-width block elements */
-  width: 100%;           /* Take full width of container */
-  background: none;       /* Remove default background */
-  font: inherit;         /* Inherit font from parent */
+textarea {
+  resize: vertical;
 }
 
-/* Custom text selection colors to match theme */
-::selection {
-  background: var(--burnt_orange); /* Orange selection background */
-  color: var(--smoky-black);       /* Dark text for contrast */
+address {
+  font-style: normal;
 }
 
-/* Custom focus outline color */
-:focus { outline-color: var(--burnt_orange); }
-
-/* Set global font family and background */
-html { font-family: var(--ff-poppins); }
-body { background: var(--smoky-black); }
-
-
-
-
-
-/**
- * =============================================================================
- * 3. REUSED/UTILITY STYLES
- * =============================================================================
- * 
- * Common component styles used throughout the website for consistency
- * and to avoid code duplication
- */
-
-/* MAIN CARD CONTAINERS - Used for sidebar and article sections */
-.sidebar,
-article {
-  background: var(--eerie-black-2); /* Dark background */
-  border: 1px solid var(--jet);     /* Subtle border */
-  border-radius: 20px;              /* Rounded corners */
-  padding: 15px;                    /* Internal spacing */
-  box-shadow: var(--shadow-1);      /* Subtle elevation */
-  z-index: 1;                       /* Ensure proper stacking */
+ion-icon {
+  display: block;
 }
 
-/* VISUAL SEPARATOR - Horizontal divider lines */
-.separator {
-  width: 100%;                      /* Full width */
-  height: 1px;                      /* Thin line */
-  background: var(--jet);           /* Subtle gray color */
-  margin: 16px 0;                   /* Vertical spacing */
+.site-shell {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 20px 18px 48px;
 }
 
-/* ICON CONTAINERS - Stylized boxes for icons with gradient backgrounds */
-.icon-box {
-  position: relative;               /* For pseudo-element positioning */
-  background: linear-gradient(135deg, hsl(240, 1%, 25%) 0%, hsl(240, 2%, 15%) 100%);
-  width: 30px;                      /* Fixed size for consistency */
-  height: 30px;
-  border-radius: 8px;               /* Rounded corners */
-  display: flex;                    /* Center content */
-  justify-content: center;
+.panel {
+  position: relative;
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: linear-gradient(90deg, rgba(197, 58, 59, 0.2), rgba(197, 58, 59, 0.75), rgba(197, 58, 59, 0.15));
+}
+
+.site-header {
+  position: sticky;
+  top: 16px;
+  z-index: 10;
+  display: flex;
   align-items: center;
-  font-size: 16px;                  /* Icon size */
-  color: var(--burnt_orange);       /* Orange icons */
-  box-shadow: var(--shadow-1);      /* Subtle shadow */
-  z-index: 1;                       /* Proper layering */
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 22px;
+  margin-bottom: 20px;
 }
 
-/* Gradient overlay effect for icon boxes */
-.icon-box::before {
-  content: "";                      /* Empty pseudo-element */
-  position: absolute;               /* Positioned relative to parent */
-  inset: 1px;                       /* 1px inside the border */
-  background: linear-gradient(135deg, hsl(240, 1%, 20%) 0%, hsl(240, 2%, 12%) 100%);
-  border-radius: inherit;           /* Match parent border-radius */
-  z-index: -1;                      /* Behind the main content */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
 }
 
-/* Icon styling within icon boxes */
-.icon-box ion-icon { 
-  --ionicon-stroke-width: 35px;     /* Thicker icon strokes */
-  color: var(--burnt_orange);       /* Orange color */
-  font-size: 16px;                  /* Consistent size */
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, var(--accent), var(--accent-deep));
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.brand-copy {
+  display: grid;
+  gap: 2px;
 }
-
-.icon-box i {
-  color: var(--burnt_orange);       /* Orange color for Font Awesome icons */
-  font-size: 16px;                  /* Consistent size */
-}
-
-/* ARTICLE VISIBILITY SYSTEM - JavaScript-controlled content sections */
-article { display: none; }         /* Hide all articles by default */
-
-article.active {
-  display: block;                   /* Show active article */
-  animation: fade 0.5s ease backwards; /* Smooth fade-in animation */
-}
-
-/* Fade-in animation for article transitions */
-@keyframes fade {
-  0% { opacity: 0; }               /* Start transparent */
-  100% { opacity: 1; }             /* End fully visible */
-}
-
-/* TYPOGRAPHY HIERARCHY - Consistent heading styles */
-.h2,
-.h3,
-.h4,
-.h5 {
-  color: var(--white-2);            /* Light text color */
-  text-transform: capitalize;       /* Capitalize first letter of each word */
-}
-
-/* Font size assignments for heading hierarchy */
-.h2 { font-size: var(--fs-1); }    /* Largest headings */
-.h3 { font-size: var(--fs-2); }    /* Medium headings */
-.h4 { font-size: var(--fs-4); }    /* Small headings */
-.h5 {
-  font-size: var(--fs-7);          /* Smallest headings */
-  font-weight: var(--fw-500);       /* Medium weight for emphasis */
-}
-
-/* ARTICLE TITLE STYLING - Section headers with orange underline accent */
-.article-title {
-  position: relative;               /* For pseudo-element positioning */
-  padding-bottom: 7px;              /* Space for underline */
-}
-
-.article-title::after {
-  content: "";                      /* Empty pseudo-element */
-  position: absolute;               /* Positioned relative to title */
-  bottom: 0;                        /* At the bottom of title */
-  left: 0;                          /* Aligned to left */
-  width: 30px;                      /* Short accent line */
-  height: 3px;                      /* Thickness of line */
-  background: var(--burnt_orange);  /* Orange accent color */
-  border-radius: 3px;               /* Rounded ends */
-}
-
-/* CUSTOM SCROLLBAR STYLING - Matches theme colors */
-.has-scrollbar::-webkit-scrollbar {
-  width: 5px;                       /* Narrow scrollbar width */
-  height: 5px;                      /* Narrow scrollbar height */
-}
-
-.has-scrollbar::-webkit-scrollbar-track {
-  background: var(--onyx);          /* Dark track background */
-  border-radius: 5px;               /* Rounded track */
-}
-
-.has-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--burnt_orange);  /* Orange scrollbar handle */
-  border-radius: 5px;               /* Rounded handle */
-}
-
-.has-scrollbar::-webkit-scrollbar-button { width: 20px; } /* Scrollbar arrow space */
-
-/* CONTENT CARD COMPONENT - Reusable card design with gradient borders */
-.content-card {
-  position: relative;               /* For pseudo-element positioning */
-  background: var(--border-gradient-onyx); /* Gradient border effect */
-  padding: 15px;                    /* Internal spacing */
-  padding-top: 45px;                /* Extra top padding */
-  border-radius: 14px;              /* Rounded corners */
-  box-shadow: var(--shadow-2);      /* Medium elevation */
-  cursor: pointer;                  /* Indicate interactivity */
-  z-index: 1;                       /* Proper layering */
-}
-
-.content-card::before {
-  content: "";                      /* Empty pseudo-element */
-  position: absolute;               /* Positioned relative to card */
-  inset: 1px;                       /* 1px inside the border */
-  background: var(--bg-gradient-jet); /* Inner background gradient */
-  border-radius: inherit;           /* Match parent border-radius */
-  z-index: -1;                      /* Behind the main content */
-}
-
-/* FILTER BUTTON LINK STYLING - Consistent orange link colors */
-.filter-btn a:link,
-.filter-btn a:visited {
-  color: var(--burnt_orange);       /* Orange for unvisited and visited */
-}
-
-.filter-btn a:hover {
-  color: var(--burnt_orange);       /* Orange on hover */
-}
-
-.filter-btn a:active {
-  color: var(--burnt_orange);       /* Orange when active */
-}
-
-.filter-item a {
-  color: var(--burnt_orange);       /* Orange filter item links */
-}
-
-.filter-item a:hover {
-  color: var(--burnt_orange);       /* Orange on hover */
-}
-
-.filter-item a:link {
- color: var(--burnt_orange);        /* Orange for unvisited links */
-}
-
-
-/**
- * =============================================================================
- * 4. MAIN LAYOUT
- * =============================================================================
- * 
- * Primary layout container for the entire website content
- */
-
-/* Main content wrapper with responsive margins */
-main {
-  margin: 15px 12px;                /* Small margins for mobile */
-  margin-bottom: 75px;              /* Extra bottom space for fixed navbar */
-  min-width: 259px;                 /* Minimum width to prevent breaking */
-}
-
-
-
-
-
-/**
- * =============================================================================
- * 5. SIDEBAR COMPONENT
- * =============================================================================
- * 
- * Left sidebar containing profile information, contact details, and social links.
- * Features collapsible design for mobile devices.
- */
-
-/* SIDEBAR CONTAINER - Collapsible profile section */
-.sidebar {
-  margin-bottom: 15px;              /* Space below sidebar */
-  max-height: 112px;                /* Collapsed height on mobile */
-  overflow: hidden;                 /* Hide overflow content when collapsed */
-  transition: var(--transition-2);  /* Smooth expand/collapse animation */
-}
-
-.sidebar.active { max-height: 405px; } /* Expanded height */
-
-/* PROFILE INFO SECTION - Header area with profile picture and basic info */
-.sidebar-info {
-  position: relative;               /* For absolute positioning of button */
-  display: flex;                    /* Horizontal layout */
-  justify-content: flex-start;      /* Align to left */
-  align-items: center;              /* Vertical center alignment */
-  gap: 15px;                        /* Space between profile picture and text */
-}
-
-/* Profile picture container with gradient background */
-.profile-picture {
-  background: var(--bg-gradient-onyx); /* Gradient background */
-  border-radius: 20px;              /* Rounded corners */
-}
-
-/* NAME AND TITLE STYLING */
-.info-content .name {
-  color: var(--white-2);            /* Light text color */
-  font-size: var(--fs-3);           /* Medium-large font size */
-  font-weight: var(--fw-500);       /* Medium font weight */
-  letter-spacing: -0.25px;          /* Slight letter spacing adjustment */
-  margin-bottom: 10px;              /* Space below name */
-}
-
-.info-content .title {
-  color: var(--white-1);            /* White text */
-  background: var(--onyx);          /* Dark background */
-  font-size: var(--fs-8);           /* Small font size */
-  font-weight: var(--fw-300);       /* Light font weight */
-  width: max-content;               /* Width based on content */
-  padding: 3px 12px;                /* Compact padding */
-  border-radius: 8px;               /* Rounded corners */
+
+.brand-copy strong {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
 }
 
-/* EXPAND/COLLAPSE BUTTON - Mobile show more button */
-.info_more-btn {
-  position: absolute;               /* Positioned relative to sidebar-info */
-  top: -15px;                       /* Above the container */
-  right: -15px;                     /* To the right edge */
-  border-radius: 0 15px;            /* Rounded top-right corner only */
-  font-size: 13px;                  /* Small font size */
-  color: var(--burnt_orange);       /* Orange text */
-  background: var(--border-gradient-onyx); /* Gradient background */
-  padding: 10px;                    /* Internal spacing */
-  box-shadow: var(--shadow-2);      /* Medium shadow */
-  transition: var(--transition-1);  /* Smooth hover transition */
-  z-index: 1;                       /* Above other elements */
+.brand-copy span {
+  color: var(--muted);
+  font-size: 0.92rem;
 }
 
-.info_more-btn::before {
-  content: "";                      /* Empty pseudo-element */
-  position: absolute;               /* Positioned relative to button */
-  inset: 1px;                       /* 1px inside the border */
-  border-radius: inherit;           /* Match parent border-radius */
-  background: var(--bg-gradient-jet); /* Inner background */
-  transition: var(--transition-1);  /* Smooth transition */
-  z-index: -1;                      /* Behind button content */
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
-/* Button hover effects */
-.info_more-btn:hover,
-.info_more-btn:focus { background: var(--burnt_orange); } 
-
-.info_more-btn:hover::before,
-.info_more-btn:focus::before { background: var(--burnt_orange); }
-
-.info_more-btn span { display: none; } /* Hide text on mobile */
-
-/* COLLAPSIBLE CONTENT - Additional sidebar information */
-.sidebar-info_more {
-  opacity: 0;                       /* Hidden by default */
-  visibility: hidden;               /* Not interactive when hidden */
-  transition: var(--transition-2);  /* Smooth show/hide transition */
-}
-
-.sidebar.active .sidebar-info_more {
-  opacity: 1;                       /* Visible when sidebar expanded */
-  visibility: visible;              /* Interactive when visible */
-}
-
-/* CONTACT INFORMATION LIST */
-.contacts-list {
-  display: grid;                    /* Grid layout */
-  grid-template-columns: 1fr;       /* Single column on mobile */
-  gap: 16px;                        /* Space between contact items */
-}
-
-.contact-item {
-  min-width: 100%;                  /* Full width items */
-  display: flex;                    /* Horizontal layout */
-  align-items: center;              /* Vertical center alignment */
-  gap: 16px;                        /* Space between icon and text */
-}
-
-/* Contact item content styling */
-.contact-info {
-  max-width: calc(100% - 46px);     /* Account for icon width */
-  width: calc(100% - 46px);
-}
-
-.contact-title {
-  color: var(--light-gray-70);      /* Muted label color */
-  font-size: var(--fs-8);           /* Small label size */
-  text-transform: uppercase;        /* Uppercase labels */
-  margin-bottom: 2px;               /* Small space below label */
-}
-
-/* Contact links and text styling */
-.contact-info :is(.contact-link, time, address) {
-  color: var(--white-2);            /* Light text color */
-  font-size: var(--fs-7);           /* Small text size */
-  transition: color var(--transition-1); /* Smooth hover transition */
-}
-
-.contact-link:hover {
-  color: var(--burnt_orange);       /* Orange hover color */
-}
-
-.contact-info address { font-style: normal; } /* Remove italic from address */
-
-/* SOCIAL MEDIA LINKS */
-.social-list {
-  display: flex;                    /* Horizontal layout */
-  justify-content: flex-start;      /* Align to left */
-  align-items: center;              /* Vertical center alignment */
-  gap: 15px;                        /* Space between social icons */
-  padding-bottom: 4px;              /* Small bottom padding */
-  padding-left: 7px;                /* Small left padding */
-}
-
-.social-item .social-link {
-  color: var(--light-gray-70);      /* Muted icon color */
-  font-size: 18px;                  /* Medium icon size */
+.nav-link {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: color var(--transition), background var(--transition), border-color var(--transition), transform var(--transition);
 }
 
-.social-item .social-link:hover { 
-  color: var(--light-gray);         /* Brighter on hover */
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: var(--accent-deep);
+  background: rgba(255, 231, 227, 0.7);
+  border-color: var(--line);
 }
-
-
-
 
-
-/**
- * =============================================================================
- * 6. NAVIGATION
- * =============================================================================
- * 
- * Fixed bottom navigation for mobile devices with smooth transitions
- * and proper visual feedback for active states
- */
-
-/* NAVBAR CONTAINER - Fixed bottom navigation */
-.navbar {
-  position: fixed;                  /* Fixed to viewport */
-  bottom: 0;                        /* Stick to bottom */
-  left: 0;                          /* Full width from left */
-  width: 100%;                      /* Full viewport width */
-  background: hsla(240, 1%, 17%, 0.75); /* Semi-transparent dark background */
-  backdrop-filter: blur(10px);      /* Blur background for glass effect */
-  border: 1px solid var(--jet);     /* Subtle border */
-  border-radius: 12px 12px 0 0;     /* Rounded top corners only */
-  box-shadow: var(--shadow-2);      /* Elevated shadow */
-  z-index: 5;                       /* High z-index to stay on top */
+.nav-link.is-active {
+  color: var(--accent-deep);
+  background: var(--accent-soft);
+  border-color: var(--line-strong);
 }
 
-/* NAVBAR LIST - Horizontal navigation items */
-.navbar-list {
-  display: flex;                    /* Horizontal layout */
-  flex-wrap: wrap;                  /* Allow wrapping on small screens */
-  justify-content: center;          /* Center navigation items */
-  align-items: center;              /* Vertical center alignment */
-  padding: 0 10px;                  /* Horizontal padding */
+.site-layout {
+  display: grid;
+  gap: 20px;
 }
 
-/* NAVBAR LINKS - Individual navigation buttons */
-.navbar-link {
-  color: var(--light-gray);         /* Default text color */
-  font-size: var(--fs-8);           /* Small font size */
-  padding: 20px 7px;                /* Generous padding for touch targets */
-  transition: color var(--transition-1); /* Smooth color transition */
+.profile-card {
+  padding: 26px;
+  display: grid;
+  gap: 20px;
+  align-content: start;
 }
 
-/* Navbar link hover and focus states */
-.navbar-link:hover,
-.navbar-link:focus { 
-  color: var(--light-gray-70);      /* Slightly dimmed on hover */
+.profile-photo {
+  aspect-ratio: 1 / 1.08;
+  overflow: hidden;
+  border-radius: calc(var(--radius-xl) - 6px);
+  background: linear-gradient(180deg, #f9d7d1 0%, #f4bbb5 100%);
+  box-shadow: var(--shadow-soft);
 }
 
-/* Active navbar link styling */
-.navbar-link.active { 
-  color: var(--burnt_orange);       /* Orange for active page */
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-
-
 
+.profile-role,
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 
-
-/**
- * =============================================================================
- * 7. ABOUT SECTION
- * =============================================================================
- * 
- * Personal information, interests, testimonials, skills showcase, and 
- * animated components for the about page
- */
-
-/* ABOUT PAGE LAYOUT */
-.about .article-title { margin-bottom: 15px; } /* Space below section title */
-
-.about-text {
-  color: var(--light-gray);         /* Readable gray text */
-  font-size: var(--fs-6);           /* Medium text size */
-  font-weight: var(--fw-300);       /* Light font weight */
-  line-height: 1.6;                 /* Comfortable line spacing */
+.profile-name,
+.display-title,
+.page-title,
+.section-heading h3,
+.timeline-panel h3,
+.contact-panel h3,
+.project-body h3,
+.interest-card h4,
+.skill-card h4,
+.detail-value strong {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
 }
 
-.about-text p { margin-bottom: 15px; } /* Space between paragraphs */
+.profile-name {
+  font-size: clamp(2rem, 5vw, 2.7rem);
+  line-height: 1;
+}
+
+.detail-list {
+  display: grid;
+  gap: 14px;
+}
+
+.detail-item {
+  padding: 14px 16px;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 246, 243, 0.9));
+}
 
-/**
- * INTERESTS SECTION
- * Grid layout showcasing different areas of expertise
- */
-
-.interest { margin-bottom: 35px; } /* Section spacing */
-
-.interest-title { margin-bottom: 20px; } /* Title spacing */
-
-.interest-list {
-  display: grid;                    /* Grid layout */
-  grid-template-columns: 1fr;       /* Single column on mobile */
-  gap: 20px;                        /* Space between interest cards */
+.detail-label {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.interest-item {
-  position: relative;               /* For pseudo-element positioning */
-  background: var(--border-gradient-onyx); /* Gradient border effect */
-  padding: 20px;                    /* Internal spacing */
-  border-radius: 14px;              /* Rounded corners */
-  box-shadow: var(--shadow-2);      /* Card elevation */
-  z-index: 1;                       /* Proper layering */
+.detail-value {
+  margin-top: 6px;
+  color: var(--text);
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.6;
+  word-break: break-word;
 }
-
-.interest-item::before {
-  content: "";                      /* Empty pseudo-element */
-  position: absolute;               /* Positioned relative to card */
-  inset: 1px;                       /* 1px inside border */
-  background: var(--bg-gradient-jet); /* Inner background */
-  border-radius: inherit;           /* Match parent radius */
-  z-index: -1;                      /* Behind main content */
+
+.detail-value a {
+  transition: color var(--transition);
+}
+
+.detail-value a:hover,
+.detail-value a:focus-visible {
+  color: var(--accent);
+}
+
+.social-row {
+  display: flex;
+  gap: 12px;
 }
 
-.interest-icon-box { margin-bottom: 10px; } /* Space below icon */
+.social-link {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 1.1rem;
+  transition: transform var(--transition), background var(--transition), color var(--transition);
+}
 
-.interest-icon-box img { margin: auto; } /* Center icon images */
-
-.interest-content-box { text-align: center; } /* Center text content */
-
-.interest-item-title { margin-bottom: 7px; } /* Space below title */
-
-.interest-item-text {
-  color: var(--light-gray);         /* Readable text color */
-  font-size: var(--fs-6);           /* Medium text size */
-  font-weight: var(--fw-3);         /* Light font weight */
-  line-height: 1.6;                 /* Comfortable reading */
+.social-link:hover,
+.social-link:focus-visible {
+  transform: translateY(-2px);
+  background: var(--accent);
+  color: #fff;
+}
+
+.page-stack,
+.contact-stack,
+.resume-grid {
+  display: grid;
+  gap: 20px;
 }
+
+.hero,
+.page-intro,
+.timeline-panel,
+.skills-panel,
+.callout,
+.contact-panel,
+.project-card {
+  padding: 30px;
+}
+
+.page-title {
+  font-size: clamp(2.2rem, 4vw, 3.3rem);
+  line-height: 1.02;
+}
+
+.display-title {
+  font-size: clamp(2.3rem, 5vw, 4rem);
+  line-height: 0.98;
+  margin-bottom: 18px;
+  max-width: 10ch;
+}
+
+.lead,
+.hero p,
+.timeline-text,
+.interest-card p,
+.skill-card p,
+.project-body p,
+.contact-copy,
+.callout-copy {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.hero-layout {
+  display: grid;
+  gap: 24px;
+  align-items: center;
+}
 
-/**
- * TESTIMONIALS SECTION
- * Horizontal scrolling testimonials with modal support
- */
-
-.interests { margin-bottom: 30px; } /* Section spacing */
-
-.interests-title { margin-bottom: 20px; } /* Title spacing */
-
-.interests-list {
-  display: flex;                    /* Horizontal layout */
-  justify-content: flex-start;      /* Align to start */
-  align-items: flex-start;          /* Top align items */
-  gap: 15px;                        /* Space between testimonials */
-  margin: 0 -15px;                  /* Negative margin for full width */
-  padding: 25px 15px;               /* Internal padding */
-  padding-bottom: 35px;             /* Extra bottom space */
-  overflow-x: auto;                 /* Enable horizontal scrolling */
-  scroll-behavior: smooth;          /* Smooth scrolling animation */
-  overscroll-behavior-inline: contain; /* Contain scroll within element */
-  scroll-snap-type: inline mandatory; /* Snap scrolling behavior */
+.hero-copy {
+  max-width: 62ch;
 }
 
-.interests-item {
-  min-width: 100%;                  /* Full width items on mobile */
-  scroll-snap-align: center;        /* Center align when snapping */
+.care-visual {
+  position: relative;
+  min-height: 280px;
+  overflow: hidden;
+  border-radius: calc(var(--radius-xl) - 4px);
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(197, 58, 59, 0.18), transparent 30%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 241, 238, 0.96));
 }
 
-.interests-avatar-box {
-  position: absolute;               /* Positioned relative to item */
-  top: 0;                           /* Top edge */
-  left: 0;                          /* Left edge */
-  transform: translate(15px, -25px); /* Offset positioning */
-  background: var(--bg-gradient-onyx); /* Gradient background */
-  border-radius: 14px;              /* Rounded corners */
-  box-shadow: var(--shadow-1);      /* Subtle shadow */
+.care-visual::before {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  border-radius: 24px;
+  border: 1px solid rgba(197, 58, 59, 0.12);
 }
-
-.interests-item-title { margin-bottom: 7px; } /* Space below title */
 
-.interests-text {
-  color: var(--light-gray);         /* Readable text color */
-  font-size: var(--fs-6);           /* Medium text size */
-  font-weight: var(--fw-300);       /* Light font weight */
-  line-height: 1.6;                 /* Comfortable reading */
-  display: -webkit-box;             /* Enable text clamping */
-  line-clamp: 4;                    /* Limit to 4 lines */
-  -webkit-line-clamp: 4;            /* WebKit line clamping */
-  -webkit-box-orient: vertical;     /* Vertical text orientation */
-  overflow: hidden;                 /* Hide overflow text */
+.care-orb {
+  position: absolute;
+  border-radius: 50%;
 }
 
-/**
- * TESTIMONIALS MODAL
- * Full-screen modal for expanded testimonial viewing
- */
-
-.modal-container {
-  position: fixed;                  /* Fixed positioning */
-  top: 0;                           /* Full height from top */
-  left: 0;                          /* Full width from left */
-  width: 100%;                      /* Full viewport width */
-  height: 100%;                     /* Full viewport height */
-  display: flex;                    /* Flexbox for centering */
-  justify-content: center;          /* Center horizontally */
-  align-items: center;              /* Center vertically */
-  overflow-y: auto;                 /* Allow vertical scrolling */
-  overscroll-behavior: contain;     /* Contain scroll within modal */
-  z-index: 20;                      /* High z-index for overlay */
-  pointer-events: none;             /* Disable interactions when hidden */
-  visibility: hidden;               /* Hidden by default */
+.care-orb-a {
+  width: 160px;
+  height: 160px;
+  top: -38px;
+  right: -28px;
+  background: radial-gradient(circle, rgba(197, 58, 59, 0.28) 0%, rgba(197, 58, 59, 0) 72%);
 }
 
-.modal-container::-webkit-scrollbar { display: none; } /* Hide scrollbar */
-
-.modal-container.active {
-  pointer-events: all;              /* Enable interactions when active */
-  visibility: visible;              /* Make visible when active */
+.care-orb-b {
+  width: 110px;
+  height: 110px;
+  bottom: 20px;
+  left: 18px;
+  background: radial-gradient(circle, rgba(231, 122, 107, 0.22) 0%, rgba(231, 122, 107, 0) 70%);
 }
 
-.overlay {
-  position: fixed;                  /* Fixed background overlay */
-  top: 0;                           /* Full coverage from top */
-  left: 0;                          /* Full coverage from left */
-  width: 100%;                      /* Full viewport width */
-  height: 100vh;                    /* Full viewport height */
-  background: hsl(0, 0%, 5%);       /* Dark overlay background */
-  opacity: 0;                       /* Transparent by default */
-  visibility: hidden;               /* Hidden by default */
-  pointer-events: none;             /* No interactions when hidden */
-  z-index: 1;                       /* Behind modal content */
-  transition: var(--transition-1);  /* Smooth fade transition */
+.care-card {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  width: min(280px, calc(100% - 56px));
+  padding: 22px;
+  border-radius: 24px;
+  background: var(--panel-strong);
+  border: 1px solid rgba(197, 58, 59, 0.18);
+  box-shadow: var(--shadow-soft);
 }
 
-.overlay.active {
-  opacity: 0.8;                     /* Semi-transparent when active */
-  visibility: visible;              /* Visible when active */
-  pointer-events: all;              /* Enable interactions when active */
+.care-plus {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  background: var(--accent-soft);
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
 }
 
-.interests-modal {
-  background: var(--eerie-black-2); /* Dark modal background */
-  position: relative;               /* For absolute child positioning */
-  padding: 15px;                    /* Internal spacing */
-  margin: 15px 12px;                /* External margins */
-  border: 1px solid var(--jet);     /* Subtle border */
-  border-radius: 14px;              /* Rounded corners */
-  box-shadow: var(--shadow-5);      /* Maximum elevation */
-  transform: scale(1.2);            /* Start scaled up */
-  opacity: 0;                       /* Start transparent */
-  transition: var(--transition-1);  /* Smooth entrance */
-  z-index: 2;                       /* Above overlay */
+.care-plus::before,
+.care-plus::after {
+  content: "";
+  position: absolute;
+  background: var(--accent);
+  border-radius: 999px;
 }
 
-.modal-container.active .interests-modal {
-  transform: scale(1);              /* Normal scale when active */
-  opacity: 1;                       /* Fully visible when active */
+.care-plus::before {
+  width: 22px;
+  height: 4px;
 }
 
-.modal-close-btn {
-  position: absolute;               /* Positioned relative to modal */
-  top: 15px;                        /* Top spacing */
-  right: 15px;                      /* Right spacing */
-  background: var(--onyx);          /* Dark background */
-  border-radius: 8px;               /* Rounded corners */
-  width: 32px;                      /* Fixed width */
-  height: 32px;                     /* Fixed height */
-  display: flex;                    /* Center icon */
-  justify-content: center;          /* Center horizontally */
-  align-items: center;              /* Center vertically */
-  color: var(--white-2);            /* Light icon color */
-  font-size: 18px;                  /* Medium icon size */
-  opacity: 0.7;                     /* Semi-transparent by default */
+.care-plus::after {
+  width: 4px;
+  height: 22px;
 }
-
-.modal-close-btn:hover,
-.modal-close-btn:focus { opacity: 1; } /* Fully opaque on hover */
 
-.modal-close-btn ion-icon { --ionicon-stroke-width: 50px; } /* Thick stroke */
-
-.modal-avatar-box {
-  background: var(--bg-gradient-onyx); /* Gradient background */
-  width: max-content;               /* Width based on content */
-  border-radius: 14px;              /* Rounded corners */
-  margin-bottom: 15px;              /* Space below avatar */
-  box-shadow: var(--shadow-2);      /* Medium shadow */
+.care-wave {
+  height: 60px;
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 243, 240, 0.9), rgba(255, 255, 255, 0.9)),
+    center / cover no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 64'%3E%3Cpath d='M0 34h50l16-20 24 38 24-30 18 12 22-18 18 18h148' fill='none' stroke='%23c53a3b' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  border: 1px solid rgba(197, 58, 59, 0.1);
 }
-
-.modal-img-wrapper > img { display: none; } /* Hide wrapper images */
 
-.modal-title { margin-bottom: 4px; } /* Small space below title */
-
-.modal-content time {
-  font-size: var(--fs-6);           /* Medium text size */
-  color: var(--light-gray-70);      /* Muted text color */
-  font-weight: var(--fw-300);       /* Light font weight */
-  margin-bottom: 10px;              /* Space below timestamp */
+.care-bars {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
 }
 
-.modal-content p {
-  color: var(--light-gray);         /* Readable text color */
-  font-size: var(--fs-6);           /* Medium text size */
-  font-weight: var(--fw-300);       /* Light font weight */
-  line-height: 1.6;                 /* Comfortable reading */
+.care-bars span {
+  display: block;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(197, 58, 59, 0.8), rgba(197, 58, 59, 0.2));
 }
-
-/**
- * SKILLS SHOWCASE
- * Animated horizontal scrolling skills display
- */
 
-.skills { 
-  margin-bottom: 15px;              /* Section spacing */
-  position: relative;               /* For pseudo-element positioning */
-  overflow: hidden;                 /* Hide overflow for animation */
-  width: 100%;                      /* Full width container */
+.care-bars span:nth-child(1) {
+  width: 84%;
 }
 
-.skills-list {
-  display: flex;                    /* Horizontal layout */
-  gap: 20px;                        /* Space between skill cards */
-  padding: 25px 0;                  /* Vertical padding */
-  width: max-content;               /* Width based on content */
-  animation: slideSkills 32s linear infinite; /* Continuous slide animation */
+.care-bars span:nth-child(2) {
+  width: 66%;
 }
 
-.skills-list:hover {
-  animation-play-state: paused;     /* Pause animation on hover */
+.care-bars span:nth-child(3) {
+  width: 92%;
 }
 
-.skills-item {
-  flex-shrink: 0;                   /* Prevent shrinking */
-  width: 200px;                     /* Fixed width for consistency */
-  max-width: 250px;                 /* Maximum width constraint */
-  min-width: 200px;                 /* Minimum width constraint */
-  background: var(--border-gradient-onyx); /* Gradient border */
-  padding: 10px 15px;               /* Internal spacing */
-  border-radius: 14px;              /* Rounded corners */
-  box-shadow: var(--shadow-2);      /* Card elevation */
-  position: relative;               /* For pseudo-element */
-  margin-bottom: 10px;              /* Bottom spacing */
+.care-chip {
+  position: absolute;
+  left: 28px;
+  bottom: 28px;
+  width: 150px;
+  padding: 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(197, 58, 59, 0.18);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--shadow-soft);
 }
 
-.skills-item::before {
-  content: "";                      /* Empty pseudo-element */
-  position: absolute;               /* Positioned relative to card */
-  inset: 1px;                       /* 1px inside border */
-  background: var(--bg-gradient-jet); /* Inner background */
-  border-radius: inherit;           /* Match parent radius */
-  z-index: -1;                      /* Behind main content */
+.care-chip span {
+  display: block;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(197, 58, 59, 0.16), rgba(197, 58, 59, 0.55));
 }
 
-/* Continuous sliding animation for skills */
-@keyframes slideSkills {
-  0% {
-    transform: translateX(0);       /* Start position */
-  }
-  100% {
-    transform: translateX(-50%);    /* End position (loop) */
-  }
+.care-chip span + span {
+  margin-top: 10px;
 }
 
-/* Fade edges for skills section */
-.skills::before
-.skills::after {
-  content: "";                      /* Empty pseudo-elements */
-  position: absolute;               /* Fixed positioning */
-  top: 0;                           /* Full height from top */
-  bottom: 0;                        /* Full height to bottom */
-  width: 30px;                      /* Fade width */
-  pointer-events: none;             /* No interaction blocking */
-  z-index: 2;                       /* Above skill cards */
+.section-heading {
+  margin-bottom: 18px;
 }
 
-.skills-item .title-wrapper {
-  display: flex;                    /* Horizontal layout */
-  align-items: center;              /* Vertical center alignment */
-  gap: 10px;                        /* Space between elements */
-  margin-bottom: 8px;               /* Reduced spacing */
+.section-heading h3 {
+  font-size: clamp(1.7rem, 2vw, 2.1rem);
+  line-height: 1.05;
+  margin-top: 12px;
 }
 
-.skill-progress-bg {
-  background: var(--jet);           /* Dark progress background */
-  width: 100%;                      /* Full width */
-  height: 6px;                      /* Thin progress bar */
-  border-radius: 10px;              /* Rounded edges */
-  margin-bottom: 8px;               /* Reduced spacing */
+.interest-grid,
+.skill-grid,
+.portfolio-grid {
+  display: grid;
+  gap: 18px;
 }
 
-.skill-progress-fill {
-  background: var(--burnt_orange);  /* Orange progress fill */
-  height: 100%;                     /* Full height of background */
-  border-radius: inherit;           /* Match background radius */
+.interest-card,
+.skill-card {
+  padding: 24px;
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 246, 243, 0.84));
+  box-shadow: var(--shadow-soft);
 }
 
-.skill-description {
-  color: var(--light-gray);         /* Readable text color */
-  line-height: 1.4;                 /* Tight line spacing for cards */
-  word-wrap: break-word;            /* Handle long words */
-  white-space: normal;              /* Allow text wrapping */
-  max-width: 100%;                  /* Constrain to container */
-  font-size: var(--fs-7);           /* Smaller font for descriptions */
+.interest-icon {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 18px;
+  margin-bottom: 18px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 1.45rem;
 }
-
-
-
-
-
-/**
- * =============================================================================
- * 8. RESUME SECTION
- * =============================================================================
- * 
- * Professional timeline layout for education and experience,
- * plus skills display with progress indicators
- */
-
-.article-title { margin-bottom: 30px; } /* Standard title spacing */
-
-/**
- * EDUCATION AND EXPERIENCE TIMELINE
- * Vertical timeline with connecting lines and bullet points
- */
-
-.timeline { margin-bottom: 30px; } /* Section spacing */
 
-.timeline .title-wrapper {
-  display: flex;                    /* Horizontal layout */
-  align-items: center;              /* Vertical center alignment */
-  gap: 15px;                        /* Space between icon and title */
-  margin-bottom: 25px;              /* Space below section header */
+.interest-card h4,
+.skill-card h4 {
+  font-size: 1.22rem;
+  line-height: 1.1;
+  margin-bottom: 12px;
 }
 
 .timeline-list {
-  font-size: var(--fs-6);           /* Medium text size */
-  margin-left: 45px;                /* Indent for timeline line */
+  display: grid;
+  gap: 22px;
 }
 
-.timeline-item { position: relative; } /* For timeline line positioning */
+.timeline-item {
+  position: relative;
+  padding-left: 28px;
+}
 
-.timeline-item:not(:last-child) { margin-bottom: 20px; } /* Space between items */
+.timeline-item:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: 6px;
+  width: 1px;
+  height: calc(100% + 22px);
+  background: linear-gradient(180deg, rgba(197, 58, 59, 0.26), rgba(197, 58, 59, 0.06));
+}
+
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 0;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 5px rgba(197, 58, 59, 0.12);
+}
 
 .timeline-item-title {
-  font-size: var(--fs-6);           /* Medium title size */
-  line-height: 1.3;                 /* Tight line spacing */
-  margin-bottom: 7px;               /* Space below title */
-  text-transform: none;             /* Keep original casing */
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1.15;
 }
 
-.timeline-list span {
-  color: var(--burnt_orange);       /* Orange accent for dates/locations */
-  font-weight: var(--fw-400);       /* Regular font weight */
-  line-height: 1.6;                 /* Comfortable reading */
+.timeline-item span {
+  display: inline-flex;
+  margin: 10px 0 12px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+  font-size: 0.88rem;
+  font-weight: 800;
 }
 
-/* Vertical timeline connecting line */
-.timeline-item:not(:last-child)::before {
-  content: "";                      /* Empty pseudo-element */
-  position: absolute;               /* Positioned relative to item */
-  top: -25px;                       /* Start above item */
-  left: -30px;                      /* Position on timeline */
-  width: 1px;                       /* Thin line */
-  height: calc(100% + 50px);        /* Connect to next item */
-  background: var(--jet);           /* Subtle line color */
+.timeline-item ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.8;
 }
 
-/* Timeline bullet points */
-.timeline-item::after {
-  content: "";                      /* Empty pseudo-element */
-  position: absolute;               /* Positioned relative to item */
-  top: 5px;                         /* Align with title */
-  left: -33px;                      /* Position on timeline */
-  height: 6px;                      /* Small circle */
-  width: 6px;
-  background: var(--burnt_orange);  /* Orange bullet */
-  border-radius: 50%;               /* Make circular */
-  box-shadow: 0 0 0 4px var(--jet); /* Ring around bullet */
+.timeline-item li + li {
+  margin-top: 8px;
 }
 
-.timeline-text {
-  color: var(--light-gray);         /* Readable text color */
-  font-weight: var(--fw-300);       /* Light font weight */
-  line-height: 1.6;                 /* Comfortable reading */
+.skills-panel .section-heading {
+  margin-bottom: 20px;
 }
 
-.timeline-text ul {
-  margin-left: 20px;                /* Indent bullet lists */
-  margin-top: 10px;                 /* Space above list */
+.skill-meter {
+  height: 8px;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  background: rgba(197, 58, 59, 0.12);
 }
 
-.timeline-text li {
-  margin-bottom: 8px;               /* Space between list items */
-  list-style-type: disc;            /* Bullet points */
-  list-style-position: inside;      /* Bullets inside text flow */
+.skill-meter span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent) 0%, rgba(197, 58, 59, 0.45) 100%);
 }
 
-/**
- * SKILLS SECTION
- * Progress bars showing proficiency levels
- */
-
-.skills-title { margin-bottom: 20px; } /* Title spacing */
-
-.skills-list { padding: 20px; } /* Container padding */
-
-.skills-item:not(:last-child) { margin-bottom: 15px; } /* Space between skills */
-
-.skill .title-wrapper {
-  display: flex;                    /* Horizontal layout */
-  align-items: center;              /* Vertical center alignment */
-  gap: 5px;                         /* Small space between elements */
-  margin-bottom: 8px;               /* Space below header */
+.callout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
-.skill .title-wrapper data {
-  color: var(--light-gray);         /* Muted percentage color */
-  font-size: var(--fs-7);           /* Small text size */
-  font-weight: var(--fw-300);       /* Light font weight */
+.callout-copy {
+  font-size: 1.02rem;
 }
 
-.skill-description {
-  color: var(--light-gray);         /* Readable text color */
-  line-height: 1.6;                 /* Comfortable reading */
-  word-wrap: break-word;            /* Handle long words */
-  white-space: normal;              /* Allow text wrapping */
-  max-width: 100%;                  /* Constrain to container */
+.pill-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  color: #fff;
+  font-weight: 800;
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
-.skill-progress-bg {
-  background: var(--jet);           /* Dark progress background */
-  width: 100%;                      /* Full width */
-  height: 8px;                      /* Standard progress bar height */
-  border-radius: 10px;              /* Rounded edges */
+.pill-link:hover,
+.pill-link:focus-visible,
+.form-btn:hover,
+.form-btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px rgba(143, 34, 37, 0.18);
 }
 
-.skill-progress-fill {
-  background: var(--burnt_orange);  /* Orange progress fill */
-  height: 100%;                     /* Full height of background */
-  border-radius: inherit;           /* Match background radius */
+.project-card {
+  padding: 0;
 }
 
-
-
-
-
-/**
- * =============================================================================
- * 9. PORTFOLIO SECTION
- * =============================================================================
- * 
- * Project showcase with filtering system, hover effects, and responsive grid layout
- */
-
-/* Hide desktop filter list on mobile */
-.filter-list { display: none; }
-
-/**
- * MOBILE FILTER DROPDOWN
- * Custom styled select dropdown for project filtering on mobile devices
- */
-
-.filter-select-box {
-  position: relative;               /* For dropdown positioning */
-  margin-bottom: 25px;              /* Space below filter */
+.project-card a,
+.project-card .project-static {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
-.filter-select {
-  background: var(--eerie-black-2); /* Dark background */
-  color: var(--light-gray);         /* Light text */
-  display: flex;                    /* Horizontal layout */
-  justify-content: space-between;   /* Space between text and icon */
-  align-items: center;              /* Vertical center alignment */
-  width: 100%;                      /* Full width */
-  padding: 12px 16px;               /* Internal spacing */
-  border: 1px solid var(--jet);     /* Subtle border */
-  border-radius: 14px;              /* Rounded corners */
-  font-size: var(--fs-6);           /* Medium text size */
-  font-weight: var(--fw-300);       /* Light font weight */
+.project-media {
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(145deg, rgba(255, 241, 238, 0.96), rgba(255, 255, 255, 0.94));
 }
 
-.filter-select.active .select-icon { 
-  transform: rotate(0.5turn);       /* Rotate arrow when dropdown open */
+.project-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 320ms ease;
 }
 
-.select-list {
-  background: var(--eerie-black-2); /* Dark dropdown background */
-  position: absolute;               /* Positioned relative to select box */
-  top: calc(100% + 6px);            /* Below the select button */
-  width: 100%;                      /* Match select width */
-  padding: 6px;                     /* Internal spacing */
-  border: 1px solid var(--jet);     /* Subtle border */
-  border-radius: 14px;              /* Rounded corners */
-  z-index: 2;                       /* Above other content */
-  opacity: 0;                       /* Hidden by default */
-  visibility: hidden;               /* Not interactive when hidden */
-  pointer-events: none;             /* Disable interactions when hidden */
-  transition: 0.15s ease-in-out;    /* Quick show/hide animation */
+.project-card:hover .project-media img,
+.project-card:focus-within .project-media img {
+  transform: scale(1.05);
 }
 
-.filter-select.active + .select-list {
-  opacity: 1;                       /* Visible when dropdown active */
-  visibility: visible;              /* Interactive when dropdown active */
-  pointer-events: all;              /* Enable interactions when active */
+.project-placeholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(197, 58, 59, 0.18), transparent 28%),
+    linear-gradient(145deg, rgba(255, 245, 242, 0.95), rgba(255, 255, 255, 0.98));
+  color: var(--accent-deep);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3rem);
+  letter-spacing: 0.12em;
 }
 
-.select-item button {
-  background: var(--eerie-black-2); /* Dark button background */
-  color: var(--light-gray);         /* Light text */
-  font-size: var(--fs-6);           /* Medium text size */
-  font-weight: var(--fw-300);       /* Light font weight */
-  text-transform: capitalize;       /* Capitalize first letter */
-  width: 100%;                      /* Full width buttons */
-  padding: 8px 10px;                /* Internal spacing */
-  border-radius: 8px;               /* Rounded corners */
+.project-body {
+  padding: 24px;
 }
 
-.select-item button:hover { 
-  --eerie-black-2: hsl(240, 2%, 20%); /* Lighter background on hover */
+.project-body h3 {
+  font-size: 1.34rem;
+  line-height: 1.05;
+  margin-bottom: 10px;
 }
 
-/**
- * PROJECT GRID LAYOUT
- * Responsive grid system with show/hide animations
- */
-
-.project-list {
-  display: grid;                    /* Grid layout */
-  grid-template-columns: 1fr;       /* Single column on mobile */
-  gap: 30px;                        /* Space between project cards */
-  margin-bottom: 10px;              /* Space below grid */
+.contact-grid {
+  display: grid;
+  gap: 20px;
 }
 
-.project-item { display: none; }   /* Hide all projects by default */
-
-.project-item.active {
-  display: block;                   /* Show filtered projects */
-  animation: scaleUp 0.25s ease forwards; /* Scale-in animation */
+.contact-panel h3 {
+  font-size: 1.9rem;
+  line-height: 1.05;
+  margin-top: 12px;
+  margin-bottom: 18px;
 }
 
-@keyframes scaleUp {
-  0% { transform: scale(0.5); }     /* Start small */
-  100% { transform: scale(1); }     /* End at normal size */
+.contact-detail-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
 }
 
-.project-item > a { width: 100%; } /* Full width project links */
-
-/**
- * PROJECT CARD STYLING
- * Individual project cards with hover effects and overlay icons
- */
-
-.project-img {
-  position: relative;               /* For overlay positioning */
-  width: 100%;                      /* Full width images */
-  height: 200px;                    /* Fixed height for consistency */
-  border-radius: 16px;              /* Rounded corners */
-  overflow: hidden;                 /* Hide overflow for hover effects */
-  margin-bottom: 15px;              /* Space below image */
-}
-
-.project-img::before {
-  content: "";                      /* Empty pseudo-element */
-  position: absolute;               /* Cover entire image */
-  top: 0;                           /* Full coverage from top */
-  left: 0;                          /* Full coverage from left */
-  width: 100%;                      /* Full width coverage */
-  height: 100%;                     /* Full height coverage */
-  background: transparent;          /* Transparent by default */
-  z-index: 1;                       /* Above image, below icon */
-  transition: var(--transition-1);  /* Smooth background transition */
-}
-
-.project-item > a:hover .project-img::before { 
-  background: hsla(0, 0%, 0%, 0.5); /* Dark overlay on hover */
-}
-
-.project-item-icon-box {
-  --scale: 0.8;                     /* Starting scale for animation */
-  background: var(--jet);           /* Dark icon background */
-  color: var(--burnt_orange);       /* Orange icon color */
-  position: absolute;               /* Centered on image */
-  top: 50%;                         /* Vertical center */
-  left: 50%;                        /* Horizontal center */
-  transform: translate(-50%, -50%) scale(var(--scale)); /* Center and scale */
-  font-size: 20px;                  /* Large icon size */
-  padding: 18px;                    /* Icon padding */
-  border-radius: 12px;              /* Rounded icon box */
-  opacity: 0;                       /* Hidden by default */
-  z-index: 1;                       /* Above overlay */
-  transition: var(--transition-1);  /* Smooth show/hide transition */
-}
-
-.project-item > a:hover .project-item-icon-box {
-  --scale: 1;                       /* Full scale on hover */
-  opacity: 1;                       /* Visible on hover */
-}
-
-.project-item-icon-box ion-icon { 
-  --ionicon-stroke-width: 50px;     /* Thick icon strokes */
-}
-
-.project-img img {
-  width: 100%;                      /* Full width images */
-  height: 100%;                     /* Full height images */
-  object-fit: cover;                /* Crop to fit container */
-  transition: var(--transition-1);  /* Smooth scale transition */
-}
-
-.project-item > a:hover img { 
-  transform: scale(1.1);            /* Slight zoom on hover */
-}
-
-/**
- * PROJECT INFORMATION
- * Title and category styling below project images
- */
-
-.project-title,
-.project-category { margin-left: 10px; } /* Indent from image edge */
-
-.project-title {
-  color: var(--white-2);            /* Light title color */
-  font-size: var(--fs-5);           /* Medium title size */
-  font-weight: var(--fw-400);       /* Regular font weight */
-  text-transform: capitalize;       /* Capitalize titles */
-  line-height: 1.3;                 /* Tight line spacing */
-}
-
-.project-category {
-  color: var(--light-gray-70);      /* Muted category color */
-  font-size: var(--fs-6);           /* Small category size */
-  font-weight: var(--fw-300);       /* Light font weight */
-}
-
-
-
-
-
-/**
- * =============================================================================
- * 10. EXTRA/BLOG SECTION
- * =============================================================================
- * 
- * Blog post cards with image previews, metadata, and hover effects
- */
-
-.extra-posts { margin-bottom: 10px; } /* Space below posts section */
-
-.extra-posts-list {
-  display: grid;                    /* Grid layout */
-  grid-template-columns: 1fr;       /* Single column on mobile */
-  gap: 20px;                        /* Space between blog cards */
-}
-
-.extra-post-item > a {
-  position: relative;               /* For pseudo-element positioning */
-  background: var(--border-gradient-onyx); /* Gradient border effect */
-  height: 100%;                     /* Full height cards */
-  box-shadow: var(--shadow-4);      /* Strong card shadow */
-  border-radius: 16px;              /* Rounded corners */
-  z-index: 1;                       /* Proper layering */
-}
-
-.extra-post-item > a::before {
-  content: "";                      /* Empty pseudo-element */
-  position: absolute;               /* Positioned relative to card */
-  inset: 1px;                       /* 1px inside border */
-  border-radius: inherit;           /* Match parent radius */
-  background: var(--eerie-black-1); /* Inner background */
-  z-index: -1;                      /* Behind main content */
-}
-
-.extra-banner-box {
-  width: 100%;                      /* Full width image container */
-  height: 200px;                    /* Fixed height for consistency */
-  border-radius: 12px;              /* Rounded image corners */
-  overflow: hidden;                 /* Hide overflow for hover effects */
-}
-
-.extra-banner-box img {
-  width: 100%;                      /* Full width images */
-  height: 100%;                     /* Full height images */
-  object-fit: cover;                /* Crop to fit container */
-  transition: var(--transition-1);  /* Smooth scale transition */
-}
-
-.extra-post-item > a:hover .extra-banner-box img { 
-  transform: scale(1.1);            /* Slight zoom on hover */
-}
-
-.extra-content { padding: 15px; }  /* Internal spacing for text content */
-
-.extra-meta {
-  display: flex;                    /* Horizontal layout */
-  justify-content: flex-start;      /* Align to start */
-  align-items: center;              /* Vertical center alignment */
-  gap: 7px;                         /* Space between meta elements */
-  margin-bottom: 10px;              /* Space below metadata */
-}
-
-.extra-meta :is(.extra-category, time) {
-  color: var(--light-gray-70);      /* Muted metadata color */
-  font-size: var(--fs-6);           /* Small metadata size */
-  font-weight: var(--fw-300);       /* Light font weight */
-}
-
-.extra-meta .dot {
-  background: var(--light-gray-70); /* Muted dot separator */
-  width: 4px;                       /* Small dot size */
-  height: 4px;
-  border-radius: 4px;               /* Circular dot */
-}
-
-.extra-item-title {
-  margin-bottom: 10px;              /* Space below title */
-  line-height: 1.3;                 /* Tight line spacing */
-  transition: var(--transition-1);  /* Smooth color transition */
-}
-
-.extra-post-item > a:hover .extra-item-title { 
-  color: var(--burnt_orange);       /* Orange title on hover */
-}
-
-.extra-text {
-  color: var(--light-gray);         /* Readable text color */
-  font-size: var(--fs-6);           /* Medium text size */
-  font-weight: var(--fw-300);       /* Light font weight */
-  line-height: 1.6;                 /* Comfortable reading */
-}
-
-
-
-
-
-/**
- * =============================================================================
- * 11. CONTACT SECTION
- * =============================================================================
- * 
- * Contact form, meeting scheduler, contact information sidebar with
- * modern styling and interactive elements
- */
-
-.contact-wrapper {
-  display: flex;                    /* Flexible layout */
-  flex-direction: column;           /* Vertical stack on mobile */
-  gap: 40px;                        /* Space between sections */
-  width: 100%;                      /* Full width container */
-  max-width: 1200px;                /* Maximum width constraint */
-  margin: 0 auto;                   /* Center the wrapper */
-  padding: 80px 20px 40px;          /* Generous padding with top space for navbar */
-  align-items: center;              /* Center align items */
-  position: relative;               /* For navbar positioning context */
-}
-
-/**
- * CONTACT INFORMATION SIDEBAR
- * Contact details display with styled icons and information
- */
-
-.contact-sidebar {
-  background: var(--eerie-black-2); /* Dark background */
-  border: 1px solid var(--jet);     /* Subtle border */
-  border-radius: 20px;              /* Rounded corners */
-  padding: 30px;                    /* Generous internal spacing */
-  box-shadow: var(--shadow-1);      /* Subtle elevation */
-  min-width: 320px;                 /* Minimum width for readability */
-  flex-shrink: 0;                   /* Prevent shrinking */
-}
-
-.contact-details {
-  display: flex;                    /* Vertical layout */
-  flex-direction: column;           /* Stack contact items */
-  gap: 20px;                        /* Space between contact items */
-}
-
-.contact-details .contact-item {
-  display: flex;                    /* Horizontal layout */
-  align-items: center;              /* Vertical center alignment */
-  gap: 16px;                        /* Space between icon and text */
+.contact-detail {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 14px 16px;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 246, 243, 0.88));
 }
 
 .contact-icon {
-  position: relative;               /* For pseudo-element positioning */
-  background: linear-gradient(135deg, hsl(240, 1%, 25%) 0%, hsl(240, 2%, 15%) 100%);
-  width: 48px;                      /* Fixed icon container size */
-  height: 48px;
-  border-radius: 12px;              /* Rounded icon container */
-  display: flex;                    /* Center icon */
-  justify-content: center;          /* Center horizontally */
-  align-items: center;              /* Center vertically */
-  font-size: 18px;                  /* Medium icon size */
-  color: var(--burnt_orange);       /* Orange icon color */
-  box-shadow: var(--shadow-1);      /* Subtle shadow */
-  z-index: 1;                       /* Proper layering */
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 1.2rem;
 }
 
-.contact-icon::before {
-  content: "";                      /* Empty pseudo-element */
-  position: absolute;               /* Positioned relative to icon */
-  inset: 1px;                       /* 1px inside border */
-  background: linear-gradient(135deg, hsl(240, 1%, 20%) 0%, hsl(240, 2%, 12%) 100%);
-  border-radius: inherit;           /* Match parent radius */
-  z-index: -1;                      /* Behind icon content */
+.contact-detail h4 {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.contact-icon ion-icon {
-  --ionicon-stroke-width: 35px;     /* Thicker icon strokes */
-  color: var(--burnt_orange);       /* Orange icon color */
-  font-size: 18px;                  /* Medium icon size */
+.contact-detail p,
+.contact-detail a {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.7;
 }
 
-.contact-text h4 {
-  color: var(--light-gray-70);      /* Muted label color */
-  font-size: var(--fs-8);           /* Small label size */
-  text-transform: uppercase;        /* Uppercase labels */
-  margin-bottom: 2px;               /* Small space below label */
-  font-weight: var(--fw-300);       /* Light font weight */
+.contact-detail a {
+  transition: color var(--transition);
 }
 
-.contact-text p {
-  color: var(--white-2);            /* Light text color */
-  font-size: var(--fs-7);           /* Small text size */
-  font-weight: var(--fw-300);       /* Light font weight */
+.contact-detail a:hover,
+.contact-detail a:focus-visible {
+  color: var(--accent);
 }
 
-.contact-text a {
-  color: var(--white-2);            /* Light link color */
-  font-size: var(--fs-7);           /* Small link size */
-  font-weight: var(--fw-300);       /* Light font weight */
-  text-decoration: none;            /* Remove underlines */
+.form {
+  display: grid;
+  gap: 16px;
 }
 
-.contact-text a:hover {
-  color: var(--burnt_orange);       /* Orange hover color */
+.input-row {
+  display: grid;
+  gap: 16px;
 }
 
-/**
- * CONTACT FORM AND MEETING SCHEDULER
- * Styled form elements with consistent design language
- */
-
-/* Contact Form and Meeting Scheduler Buttons */
-.contact-form button,
-.meeting-scheduler-section button {
-  background: var(--burnt_orange);  /* Orange button background */
-  color: var(--white-1);            /* White button text */
-  border: none;                     /* Remove default border */
-  padding: 10px 32px;               /* Button padding */
-  border-radius: 8px;               /* Rounded button corners */
-  font-size: var(--fs-6);           /* Medium button text */
-  font-weight: var(--fw-500);       /* Medium font weight */
-  cursor: pointer;                  /* Pointer cursor on hover */
-  transition: var(--transition-1);  /* Smooth hover transition */
-  margin-top: 15px;                 /* Space above button */
-  flex-direction: row;              /* Horizontal button layout */
-  display: inline-flex;             /* Inline flex display */
+.form-input {
+  width: 100%;
+  padding: 15px 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--text);
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
 }
 
-.contact-form button:hover,
-.meeting-scheduler-section button:hover {
-  background: var(--bg-gradient-jet); /* Gradient background on hover */
-  transform: translateY(-2px);      /* Slight lift effect */
+.form-input::placeholder {
+  color: #957c79;
 }
 
-.contact-form button:active,
-.meeting-scheduler-section button:active {
-  transform: translateY(0);         /* Return to normal position when clicked */
+.form-input:hover {
+  background: rgba(255, 255, 255, 0.96);
 }
 
-/* Contact form inputs and textareas */
-.contact-form input,
-.contact-form textarea,
-.meeting-scheduler-section input,
-.meeting-scheduler-section textarea,
-.meeting-scheduler-section select {
-  background: linear-gradient(135deg, var(--jet) 0%, var(--onyx) 50%, var(--raisin-black-1) 100%);
-  color: var(--light-gray);         /* Light input text */
-  font-size: var(--fs-6);           /* Medium input text */
-  font-weight: var(--fw-300);       /* Light font weight */
-  font-family: var(--ff-poppins);   /* Consistent font family */
-  border: 1px solid var(--jet);     /* Subtle border */
-  border-radius: 8px;               /* Rounded input corners */
-  padding: 12px 16px;               /* Input padding */
-  margin-bottom: 15px;              /* Space below inputs */
-  transition: var(--transition-1);  /* Smooth state transitions */
-  gap: 10px;                        /* Internal element spacing */
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(197, 58, 59, 0.12);
+  background: #fff;
 }
 
-.contact-form input:hover,
-.contact-form textarea:hover,
-.meeting-scheduler-section input:hover,
-.meeting-scheduler-section textarea:hover,
-.meeting-scheduler-section select:hover {
-  background: var(--eerie-black-1); /* Lighter background on hover */
-  border-color: var(--bg-gradient-jet); /* Gradient border on hover */
+textarea.form-input {
+  min-height: 170px;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus,
-.meeting-scheduler-section input:focus,
-.meeting-scheduler-section textarea:focus,
-.meeting-scheduler-section select:focus {
-  background: var(--burnt_orange);  /* Orange background when focused */
-  border-color: var(--burnt_orange); /* Orange border when focused */
-  outline: none;                    /* Remove default focus outline */
+.form-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: fit-content;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  color: #fff;
+  font-weight: 800;
+  transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
 }
 
-.contact-form input::placeholder,
-.contact-form textarea::placeholder,
-.meeting-scheduler-section input::placeholder,
-.meeting-scheduler-section textarea::placeholder {
-  color: var(--light-gray-70);      /* Muted placeholder text */
+.form-btn[disabled] {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
-.contact-form,
-.meeting-scheduler-section {
-  background: var(--eerie-black-2); /* Dark form background */
-  border: 1px solid var(--jet);     /* Subtle border */
-  border-radius: 20px;              /* Rounded form corners */
-  padding: 30px;                    /* Generous form padding */
-  box-shadow: var(--shadow-1);      /* Subtle form elevation */
-  flex: 1;                          /* Flexible sizing */
-  margin-bottom: 25px;              /* Space below forms */
-  margin-top: 25px;                 /* Space above forms */
-  width: 800px;                     /* Fixed form width */
-  margin: 0 auto;                   /* Center forms */
-}
-
-.contact-sections {
-  display: flex;                    /* Flexible layout */
-  flex-direction: column;           /* Vertical stack */
-  flex: 1;                          /* Flexible sizing */
-}
-
-/**
- * MEETING SCHEDULER SPECIFIC STYLES
- * Additional styling for the meeting scheduler component
- */
-
-.meeting-scheduler-section {
-  position: relative;               /* For pseudo-element positioning */
-  margin-bottom: 0;                 /* No bottom margin for last section */
-}
-
-.meeting-scheduler-section::before {
-  content: "";                      /* Empty pseudo-element */
-  position: absolute;               /* Positioned relative to section */
-  inset: 1px;                       /* 1px inside border */
-  background: var(--bg-gradient-jet); /* Inner background gradient */
-  border-radius: inherit;           /* Match parent radius */
-  z-index: -1;                      /* Behind main content */
-}
-
-.scheduler-container {
-  position: relative;               /* For proper layering */
-  z-index: 1;                       /* Above pseudo-element */
-}
-
-.meeting-scheduler-section select {
-  cursor: pointer;                  /* Pointer cursor for selects */
-  appearance: none;                 /* Remove default select styling */
-  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23ffffff" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
-  background-repeat: no-repeat;     /* Don't repeat arrow icon */
-  background-position: right 12px center; /* Position arrow on right */
-  background-size: 12px;            /* Size of arrow icon */
-  padding-right: 40px;              /* Space for arrow icon */
-}
-
-.meeting-scheduler-section select option {
-  background: var(--eerie-black-1); /* Dark option background */
-  color: var(--light-gray);         /* Light option text */
-  font-family: var(--ff-poppins);   /* Consistent font family */
-  font-size: var(--fs-6);           /* Medium option text */
-  font-weight: var(--fw-300);       /* Light font weight */
-}
-
-.meeting-scheduler-section input[type="email"]:invalid {
-  border-color: var(--jet);         /* Subtle border for invalid email */
-}
-
-.meeting-scheduler-section input[type="email"]:valid {
-  border-color: var(--jet);         /* Subtle border for valid email */
-}
-
-.meeting-scheduler-section input[type="email"]:hover {
-  background: var(--eerie-black-1); /* Lighter background on hover */
-  border-color: var(--bg-gradient-jet) !important; /* Gradient border on hover */
-}
-
-/**
- * =============================================================================
- * 12. RESPONSIVE DESIGN
- * =============================================================================
- * 
- * Media queries for different screen sizes with mobile-first approach.
- * Breakpoints: 450px, 580px, 768px, 1024px, 1250px
- */
-
-/**
- * RESPONSIVE DESIGN: SCREENS LARGER THAN 450PX
- * Minor adjustments for slightly larger mobile screens
- */
-
-@media (min-width: 450px) {
-
-  /**
-   * Skills item adjustments for better mobile display
-   */
-
-  .skills-item { min-width: 0; }     /* Allow natural sizing */
-
-  /**
-   * PROJECT AND BLOG IMAGES
-   * Auto height for better aspect ratio handling
-   */
-
-  .project-img,
-  .extra-banner-box { height: auto; } /* Dynamic height based on content */
-
-}
-
-/**
- * RESPONSIVE DESIGN: SCREENS LARGER THAN 580PX
- * Tablet and small desktop improvements
- */
-
-@media (min-width: 580px) {
-
-  /**
-   * ENHANCED TYPOGRAPHY
-   * Larger font sizes for better readability on bigger screens
-   */
-
-  :root {
-    --fs-1: 32px;                   /* Larger main headings */
-    --fs-2: 24px;                   /* Larger sub headings */
-    --fs-3: 26px;                   /* Larger section headings */
-    --fs-4: 18px;                   /* Larger paragraph headings */
-    --fs-6: 15px;                   /* Larger body text */
-    --fs-7: 15px;                   /* Larger small text */
-    --fs-8: 12px;                   /* Larger micro text */
-  }
-
-  /**
-   * IMPROVED COMPONENT SIZING
-   * Better proportions for larger screens
-   */
-
-  .sidebar, article {
-    width: 520px;                   /* Fixed width for tablets */
-    margin-inline: auto;            /* Center components */
-    padding: 30px;                  /* More generous padding */
-  }
-
-  .article-title {
-    font-weight: var(--fw-600);     /* Bolder titles */
-    padding-bottom: 15px;           /* More space below titles */
-  }
-
-  .article-title::after {
-    width: 40px;                    /* Longer accent lines */
-    height: 5px;                    /* Thicker accent lines */
-  }
-
-  .icon-box {
-    width: 48px;                    /* Larger icon containers */
-    height: 48px;
-    border-radius: 12px;            /* More rounded corners */
-    font-size: 18px;                /* Larger icons */
-  }
-
-  /**
-   * MAIN LAYOUT ADJUSTMENTS
-   * Better spacing for tablet viewing
-   */
-
-  main {
-    margin-top: 60px;               /* More top margin */
-    margin-bottom: 100px;           /* More bottom margin */
-  }
-
-  /**
-   * SIDEBAR ENHANCEMENTS
-   * Improved profile display and contact layout
-   */
-
-  .sidebar {
-    max-height: 180px;              /* Taller collapsed height */
-    margin-bottom: 30px;            /* More space below sidebar */
-  }
-
-  .sidebar.active { max-height: 584px; } /* Taller expanded height */
-
-  .sidebar-info { gap: 25px; }     /* More space in profile info */
-
-  .profile-picture { border-radius: 30px; } /* More rounded profile */
-
-  .profile-picture img { width: 120px; } /* Larger profile image */
-
-  .info-content .name { margin-bottom: 15px; } /* More space below name */
-
-  .info-content .title { padding: 5px 18px; } /* More padding for title badge */
-
-  .info_more-btn {
-    top: -30px;                     /* Higher positioning */
-    right: -30px;                   /* Further right positioning */
-    padding: 10px 15px;             /* More button padding */
-  }
-
-  .info_more-btn span {
-    display: block;                 /* Show button text on tablets */
-    font-size: var(--fs-8);         /* Small button text */
-  }
-
-  .info_more-btn ion-icon { display: none; } /* Hide icon when text shown */
-
-  .separator { margin: 32px 0; }    /* More separator spacing */
-
-  .contacts-list { gap: 20px; }     /* More space between contacts */
-
-  .contact-info {
-    max-width: calc(100% - 64px);   /* Account for larger icons */
-    width: calc(100% - 64px);
-  }
-
-  /**
-   * NAVIGATION IMPROVEMENTS
-   * Better navbar styling for tablets
-   */
-
-  .navbar { border-radius: 20px 20px 0 0; } /* More rounded top corners */
-
-  .navbar-list { gap: 20px; }      /* More space between nav items */
-
-  .navbar-link { --fs-8: 14px; }   /* Larger nav text */
-
-  /**
-   * ABOUT SECTION ENHANCEMENTS
-   * Better layout for interests and testimonials
-   */
-
-  .about .article-title { margin-bottom: 20px; } /* More title spacing */
-
-  .about-text { margin-bottom: 40px; } /* More text spacing */
-
-  /* Interest cards layout improvements */
-  .interest-item {
-    display: flex;                  /* Horizontal layout for interest cards */
-    justify-content: flex-start;    /* Align content to start */
-    align-items: flex-start;        /* Top align content */
-    gap: 18px;                      /* Space between icon and text */
-    padding: 30px;                  /* More padding for cards */
-  }
-
-  .interest-icon-box {
-    margin-bottom: 0;               /* Remove bottom margin */
-    margin-top: 5px;                /* Small top margin for alignment */
-  }
-
-  .interest-content-box { text-align: left; } /* Left-align text content */
-
-  /* Skills showcase improvements */
-  .skills-list {
-    gap: 50px;                      /* More space between skill cards */
-    margin: 0 -30px;                /* Wider negative margins */
-    padding: 45px;                  /* More internal padding */
-    scroll-padding-inline: 45px;    /* More scroll padding */
-  }
-
-  .skills-item { min-width: 10px; } /* Minimum width constraint */
-
-  .skills-item img {
-    width: 100%;                    /* Full width skill images */
-    height: 200px;                  /* Fixed height for consistency */
-    object-fit: cover;              /* Crop to fit container */
-  }
-
-  /**
-   * RESUME SECTION IMPROVEMENTS
-   * Better timeline and skills layout
-   */
-
-  .timeline-list { margin-left: 65px; } /* More timeline indentation */
-
-  .timeline-item:not(:last-child)::before { left: -40px; } /* Adjust line position */
-
-  .timeline-item::after {
-    height: 8px;                    /* Larger timeline bullets */
-    width: 8px;
-    left: -43px;                    /* Adjust bullet position */
-  }
-
-  .skills-item:not(:last-child) { margin-bottom: 25px; } /* More skill spacing */
-
-  /**
-   * PORTFOLIO AND BLOG IMPROVEMENTS
-   * Better image handling and spacing
-   */
-
-  .project-img, .extra-banner-box { border-radius: 16px; } /* More rounded images */
-
-  .extra-posts-list { gap: 30px; } /* More space between blog posts */
-
-  .extra-content { padding: 25px; } /* More padding for blog content */
-
-  /**
-   * CONTACT FORM IMPROVEMENTS
-   * Better form layout and spacing
-   */
-
-  .mapbox {
-    height: 380px;                  /* Taller map container */
-    border-radius: 18px;            /* More rounded map corners */
-  }
-
-  .input-wrapper {
-    gap: 30px;                      /* More space between form inputs */
-    margin-bottom: 30px;            /* More space below input groups */
-  }
-
-  .form-input { padding: 15px 20px; } /* More input padding */
-
-  textarea.form-input { margin-bottom: 30px; } /* More space below textarea */
-
-  .form-btn {
-    --fs-6: 16px;                   /* Larger button text */
-    padding: 16px 20px;             /* More button padding */
-  }
-
-  .form-btn ion-icon { font-size: 18px; } /* Larger button icons */
-
-}
-
-
-
-
-
-/**
- * RESPONSIVE DESIGN: SCREENS LARGER THAN 768PX
- * Desktop and large tablet optimizations
- */
-
-@media (min-width: 768px) {
-
-  /**
-   * COMPONENT SIZING
-   * Wider components for desktop viewing
-   */
-
-  .sidebar, article { width: 700px; } /* Wider components */
-
-  .has-scrollbar::-webkit-scrollbar-button { width: 100px; } /* Wider scrollbar buttons */
-
-  /**
-   * SIDEBAR LAYOUT
-   * Two-column contact layout for better space utilization
-   */
-
-  .contacts-list {
-    grid-template-columns: 1fr 1fr;  /* Two-column contact grid */
-    gap: 30px 15px;                  /* More vertical, less horizontal spacing */
-  }
-
-  /**
-   * NAVIGATION
-   * Larger navigation text for desktop
-   */
-
-  .navbar-link { --fs-8: 15px; }    /* Larger navigation text */
-
-  /**
-   * ABOUT SECTION
-   * Modal and testimonial improvements for desktop
-   */
-
-  /* Testimonials modal enhancements */
-  .interests-modal {
-    gap: 35px;                       /* More space in modal layout */
-    max-width: 680px;                /* Constrain modal width */
-  }
-
-  .modal-avatar-box img { width: 80px; } /* Larger modal avatar */
-
-  /**
-   * PORTFOLIO SECTION
-   * Desktop filter system and grid improvements
-   */
-
-  .article-title { padding-bottom: 20px; } /* More title spacing */
-
-  .filter-select-box { display: none; } /* Hide mobile dropdown */
-
-  .filter-list {
-    display: flex;                   /* Show desktop filter list */
-    justify-content: flex-start;     /* Align filters to start */
-    align-items: center;             /* Vertical center alignment */
-    gap: 25px;                       /* Space between filter buttons */
-    padding-left: 5px;               /* Small left padding */
-    margin-bottom: 30px;             /* Space below filters */
-  }
-
-  .filter-item button {
-    color: var(--light-gray);        /* Default filter button color */
-    font-size: var(--fs-5);          /* Medium filter text */
-    transition: var(--transition-1); /* Smooth color transition */
-  }
-
-  .filter-item button:hover { 
-    color: var(--light-gray-70);     /* Hover color */
-  }
-
-  .filter-item button.active { 
-    color: var(--burnt_orange);      /* Active filter color */
-  }
-
-  /* Portfolio and blog grid improvements */
-  .project-list, .extra-posts-list { 
-    grid-template-columns: 1fr 1fr;  /* Two-column grid */
-  }
-
-  /**
-   * CONTACT FORM
-   * Two-column input layout for desktop
-   */
-
-  .input-wrapper { 
-    grid-template-columns: 1fr 1fr;  /* Two-column input grid */
-  }
-
-  .form-btn {
-    width: max-content;              /* Button width based on content */
-    margin-left: auto;               /* Right-align submit button */
-  }
-  
-}
-
-
-
-
-
-/**
- * RESPONSIVE DESIGN: SCREENS LARGER THAN 1024PX
- * Large desktop optimizations with enhanced shadows and layout
- */
-
-@media (min-width: 1024px) {
-
-  /**
-   * ENHANCED VISUAL EFFECTS
-   * Reduced shadow intensity for large screens
-   */
-
-  :root {
-    --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.125); /* Lighter shadows */
-    --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.125);
-    --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.125);
-  }
-
-  /**
-   * COMPONENT SIZING
-   * Larger components with enhanced shadows
-   */
-
-  .sidebar, article {
-    width: 950px;                    /* Wider components for large screens */
-    box-shadow: var(--shadow-5);     /* Enhanced elevation */
-  }
-
-  /**
-   * MAIN LAYOUT
-   * Reduced bottom margin and centered content
-   */
-
-  main { margin-bottom: 60px; }     /* Less bottom margin */
-
-  .main-content {
-    position: relative;              /* For navbar positioning */
-    width: max-content;              /* Width based on content */
-    margin: auto;                    /* Center the content */
-  }
-
-  /**
-   * NAVIGATION
-   * Repositioned navbar for desktop layout
-   */
-
-  .navbar {
-    position: absolute;              /* Positioned relative to main content */
-    bottom: auto;                    /* Remove bottom positioning */
-    top: 0;                          /* Position at top */
-    left: auto;                      /* Remove left positioning */
-    right: 0;                        /* Align to right */
-    width: max-content;              /* Width based on content */
-    border-radius: 0 20px;           /* Rounded right corners only */
-    padding: 0 20px;                 /* Horizontal padding */
-    box-shadow: none;                /* Remove shadow for top navbar */
-  }
-
-  .navbar-list {
-    gap: 30px;                       /* More space between nav items */
-    padding: 0 20px;                 /* Horizontal padding */
-  }
-
-  .navbar-link { font-weight: var(--fw-500); } /* Medium weight nav text */
-
-  /**
-   * ABOUT SECTION
-   * Multi-column layouts for interests and testimonials
-   */
-
-  /* Interest grid layout */
-  .interest-list {
-    grid-template-columns: 1fr 1fr;  /* Two-column interest grid */
-    gap: 20px 25px;                  /* Vertical and horizontal spacing */
-  }
-
-  /* Testimonials layout */
-  .interests-item { 
-    min-width: calc(50% - 15px);     /* Half-width testimonial items */
-  }
-
-  /* Skills showcase */
-  .skills-item { min-width: 0; }    /* Allow natural skill item sizing */
-
-  /**
-   * PORTFOLIO SECTION
-   * Three-column portfolio grid
-   */
-
-  .project-list { 
-    grid-template-columns: repeat(3, 1fr); /* Three-column portfolio grid */
-  }
-
-  /**
-   * BLOG SECTION
-   * Taller blog post images
-   */
-
-  .extra-banner-box { height: 230px; } /* Taller blog images */
-
-}
-
-
-
-
-
-/**
- * responsive larger than 1250px screen
- */
-
-@media (min-width: 1250px) {
-
-  /**
-   * RESET
-   */
-
-  body::-webkit-scrollbar { width: 20px; }
-
-  body::-webkit-scrollbar-track { background: var(--smoky-black); }
-
-  body::-webkit-scrollbar-thumb {
-    border: 5px solid var(--smoky-black);
-    background: hsla(0, 0%, 100%, 0.1);
-    border-radius: 20px;
-    box-shadow: inset 1px 1px 0 hsla(0, 0%, 100%, 0.11),
-                inset -1px -1px 0 hsla(0, 0%, 100%, 0.11);
-  }
-
-  body::-webkit-scrollbar-thumb:hover { background: hsla(0, 0%, 100%, 0.15); }
-
-  body::-webkit-scrollbar-button { height: 60px; }
-
-
-
-  /**
-   * REUSED STYLE
-   */
-
-  .sidebar, article { width: auto; }
-
-  article { min-height: 100%; }
-
-
-
-  /**
-   * MAIN
-   */
-
-  main {
-    max-width: 1200px;
-    margin-inline: auto;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 25px;
-  }
-
-  .main-content {
-    min-width: 75%;
-    width: 75%;
-    margin: 0;
-  }
-
-  /**
-   * SIDEBAR
-   */
-
-  .sidebar {
-    position: relative;
-    top: auto;
-    max-height: none;
-    height: auto;
-    margin-bottom: 0;
-    padding-top: 30px;
-    z-index: 1;
-    min-width: 320px;
-    flex-shrink: 0;
-  }
-
-  .sidebar-info { 
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .profile-picture img { width: 150px; }
-
-  .info-content .name {
-    white-space: nowrap;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-
-  .info-content .title { 
-    margin: auto;
-    margin-bottom: 0;
-  }
-
-  .info_more-btn { display: none; }
-
-  .sidebar-info_more {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .contacts-list { 
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .contact-info :is(.contact-link) {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .contact-info :is(.contact-link, time, address) {
-    --fs-7: 14px;
-    font-weight: var(--fw-300);
-  }
-
-  .separator:last-of-type {
-    margin: 15px 0;
-    opacity: 1;
-  }
-
-  .social-list { 
-    justify-content: center;
-    padding-bottom: 4px;
-    padding-left: 0;
-  }
-}
-
-/**
- * RESPONSIVE DESIGN: SCREENS LARGER THAN 1250PX
- * Ultra-wide desktop layout with side-by-side sidebar and content
- */
-
-@media (min-width: 1250px) {
-
-  /**
-   * ENHANCED SCROLLBAR STYLING
-   * Custom scrollbar for ultra-wide screens
-   */
-
-  body::-webkit-scrollbar { width: 20px; } /* Wider scrollbar */
-
-  body::-webkit-scrollbar-track { 
-    background: var(--smoky-black);  /* Dark scrollbar track */
-  }
-
-  body::-webkit-scrollbar-thumb {
-    border: 5px solid var(--smoky-black); /* Border around scrollbar thumb */
-    background: hsla(0, 0%, 100%, 0.1); /* Semi-transparent white thumb */
-    border-radius: 20px;             /* Rounded scrollbar thumb */
-    box-shadow: inset 1px 1px 0 hsla(0, 0%, 100%, 0.11), /* Inner shadows */
-                inset -1px -1px 0 hsla(0, 0%, 100%, 0.11);
-  }
-
-  body::-webkit-scrollbar-thumb:hover { 
-    background: hsla(0, 0%, 100%, 0.15); /* Lighter thumb on hover */
-  }
-
-  body::-webkit-scrollbar-button { height: 60px; } /* Taller scrollbar buttons */
-
-  /**
-   * FLEXIBLE COMPONENT SIZING
-   * Components adapt to available space
-   */
-
-  .sidebar, article { width: auto; } /* Flexible width */
-
-  article { min-height: 100%; }     /* Full height articles */
-
-  /**
-   * MAIN LAYOUT TRANSFORMATION
-   * Side-by-side layout with sidebar and main content
-   */
-
-  main {
-    max-width: 1200px;               /* Maximum content width */
-    margin-inline: auto;             /* Center the layout */
-    display: flex;                   /* Horizontal layout */
-    justify-content: center;         /* Center content */
-    align-items: flex-start;         /* Top-align components */
-    gap: 25px;                       /* Space between sidebar and content */
-  }
-
-  .main-content {
-    min-width: 75%;                  /* Minimum content width */
-    width: 75%;                      /* Preferred content width */
-    margin: 0;                       /* Remove auto margins */
-  }
-
-  /**
-   * SIDEBAR TRANSFORMATION
-   * Fixed sidebar with centered profile layout
-   */
-
-  .sidebar {
-    position: relative;              /* Remove any fixed positioning */
-    top: auto;                       /* Reset top positioning */
-    max-height: none;                /* Remove height restrictions */
-    height: auto;                    /* Natural height */
-    margin-bottom: 0;                /* Remove bottom margin */
-    padding-top: 30px;               /* Top padding for content */
-    z-index: 1;                      /* Proper layering */
-    min-width: 320px;                /* Minimum sidebar width */
-    flex-shrink: 0;                  /* Prevent shrinking */
-  }
-
-  .sidebar-info { 
-    flex-direction: column;          /* Vertical profile layout */
-    align-items: center;             /* Center-align profile elements */
-    text-align: center;              /* Center text alignment */
-  }
-
-  .profile-picture img { width: 150px; } /* Larger profile image */
-
-  .info-content .name {
-    white-space: nowrap;             /* Prevent name wrapping */
-    text-align: center;              /* Center name text */
-    margin-bottom: 10px;             /* Space below name */
-  }
-
-  .info-content .title { 
-    margin: auto;                    /* Center title badge */
-    margin-bottom: 0;                /* No bottom margin */
-  }
-
-  .info_more-btn { display: none; }  /* Hide expand button on desktop */
-
-  .sidebar-info_more {
-    opacity: 1;                      /* Always visible on desktop */
-    visibility: visible;             /* Always interactive on desktop */
-  }
-
-  .contacts-list { 
-    grid-template-columns: 1fr;      /* Single column contact list */
-    gap: 16px;                       /* Standard contact spacing */
-  }
-
-  .contact-info :is(.contact-link) {
-    white-space: nowrap;             /* Prevent contact link wrapping */
-    overflow: hidden;                /* Hide overflow text */
-    text-overflow: ellipsis;         /* Show ellipsis for long text */
-  }
-
-  .contact-info :is(.contact-link, time, address) {
-    --fs-7: 14px;                    /* Slightly larger contact text */
-    font-weight: var(--fw-300);     /* Light font weight */
-  }
-
-  .separator:last-of-type {
-    margin: 15px 0;                  /* Standard separator spacing */
-    opacity: 1;                      /* Fully visible separator */
-  }
-
-  .social-list { 
-    justify-content: center;         /* Center social links */
-    padding-bottom: 4px;             /* Small bottom padding */
-    padding-left: 0;                 /* Remove left padding */
-  }
-}
-
-/**
- * SUCCESS CONFIRMATION MODAL
- * Styled confirmation popup for form submissions
- */
-
-/* Success confirmation styles */
 .success-message {
-  position: fixed;                  /* Fixed positioning for overlay */
-  top: 50%;                         /* Vertical center */
-  left: 50%;                        /* Horizontal center */
-  transform: translate(-50%, -50%); /* Perfect centering */
-  background: var(--border-gradient-onyx); /* Gradient background */
-  color: var(--white-2);            /* Light text color */
-  padding: 30px;                    /* Generous padding */
-  border-radius: 20px;              /* Rounded corners */
-  text-align: center;               /* Center text */
-  z-index: 1000;                    /* High z-index for overlay */
-  opacity: 0;                       /* Hidden by default */
-  transition: opacity var(--transition-1); /* Smooth fade transition */
-  pointer-events: none;             /* No interactions when hidden */
-  border: 1px solid var(--jet);     /* Subtle border */
-  box-shadow: var(--shadow-5);      /* Maximum elevation */
-}
-
-.success-message::before {
-  content: "";                      /* Empty pseudo-element */
-  position: absolute;               /* Positioned relative to message */
-  inset: 1px;                       /* 1px inside border */
-  background: var(--bg-gradient-jet); /* Inner background */
-  border-radius: inherit;           /* Match parent radius */
-  z-index: -1;                      /* Behind main content */
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: min(360px, calc(100% - 36px));
+  padding: 16px 18px;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity var(--transition), transform var(--transition);
 }
 
 .success-message.show {
-  opacity: 1;                       /* Visible when shown */
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .success-checkmark {
-  width: 60px;                      /* Fixed checkmark size */
-  height: 60px;
-  border-radius: 50%;               /* Circular checkmark container */
-  background: var(--burnt_orange);  /* Orange checkmark background */
-  margin: 0 auto 15px;              /* Center and add bottom margin */
-  display: flex;                    /* Center checkmark icon */
-  align-items: center;              /* Vertical center */
-  justify-content: center;          /* Horizontal center */
-  animation: scaleIn var(--transition-1) ease; /* Scale-in animation */
-  box-shadow: var(--shadow-2);      /* Medium shadow */
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
+  flex-shrink: 0;
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
-.success-checkmark i {
-  font-size: 24px;                  /* Large checkmark icon */
-  color: var(--white-1);            /* White checkmark color */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 700ms ease, transform 700ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
 }
 
-.success-message p {
-  color: var(--light-gray);         /* Readable text color */
-  font-size: var(--fs-6);           /* Medium text size */
-  font-weight: var(--fw-300);       /* Light font weight */
-  margin: 0;                        /* No margins */
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-@keyframes scaleIn {
-  0% {
-    transform: scale(0);             /* Start at zero scale */
+@media (min-width: 720px) {
+  .hero-layout,
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
   }
-  100% {
-    transform: scale(1);             /* End at normal scale */
-  }
-}
 
-/**
- * ADDITIONAL RESPONSIVE ADJUSTMENTS
- * Fine-tuning for specific screen sizes
- */
-
-@media (max-width: 1199px) {
-  .contact-sidebar {
-    max-width: 700px;                /* Constrain sidebar width */
+  .interest-grid,
+  .skill-grid,
+  .portfolio-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  
-  .contact-form,
-  .meeting-scheduler-section {
-    max-width: 700px;                /* Constrain form width */
+
+  .input-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-/* Even smaller screens */
-@media (max-width: 480px) {
-  .contact-form,
-  .meeting-scheduler-section {
-    width: 95%;                      /* Nearly full width on mobile */
-    max-width: none;                 /* Remove width constraints */
-    padding: 15px;                   /* Reduced padding for mobile */
+@media (min-width: 940px) {
+  .site-header {
+    padding: 20px 26px;
+  }
+
+  .resume-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .timeline-panel-wide {
+    grid-column: 1 / -1;
+  }
+
+  .interest-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-/* Responsive adjustments for contact page */
-@media (min-width: 1200px) {
-  .contact-wrapper {
-    flex-direction: row;             /* Side by side on larger screens */
-    align-items: flex-start;         /* Top-align sections */
-    gap: 30px;                       /* Space between sections */
-    justify-content: center;         /* Center the wrapper */
+@media (min-width: 1080px) {
+  .site-layout {
+    grid-template-columns: 320px minmax(0, 1fr);
+    align-items: start;
   }
-  
-  .contact-sidebar {
-    width: 400px;                    /* Fixed sidebar width */
-    flex-shrink: 0;                  /* Prevent shrinking */
-    position: sticky;                /* Sticky positioning */
-    top: 20px;                       /* Stick with top offset */
+
+  .profile-card {
+    position: sticky;
+    top: 108px;
   }
-  
-  .contact-sections {
-    flex: 1;                         /* Flexible width */
-    width: 800px;                    /* Limit width of forms */
-    align-items: stretch;            /* Stretch to full height */
-    gap: 30px;                       /* Space between forms */
+}
+
+@media (max-width: 719px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  /* Remove the margin-top that was added for mobile */
-  .contact-form,
-  .meeting-scheduler-section {
-    margin-top: 0;                   /* No top margin */
+
+  .site-nav {
+    justify-content: flex-start;
   }
-  
-  /* Add specific spacing between the sections */
-  .contact-form {
-    margin-bottom: 30px;             /* Space below contact form */
+
+  .hero,
+  .page-intro,
+  .timeline-panel,
+  .skills-panel,
+  .callout,
+  .contact-panel {
+    padding: 24px;
+  }
+
+  .project-body {
+    padding: 22px;
+  }
+
+  .care-card,
+  .care-chip {
+    left: 22px;
+    right: 22px;
+    width: auto;
+  }
+
+  .care-card {
+    top: 22px;
+  }
+
+  .care-chip {
+    bottom: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
   }
 }

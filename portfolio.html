@@ -1,166 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Titus Loftin </title>
-    <!-- Fonts, favicon, etc.
-     -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Titus Loftin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-</head>
-<body>
-    <main>
-        <div class="main-content">
+<body class="page page-portfolio">
+  <main class="site-shell">
+    <header class="site-header panel" data-reveal>
+      <a class="brand" href="index.html" aria-label="Titus Loftin home">
+        <span class="brand-mark">TL</span>
+        <span class="brand-copy">
+          <strong>Titus Loftin</strong>
+          <span>Engineer</span>
+        </span>
+      </a>
 
-            <!-- Navbar -->
-            <nav class="navbar">
-                <ul class="navbar-list">
-                    <li class="navbar-item">
-                        <a href="index.html" class="navbar-link">About</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="resume.html" class="navbar-link">Resume</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="portfolio.html" class="navbar-link active">Portfolio</a>
-                    </li>
-                    <li class="navbar-item">
-                        <a href="contact.html" class="navbar-link">Contact</a>
-                    </li>
-                </ul>
-            </nav>
+      <nav class="site-nav" aria-label="Primary">
+        <a class="nav-link" href="index.html">About</a>
+        <a class="nav-link" href="resume.html">Resume</a>
+        <a class="nav-link is-active" href="portfolio.html">Portfolio</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </nav>
+    </header>
 
-            <!-- Projects Section -->
-            <section id="portfolio">
-                <header>
-                    <h2 class="h2 article-title">Portfolio</h2>
-                </header>
+    <div class="site-layout">
+      <aside class="profile-card panel" data-reveal>
+        <figure class="profile-photo">
+          <img src="./assets/IMG_5622.jpeg" alt="Titus Loftin portrait">
+        </figure>
 
-                <section class="projects">
-                    <ul class="filter-list">
-                        <h3 class="project-title">For more details:</h3>
-                        <li class="filter-item">
-                            <a href="https://github.com/LoftinTitus" target="_blank">GitHub</a>
-                        </li>
-                    </ul>
-
-                    <ul class="project-list">
-                        <li class="project-item active" data-filter-item data-category="web development">
-                            <a href="https://drive.google.com/drive/folders/11UmzGKgXZ3Auugpf1U2USFf99t99a1m7?usp=drive_link" target="_blank">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </div>
-                                    <img src="./assets/vitals.png" alt="vitals" loading="lazy">
-                                </figure>
-                                <h3 class="project-title">Vital Sensor</h3>
-                                <p class="project-category">A miniature way to measure pulse, BP, and electrolyte levels</p>
-                            </a>
-                        </li>
-
-                        <li class="project-item active" data-filter-item data-category="web development">
-                            <a href="https://github.com/LoftinTitus/Fluids-Programs" target="_blank">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </div>
-                                    <img src="./assets/julia_white.png" alt="Julia" loading="lazy">
-                                </figure>
-                                <h3 class="project-title">Fluids scaling code</h3>
-                                <p class="project-category">A package of Julia code for analyzing complex geometries</p>
-                            </a>
-                        </li>
-
-                        <li class="project-item active" data-filter-item data-category="web development">
-                            <a href="https://drive.google.com/drive/folders/1VPMw0G3YHeyGxY6jjH9_bkM6y1GgaTDZ" target="_blank">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </div>
-                                    <img src="./assets/hope.png" alt="hope" loading="lazy">
-                                </figure>
-                                <h3 class="project-title">Hope</h3>
-                                <p class="project-category">An autonomous way to record vitals</p>
-                            </a>
-                        </li>
-
-                        <li class="project-item active" data-filter-item data-category="web design">
-                            <a href="" target="_blank">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </div>
-                                    <img src="./assets/nest" alt="NEST" loading="lazy">
-                                </figure>
-                                <h3 class="project-title">NEST water generator</h3>
-                                <p class="project-category">A way to generate water without using large amounts of power</p>
-                            </a>
-                        </li>
-
-                        <li class="project-item active" data-filter-item data-category="web design">
-                            <a href="https://github.com/LoftinTitus/RealTime" target="_blank">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </div>
-                                    <img src="./assets/markets.png" alt="markets" loading="lazy">
-                                </figure>
-                                <h3 class="project-title">Market News extension</h3>
-                                <p class="project-category">A Chrome extension for getting the latest on Market News</p>
-                            </a>
-                        </li>
-                        <li class="project-item active" data-filter-item data-category="web design">
-                            <a href="https://github.com/LoftinTitus/MyBudgeter" target="_blank">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </div>
-                                    <img src="./assets/FP.png" alt="Financial Planner" loading="lazy">
-                                </figure>
-                                <h3 class="project-title">Financial Planner</h3>
-                                <p class="project-category">A smart budgeting website</p>
-                            </a>
-                        </li>
-                        <li class="project-item active" data-filter-item data-category="web design">
-                            <a href="https://github.com/LoftinTitus/ECGNN" target="_blank">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </div>
-                                    <img src="./assets/ECGNN.jpeg" alt="ECGNN" loading="lazy">
-                                </figure>
-                                <h3 class="project-title">ECG Reading Neural Network</h3>
-                                <p class="project-category">A built from scratch NN</p>
-                            </a>
-                        </li>
-                        <li class="project-item active" data-filter-item data-category="web design">
-                            <a href="https://github.com/LoftinTitus/Reactorpy" target="_blank">
-                                <figure class="project-img">
-                                    <div class="project-item-icon-box">
-                                        <ion-icon name="eye-outline"></ion-icon>
-                                    </div>
-                                    <img src="./assets/reactorpy.jpg" alt="Reactorpy" loading="lazy">
-                                </figure>
-                                <h3 class="project-title">ReactorPy</h3>
-                                <p class="project-category">A library for creating and solving reactive systems</p>
-                            </a>
-                        </li>
-                        
-
-                    </ul>
-                </section>
-            </section>
-
+        <div>
+          <p class="profile-role">Engineer</p>
+          <h1 class="profile-name">Titus Loftin</h1>
         </div>
-    </main>
 
-    <script src="script.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <div class="detail-list">
+          <div class="detail-item">
+            <div class="detail-label">Email</div>
+            <div class="detail-value">
+              <a href="mailto:loftintitus@utexas.edu">loftintitus@utexas.edu</a>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <div class="detail-label">Phone</div>
+            <div class="detail-value">
+              <a href="tel:+15127650224">(512) 765 0224</a>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <div class="detail-label">Location</div>
+            <div class="detail-value">
+              <address>Austin, Texas</address>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <div class="detail-label">Resume</div>
+            <div class="detail-value">
+              <a href="assets/Titus%20Loftin%20Resume.pdf" download>Download here</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-row" aria-label="Social links">
+          <a class="social-link" href="https://github.com/LoftinTitus" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a class="social-link" href="https://www.linkedin.com/in/titus-loftin-a71b442a8/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </aside>
+
+      <div class="page-stack">
+        <section class="page-intro panel" data-reveal>
+          <p class="section-label">Portfolio</p>
+          <h2 class="page-title">Portfolio</h2>
+        </section>
+
+        <section class="callout panel" data-reveal>
+          <p class="callout-copy">For more details:</p>
+          <a class="pill-link" href="https://github.com/LoftinTitus" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </section>
+
+        <section class="portfolio-grid">
+          <article class="project-card panel" data-reveal>
+            <a href="https://drive.google.com/drive/folders/11UmzGKgXZ3Auugpf1U2USFf99t99a1m7?usp=drive_link" target="_blank" rel="noopener noreferrer">
+              <div class="project-media">
+                <img src="./assets/vitals.png" alt="Vital Sensor project image" loading="lazy">
+              </div>
+              <div class="project-body">
+                <h3>Vital Sensor</h3>
+                <p>A miniature way to measure pulse, BP, and electrolyte levels</p>
+              </div>
+            </a>
+          </article>
+
+          <article class="project-card panel" data-reveal>
+            <a href="https://github.com/LoftinTitus/Fluids-Programs" target="_blank" rel="noopener noreferrer">
+              <div class="project-media">
+                <img src="./assets/julia_white.png" alt="Fluids scaling code project image" loading="lazy">
+              </div>
+              <div class="project-body">
+                <h3>Fluids scaling code</h3>
+                <p>A package of Julia code for analyzing complex geometries</p>
+              </div>
+            </a>
+          </article>
+
+          <article class="project-card panel" data-reveal>
+            <a href="https://drive.google.com/drive/folders/1VPMw0G3YHeyGxY6jjH9_bkM6y1GgaTDZ" target="_blank" rel="noopener noreferrer">
+              <div class="project-media">
+                <img src="./assets/hope.png" alt="Hope project image" loading="lazy">
+              </div>
+              <div class="project-body">
+                <h3>Hope</h3>
+                <p>An autonomous way to record vitals</p>
+              </div>
+            </a>
+          </article>
+
+          <article class="project-card panel" data-reveal>
+            <div class="project-static">
+              <div class="project-media">
+                <div class="project-placeholder" aria-hidden="true">NEST</div>
+              </div>
+              <div class="project-body">
+                <h3>NEST water generator</h3>
+                <p>A way to generate water without using large amounts of power</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card panel" data-reveal>
+            <a href="https://github.com/LoftinTitus/RealTime" target="_blank" rel="noopener noreferrer">
+              <div class="project-media">
+                <img src="./assets/markets.png" alt="Market News extension project image" loading="lazy">
+              </div>
+              <div class="project-body">
+                <h3>Market News extension</h3>
+                <p>A Chrome extension for getting the latest on Market News</p>
+              </div>
+            </a>
+          </article>
+
+          <article class="project-card panel" data-reveal>
+            <a href="https://github.com/LoftinTitus/MyBudgeter" target="_blank" rel="noopener noreferrer">
+              <div class="project-media">
+                <img src="./assets/FP.png" alt="Financial Planner project image" loading="lazy">
+              </div>
+              <div class="project-body">
+                <h3>Financial Planner</h3>
+                <p>A smart budgeting website</p>
+              </div>
+            </a>
+          </article>
+
+          <article class="project-card panel" data-reveal>
+            <a href="https://github.com/LoftinTitus/ECGNN" target="_blank" rel="noopener noreferrer">
+              <div class="project-media">
+                <img src="./assets/ECGNN.jpeg" alt="ECG Reading Neural Network project image" loading="lazy">
+              </div>
+              <div class="project-body">
+                <h3>ECG Reading Neural Network</h3>
+                <p>A built from scratch NN</p>
+              </div>
+            </a>
+          </article>
+
+          <article class="project-card panel" data-reveal>
+            <a href="https://github.com/LoftinTitus/Reactorpy" target="_blank" rel="noopener noreferrer">
+              <div class="project-media">
+                <img src="./assets/reactorpy.jpg" alt="ReactorPy project image" loading="lazy">
+              </div>
+              <div class="project-body">
+                <h3>ReactorPy</h3>
+                <p>A library for creating and solving reactive systems</p>
+              </div>
+            </a>
+          </article>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
